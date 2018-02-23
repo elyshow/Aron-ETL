@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+<!-- 该页面不允许出现js以及css代码,content代码和dialog代码可直接写在本文件中，下面只是content的实例代码 -->
+{% block title %}
+    数据清洗规则
+{% endblock %}
+{% block js %}
+    <!-- 此处填充js链接 -->
+    <script>
+    var urls={
+        'getCheckRuleListUrl': "{% url 'dataCleaningRules:getCheckRuleList' %}",
+        'deleteCheckUrl': "{% url 'dataCleaningRules:deleteCheckRule' %}",
+        'saveCheckUrl': "{% url 'dataCleaningRules:saveCheckRule' %}",
+
+        'getCleanRuleListUrl': "{% url 'dataCleaningRules:getCleanRuleList' %}",
+        'deleteCleanUrl': "{% url 'dataCleaningRules:deleteCleanRule' %}",
+        'saveCleanUrl': "{% url 'dataCleaningRules:saveCleanRule' %}",
+    }
+    </script>
+    <script type="text/javascript" src="{% static 'js/app/dataCleaningRules/index.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/app/index.js' %}"></script>
+	<script type="text/javascript" src="/static/js/app/date.js"></script>
+{% endblock %}
+{% block css %}
+    <!-- 此处填充css链接-->
+    <link type="text/css" rel="stylesheet" href="{% static 'css/dataCleaningRules/dataCleaningRules.css' %}" />
+{% endblock %}
+{% block content %}
+    <!-- 此处填充右侧主体内容 -->
+    {% include 'dataCleaningRules/content.html' %}
+{% endblock %}
+{% block dialog %}
+     <!-- 此处填充右dialog内容 -->
+    {% include 'dataCleaningRules/dialog.html' %}
+{% endblock %}

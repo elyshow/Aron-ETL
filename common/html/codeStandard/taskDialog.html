@@ -1,0 +1,104 @@
+<div class="easyui-dialog" id="mydialog" data-options="title:'标准代码',width:500,height:450,buttons:'#dialogBtn'" style="display:none">
+   <form id="busForm" method="post">
+    <div id="dialogBtn">
+        <a href="javascript:saveRules();" class="easyui-linkbutton bule_btn">确定</a>
+        <a href="javascript:$('#mydialog').dialog('close');" class="easyui-linkbutton white_btn">取消</a>
+    </div>
+       <input type="hidden" name="save_type" />
+        <table border="0" cellpadding="0" cellspacing="0" class="dialog_table">
+            <tr style="display:none">
+                <td>id：</td>
+                <td><input name="id" id="id"/></td>
+            </tr>
+            <tr>
+                <td>代码名称：</td>
+                <td><input class="easyui-validatebox textbox" data-options="required:true,validType:'username'" name="codename" id="codename"/></td>
+            </tr>
+            <tr>
+                <td>标准编号：</td>
+                <td><input class="easyui-validatebox textbox" name="standardnum" id="standardnum" data-options="required:true" /></td>
+            </tr>
+            <tr>
+                <td>代码表：</td>
+                <td><input class="easyui-validatebox textbox" name="codetable" id="codetable" data-options="required:true" /></td>
+            </tr>
+            <tr>
+                <td>数据源：</td>
+                <td><input class="easyui-validatebox textbox" name="datasource" id="datasource" data-options="required:true" /></td>
+            </tr>
+            <tr>
+                <td style="text-align:left;">结构类型：</td>
+                <td style="text-align:left">
+                    <span class="radioSpan" id="span" >
+                        <input type="radio" name="structuretype" class="structuretype" value="1" checked="checked">普通列表</input>
+                        <input type="radio" name="structuretype" class="structuretype" value="2">父级字段</input>
+                        <input type="radio" name="structuretype" class="structuretype" value="3">分段编号</input>
+                        <input type="radio" name="structuretype" class="structuretype" value="4">分段补零</input>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>业务分类：</td>
+                <td><input  class="easyui-combobox" name="businessclass" id="businessclass" data-options="required:true" />
+                </td>
+            </tr>
+            <tr>
+                <td>代码分类标准：</td>
+                <td><input class="easyui-combobox" name="codestandardclass" id="codestandardclass"></td>
+            </tr>
+            <tr>
+                <td>资源属性分类：</td>
+                <td><input class="easyui-combobox" name="resourceproperty" id="resourceproperty"/></td>
+            </tr>
+            <tr>
+                <td>备注说明：</td>
+                <td><input class="easyui-validatebox textbox" name="other" id="other" data-options="" /></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+
+<div class="easyui-dialog" id="detailTaskDialog" data-options="title:'标准代码详情页面',width:800,height:400" style="display:none">
+    <div class="easyui-tabs" id="detailTab" data-options="border:false,fit:true,tabHeight:50,plain:true">
+        <div data-options="title:'查看详情'">
+            <form id="detailForm" method="post">
+            <table border="0" cellpadding="0" cellspacing="0" class="dialog_table">
+                <tr>
+                      <td style="text-align: right">代码名称:</td>
+                      <td><input class="easyui-validatebox textbox" name="codenameDetail" id="codenameDetail" readonly="true" style="border:0px;" data-options="" /></td>
+                      <td style="text-align: right">结构类型:</td>
+                         <td><input class="easyui-validatebox textbox" name="structuretypeDetail" id="structuretypeDetail" readonly="true" style="border:0px;" data-options="required:true,validType:'username'"/></td>
+                </tr>
+                <tr>
+                      <td style="text-align: right">标准编号:</td>
+                      <td><input class="easyui-validatebox textbox" name="standardnumDetail" id="standardnumDetail" readonly="true" style="border:0px;" data-options=""/></td>
+                      <td style="text-align: right">代码表:</td>
+                      <td><input class="easyui-validatebox textbox" name="codetableDetail" id="codetableDetail" readonly="true" style="border:0px;" data-options="" /></td>
+                </tr>
+                <tr>
+                      <td style="text-align: right">数据源:</td>
+                      <td><input class="easyui-validatebox textbox" name="datasourceDetail" id="datasourceDetail" readonly="true" style="border:0px;" data-options=""/></td>
+                      <td style="text-align: right">注册时间:</td>
+                      <td><input class="easyui-validatebox textbox" name="registertimeDetail" id="registertimeDetail" readonly="true" style="border:0px;" data-options="" /></td>
+                </tr>
+                <tr>
+                      <td style="text-align: right">业务分类:</td>
+                      <td><input class="easyui-validatebox textbox" name="businessclassDetail" id="businessclassDetail" readonly="true" style="border:0px;" data-options=""/></td>
+                      <td style="text-align: right">代码标准分类:</td>
+                      <td><input class="easyui-validatebox textbox" name="codestandardclassDetail" id="codestandardclassDetail" readonly="true" style="border:0px;" data-options="" /></td>
+                </tr>
+
+
+            </table>
+        </form>
+        </div>
+        <div data-options="title:'引用信息'">
+            <table id="quoteDetail"></table>
+        </div>
+  </div>
+
+</div>
+
+
+

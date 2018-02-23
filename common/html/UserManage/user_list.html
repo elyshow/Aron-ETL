@@ -1,0 +1,125 @@
+{% extends  'user_base.html' %}
+{% load staticfiles %}
+{% block title %}
+    用户列表
+{% endblock %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript" src="{% static 'js/app/userManage/userList.js' %}"></script>
+    <script type="text/javascript">
+        var urls = {
+           'deleteuserurl': '{% url 'deleteuserurl' %}',
+            'adduserurl': '{% url 'adduserurl' %}',
+            'edituserurl': '{% url 'edituserurl' %}',
+            'resetpasswordurl': "{% url 'resetpasswordurl' %}"
+        }
+    </script>
+{% endblock %}
+
+{% block dialog %}
+    <div class="easyui-dialog" id="userListDialog" data-options="title:'新增用户',width:450,height:380,buttons:'#userListDialogBtn'" style="display:none">
+        <form id="userListForm" method="post">
+        <div id="userListDialogBtn">
+            <a href="javascript:saveUserList();" class="easyui-linkbutton bule_btn">确定</a>
+            <a href="javascript:$('#userListDialog').dialog('close');" class="easyui-linkbutton white_btn">取消</a>
+        </div>
+
+            <table border="0" cellpadding="0" cellspacing="0" class="dialog_table" style="margin:0 auto;">
+                <tr style="display: none">
+					<td>id:</td>
+					<td><input class="easyui-validatebox textbox" name="id" id="id" data-options="" /></td>
+				</tr>
+				<tr>
+					<td>用户名：</td>
+					<td><input type="text" class="easyui-validatebox textbox" name="username" data-options="required:true,"/></td>
+				</tr>
+                <tr id="tr_password">
+                    <td>密码</td>
+                    <td><input class="easyui-validatebox textbox" id="id_password" name="password" type="password" data-options="required:true,"/></td>
+                </tr>
+                <tr>
+					<td>所属用户组：</td>
+					<td><input type="text" class="easyui-combobox" name="group" data-options="textField:'name', valueField:'id',required:true,url:'{% url 'getgroupnameurl' %}'"/></td>
+				</tr>
+				<tr>
+					<td>部门：</td>
+					<td><input type="text" class="easyui-validatebox textbox" name="department" data-options="required:true,"/></td>
+				</tr>
+				<tr>
+					<td>Email：</td>
+					<td><input type="text" class="easyui-validatebox textbox" name="email" data-options="required:true,validType:'email'"/></td>
+				</tr>
+				<tr>
+					<td>电话号码：</td>
+					<td><input type="text" class="easyui-validatebox textbox" name="telephone" data-options="required:true"/></td>
+				</tr>
+				<tr>
+					<td>状态：</td>
+					<td><input type="checkbox" name="is_active" /></td>
+				</tr>
+            </table>
+        </form>
+    </div>
+
+    <div class="easyui-dialog" id="dialog_changePasswd" data-options="title:'修改密码',width:450,height:380,buttons:'#changePasswdBtn'" style="display:none">
+        <form id="changePasswdForm" method="post">
+            <div id="changePasswdBtn">
+                <a href="javascript:changePasswd();" class="easyui-linkbutton bule_btn">确定</a>
+                <a href="javascript:$('#dialog_changePasswd').dialog('close');" class="easyui-linkbutton white_btn">取消</a>
+            </div>
+
+            <table border="0" cellpadding="0" cellspacing="0" class="dialog_table" style="margin:0 auto;">
+                <tr style="display: none">
+					<td><input class="easyui-validatebox textbox" name="id" data-options="" /></td>
+				</tr>
+                <tr>
+                    <td>新密码</td>
+                    <td><input class="easyui-validatebox textbox" name="newpsw1" type="password" data-options="required:true,"/></td>
+                </tr>
+
+                <tr>
+                    <td>新密码确认</td>
+                    <td><input class="easyui-validatebox textbox" name="newpsw2" type="password" data-options="required:true,"/></td>
+                </tr>
+
+            </table>
+        </form>
+    </div>
+
+{% endblock %}
+
+{% block content %}
+    <div class="easyui-panel" data-options="fit:true,border:false">
+    <div class="easyui-layout" data-options="fit:true,border:false">
+         <div data-options="region:'north',border:false" style="height:50px;">
+            <div class="nav_title">
+                <span>用户鉴权服务</span> >>
+                <span>用户管理</span>
+            </div>
+         </div>
+         <div data-options="region:'center',border:false" >
+            <div class="easyui-tabs" id="dataClean" data-options="border:false,fit:true,tabHeight:50,plain:true">
+                    <table id="userList" data-options="url:'{% url 'getlisturl' %}',toolbar:'#userListToolBar'" style="width:100%;">
+
+                    </table>
+            </div>
+         </div>
+
+        <div id="userListToolBar" class="toolbar">
+            
+            <div style="float:right;margin-right:20px;">
+                <a href="javascript:;" id="addUserListBtn" onclick="addUserList()" class="easyui-linkbutton" data-options="iconCls:'icon-add'">增加</a>
+                <a href="javascript:;" id="editUserListBtn" onclick="editUserList()" class="easyui-linkbutton" data-options="iconCls:'icon-edit'">修改</a>
+                <a href="javascript:;" id="delUserListBtn" onclick="delUserList()" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">删除</a>
+            </div>
+			<div style="float:right;margin-right: 10px;">
+                    <input id="userListSearch" />
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{% block title %}首页{% endblock %}</title>
+	<link rel="stylesheet" type="text/css" href="/static/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="/static/themes/default/icon.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/main.css">
+	<!--<script type="text/javascript" data-main="themes/js/app/main" async="false" src="themes/js/requires.js"></script> -->
+	<script type="text/javascript" src="/static/js/libs/jquery-3.0.0.min.js"></script>
+	<script type="text/javascript" src="/static/js/libs/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="/static/js/libs/easyui-lang-zh_CN.js"></script>
+	<script type="text/javascript" src="/static/js/app/main.js"></script>
+	<script type="text/javascript" src="/static/js/libs/jquery.easyui.extends.js"></script>
+    {% block js %}
+	<script type="text/javascript" src="/static/js/app/index/index.js"></script>
+    {% endblock %}
+    {% block css %}{% endblock %}
+<style>
+    .nav a{color:#000000;display: block;width: 100%}
+    .nav a::before {
+        color: #000000;
+        content: attr(data-hover);
+        position: absolute;
+        opacity: 0;
+        text-shadow: 0 0 1px rgba(255,255,255,0.3);
+        -webkit-transform: scale(1.1) translateX(10px) translateY(-10px) rotate(4deg);
+        -moz-transform: scale(1.1) translateX(10px) translateY(-10px) rotate(4deg);
+        transform: scale(1.1) translateX(10px) translateY(-10px) rotate(4deg);
+        -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+        -moz-transition: -moz-transform 0.3s, opacity 0.3s;
+        transition: transform 0.3s, opacity 0.3s;
+        pointer-events: none;
+    }
+.nav a:hover::before, .nav a:focus::before {
+    opacity: 1;
+    transform: scale(1) translateX(0px) translateY(0px) rotate(0deg);
+}
+</style>
+</head>
+<body class="easyui-layout" data-options="border:false" id="box">
+
+<div data-options="region:'north',collapsible:false,border:false" style="height:80px;display:none;overflow:hidden;">
+	<a href="#" class="logo"></a>
+	
+	<div class="login_welcome">
+		<div class="addr_welcome" style="color:#ffffff">欢迎您! <span class="adminUser">{{ request.user }}</span>【<span class="adminArea">省厅</span>】</div>
+		<a href="{% url 'homeIndex' %}"><img src="/static/images/head1.png"/><span>回到首页</span></a>
+		<a href="{% url 'changepasswordurl' %}"><img src="/static/images/head2.png"/><span>修改密码</span></a>
+		<a href="{% url 'logouturl' %}"><img src="/static/images/head3.png"/><span>退出</span></a>
+	</div>
+	<div style="clear:both;"></div>
+</div> 
+<div data-options="region:'west',collapsible:false,width:'2%',border:false,bodyCls:'body_bg'">
+
+</div>
+
+<div data-options="region:'center',collapsible:false,border:false,width:'84%'" class="body_bg">
+	<div class="easyui-layout" data-options = "fit:true" >
+		
+		<div id="accordion" data-options="region:'west',border:false" style="width:250px;height:100%;display:none;border-right:25px solid transparent">
+			<div class="easyui-accordion" id="accordionTab">
+				<div id="p" title="<span style='display:inline-block;color:#fff;width:94px;height:28px;line-height:28px;text-align:center;background:#1a1a1a;background-color: rgba(0,0,0,0.5);border-radius:14px;margin:6px 0 0 8px;'>新增接口</span>" data-options="">
+					<div class="nav">
+						<a href="/dataway/index/" style="text-decoration:none">
+							<img src="/static/images/img1.png"/>
+							<span>新增接口</span>
+						</a>
+					</div>
+				</div>
+				
+			
+				<div id="p1" title="<span style='display:inline-block;color:#fff;width:94px;height:28px;line-height:28px;text-align:center;background:#1a1a1a;background-color: rgba(0,0,0,0.5);border-radius:14px;margin:6px 0 0 8px;'>接口编目</span>">
+					<div class="nav">
+						<a href="/cataloguedataway/index/" style="text-decoration:none">
+							<img src="/static/images/img2.png"/>
+							<span>接口编目</span>
+						</a>
+					</div>
+				</div>
+				
+			
+				<div id="p2" title="<span style='display:inline-block;color:#fff;width:94px;height:28px;line-height:28px;text-align:center;background:#1a1a1a;background-color: rgba(0,0,0,0.5);border-radius:14px;margin:6px 0 0 8px;'>使用手册</span>">
+					<div class="nav">
+						<a href="#" style="text-decoration:none">
+							<img src="/static/images/img4.png"/>
+							<span>使用手册</span>
+						</a>
+					</div>
+				</div>
+				
+			
+				<div id="p3" title="<span style='display:inline-block;color:#fff;width:94px;height:28px;line-height:28px;text-align:center;background:#1a1a1a;background-color: rgba(0,0,0,0.5);border-radius:14px;margin:6px 0 0 8px;'>接口展示</span>">
+					<div class="nav">
+						<a href="/huafeng/interface/" style="text-decoration:none">
+							<img src="/static/images/img6.png"/>
+							<span>接口展示</span>
+						</a>
+					</div>
+				</div>
+				
+			
+				<div id="p4" title="<span style='display:inline-block;color:#fff;width:94px;height:28px;line-height:28px;text-align:center;background:#1a1a1a;background-color: rgba(0,0,0,0.5);border-radius:14px;margin:6px 0 0 8px;'>接口日志</span>">
+					<div class="nav">
+						<a href="/huafeng/journallog/" style="text-decoration:none">
+							<img src="/static/images/img7.png"/>
+							<span>接口日志</span>
+						</a>
+					</div>
+				</div>
+		
+			</div>
+
+		</div>
+
+		<div id="contentQulity" data-options="region:'center',collapsible:false,border:false," style="width:100%;height:100%;display:none;overflow:hidden;">
+			{% block content %}{% endblock %}
+		</div>
+	</div>
+</div>
+{% block dialog %}{% endblock %}
+</body>
+</html>

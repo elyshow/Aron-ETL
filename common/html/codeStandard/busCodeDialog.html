@@ -1,0 +1,18 @@
+<div class="easyui-dialog" id="busDialog" data-options="title:'新增业务代码',width:400,height:160,buttons:'#dialogBtn'" style="display:none">
+    <div id="dialogBtn">
+        <a href="javascript:busAdd();"class="easyui-linkbutton bule_btn">确定</a>
+        <a href="javascript:;" onclick="$('#busDialog').dialog('close')" class="easyui-linkbutton white_btn">取消</a>
+    </div>
+    <form id="busForm" method="post">
+        <table border="0" cellpadding="0" cellspacing="0" class="dialog_table">
+            <tr>
+                <td>代码名称：</td>
+                <td><input class="easyui-validatebox textbox" name="busCodeName" data-options="required:true,validType:'username'" /></td>
+            </tr>
+            <tr>
+                <td>代码表：</td>
+                <td><input class="easyui-validatebox textbox" name="busCodeTable" data-options="required:true,validType:'rname'" /></td>
+            </tr>
+        </table>
+    </form>
+</div>

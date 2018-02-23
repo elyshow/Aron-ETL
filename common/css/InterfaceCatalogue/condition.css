@@ -1,0 +1,10 @@
+.datagrid-header-rownumber, .datagrid-cell-rownumber{
+    height:32px;
+    width:60px;
+	text-align:center;
+	line-height:32px;
+}
+
+a{
+	text-decoration:none;
+}

@@ -1,0 +1,31 @@
+<div class="easyui-panel" data-options="fit:true,border:false">
+    <div class="easyui-layout" data-options="fit:true,border:false">
+         <div data-options="region:'north',border:false" style="height:50px;">
+            <div class="nav_title">
+                <span>数据整合</span> >>
+                <span>数据清洗</span>
+            </div>
+         </div>
+         <div data-options="region:'center',border:false" >
+            <div class="easyui-tabs" id="dataClean" data-options="border:false,fit:true,tabHeight:50,plain:true">
+
+                    <table id="dataCleanList" data-options="url:'{% url 'dataCleaning:getList' %}'">
+
+                    </table>
+
+
+            </div>
+         </div>
+
+        <div id="cleanEnableToolBar" class="toolbar">
+            <div style="float:left;margin-left: 10px;">
+                    <input id="dataCleaningEnableSearch" />
+            </div>
+            <div style="float:right;margin-right:20px;">
+                <a href="javascript:;" id="addCleaningEnableBtn" onclick="addCleaning()" class="easyui-linkbutton" data-options="iconCls:'icon-add'">增加</a>
+                <a href="javascript:;" id="editCleaningEnableBtn" onclick="editCleaning()" class="easyui-linkbutton" data-options="iconCls:'icon-edit'">修改</a>
+                <a href="javascript:;" id="delCleaningEnableBtn" onclick="delCleaning()" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">删除</a>
+            </div>
+        </div>
+    </div>
+</div>

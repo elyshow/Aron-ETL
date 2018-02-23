@@ -1,0 +1,546 @@
+{% extends 'base.html' %}
+
+{% block title %}
+   数据监控统计
+{% endblock %}
+{% block js %}
+
+ 	<script type="text/javascript" src="/static/js/app/shujujiankong/dataMonitoringStatistics.js"></script> 
+	<script type="text/javascript" src="/static/js/app/date.js"></script>
+
+{% endblock %}
+{% block css %}
+
+
+{% endblock %}
+
+{% block dialog %}
+ 
+   {#% include 'home/dialog.html' %#}
+{% endblock %}
+
+{% block content %}
+<style>
+	.tabs{
+		border:none;
+		height:125px;
+		position:relative;
+		width:970px;
+	}
+	.tabs li{
+		width:100px;
+		height:100px;
+	}
+	.tabs li.tabs-first{
+		position:absolute;
+
+	}
+	.panel-noscroll{
+		height:275px;
+	}
+
+	/*div.tabs-wrap>ul.tabs{*/
+		/*height:88%;*/
+	/*}*/
+	.tabs li.tabs-first{
+		margin-left:60px;
+	}
+	li:nth-child(2){
+		position:absolute;
+		left:16%;
+	}
+	li:nth-child(3){
+		position:absolute;
+		left:31%;
+	}
+	li:nth-child(4){
+		position:absolute;
+		left:40%;
+	}
+	li:nth-child(5){
+		position:absolute;
+		left:55%;
+	}
+	li:nth-child(6){
+		position:absolute;
+		left:64%;
+	}
+	li:nth-child(7){
+		position:absolute;
+		left:79%;
+	}
+	div.tabs-wrap{
+		height:126px;
+	}
+	.tabs-header .tabs-pill li.tabs-selected a.tabs-inner{
+		height:110px;
+		position:absolute;
+		top:0;
+		left:10px;
+		background: none;
+		border:none;
+		width:140px;
+	}
+	.datagrid .datagrid-pager{
+		display: none;
+	}
+	.datagrid-header-inner{
+		background: #ffffff;
+	}
+	.datagrid-header{
+		height:230px;
+		border:none;
+	}
+	.datagrid-cell-c1-happy{
+		text-align: center;
+	}
+	.datagrid-cell-c2-star{
+		text-align: center;
+	}
+	.datagrid-cell-c3-star{
+		text-align: center;
+	}
+	.datagrid-cell-c4-star{
+		text-align: center;
+	}
+	.datagrid-cell-c5-number{
+		text-align: center;
+	}
+	.datagrid-cell-c6-star{
+		text-align: center;
+	}
+	.datagrid-htable tbody .datagrid-header-row:nth-child(even){
+		background-color: #ffffff;
+	}
+	.datagrid-htable tbody .datagrid-header-row{
+		background-color: #f8f8f8;
+	}
+	.even{
+		background-color: #f8f8f8;
+	}
+	.odd{
+		background-color: #ffffff;
+	}
+	.tabs-header .tabs-pill li.tabs-selected a.tabs-inner{
+		position: absolute;
+		left:0;
+	}
+	.tabs-header .tabs-pill li a.tabs-inner{
+		position: absolute;
+		left:0;
+		top:0;
+	}
+	.tabs-header{
+		border:none;
+	}
+</style>
+
+
+<div class="easyui-panel" title="<img src='/static/images/littlehouse.png' style='vertical-align:middle;margin:0 8px 0 35px;'/><span>您当前的位置：数据监控统计 > 数据监控统计表</span><div class='datime' style='width:210px;height:16px;display:inline-block;float:right;margin-right:60px;'></div>" style="height:100%;height:100%;" style="background:#fff;">
+	<div class="easyui-layout" data-options = "fit:true">
+		<div class="bgQulity" data-options="region:'west',collapsible:false,width:'4%',border:false,bodyCls:'body_bg'">
+
+		</div>
+		<div class="bgQulity" data-options="region:'east',collapsible:false,width:'4%',border:false,bodyCls:'body_bg'">
+
+		</div>
+		<div class="bgQulity" data-options="region:'north',collapsible:false,width:'100%',height:'15px',border:false,bodyCls:'body_bg'">
+			
+		</div>
+		<div id="contentFluid" data-options="region:'center',collapsible:false,border:false,bodyCls:'body_bg',width:'92%'">
+			
+			<div class="easyui-panel"  id="tt" data-options="fit:true,border:false">
+
+			 <div class="easyui-layout" data-options="fit:true,border:false">
+					<div id="i_btn_dialog" data-options="region:'north',border:false" style="border-top:3px solid #00a5a5">
+						<div class="nav_title">
+							<span>数据监控统计</span>
+						</div>
+					 </div>
+					 <div data-options="region:'center',border:false" >
+						<div class="easyui-tabs" id="lianjie" data-options="border:false,fit:true,pill:true,tabHeight:'10%',tabWidth:110">
+
+							<div title="<div style='height:102px;width:137%;margin:0 0 0 -17%;background:url(/static/images/bjyinying.png);background-size:100% 108%;background-repeat:no-repeat;box-shadow:0px 10px 5px #FFFAFA;color:#ffffff'><span style='font-size:18px;'>业务库</span><br><p style='margin-top:21%'>数据来源<i style='color:#ed2323;font-style:normal'>7</i>个</p><br><p style='margin-top:-71%'>联通异常<i style='color:#ed2323;font-style:normal'>0</i>个</p></div>">
+								 <div>
+									 <div><img src="/static/images/liantong.png"/></div>
+									 <table class="easyui-datagrid" data-options="toolbar:'#collectTaskListToolbar'," id="collectTaskList">
+									 <thead>
+									 <tr class="btn_one">
+									 <th data-options="field:'code'">地域</th>
+									 <th data-options="field:'price'">库个数</th>
+									 <th data-options="field:'happy'">最新状态</th>
+									 <th data-options="field:'time'">最新检测时间</th>
+									 <th data-options="field:'star'">正常率</th>
+									 </tr>
+									 <tr class="btn_two">
+									 <th data-options="field:'code'">省厅</th>
+									 <th data-options="field:'price'">25</th>
+									 <th data-options="field:'happy'"><img src="/static/images/xiaobiaoti2.png"/><span style="color:#bd0e39">(1)</span></th>
+									 <th data-options="field:'time'">2013-09-30 14:30</th>
+									 <th data-options="field:'star'">98%</th>
+									 </tr>
+									 <tr class="btn_one">
+									 <th data-options="field:'code'"></th>
+									 <th data-options="field:'price'"></th>
+									 <th data-options="field:'happy'"></th>
+									 <th data-options="field:'time'"></th>
+									 <th data-options="field:'star'"></th>
+									 </tr>
+									 <tr class="btn_two">
+									 <th data-options="field:'code'"></th>
+									 <th data-options="field:'price'"></th>
+									 <th data-options="field:'happy'"></th>
+									 <th data-options="field:'time'"></th>
+									 <th data-options="field:'star'"></th>
+									 </tr>
+									 <tr class="btn_one">
+									 <th data-options="field:'code'"></th>
+									 <th data-options="field:'price'"></th>
+									 <th data-options="field:'happy'"></th>
+									 <th data-options="field:'time'"></th>
+									 <th data-options="field:'star'"></th>
+									 </tr>
+									 </thead>
+									 </table>
+
+								 </div>
+							</div>
+							<div title="<div><span style='display: block;margin-left: 25%;margin-top: 9px;color: black;height: 24px;width: 60px;'>抽取、清洗</span><img src='/static/images/jiantou.png'/><span style='display: block;width: 106px;margin-top:-18%;margin-left:3%;color: black'>整合、一致性</span></div>">
+								<div style="height: 275px;overflow: hidden;">
+									<div style="margin-left:14%"><img src="/static/images/jiankongETL.png"/></div>
+									<div style="margin-left:14%">
+										<table class="easyui-datagrid" data-options="toolbar:'#collectTaskListToolbar'," id="collectTaskList">
+										<thead>
+										<tr>
+											<th data-options="field:'code'">作业名称</th>
+											<th data-options="field:'price'">作业类型</th>
+											<th data-options="field:'happy'">作业包</th>
+											<th data-options="field:'time'">上次执行时间</th>
+											<th data-options="field:'star'">上次执行状态</th>
+											<th data-options="field:'number'">上次执行耗时</th>
+											<th data-options="field:'smile'">正常率</th>
+										</tr>
+										<tr>
+											<th data-options="field:'code'">DS_T_R_CZR<br>RJBXX_01</th>
+											<th data-options="field:'price'">Datastage<br>目录名</th>
+											<th data-options="field:'happy'">Datastage</th>
+											<th data-options="field:'time'">2013-09-20 20:12:00</th>
+											<th data-options="field:'star'"><img src="/static/images/xiaobiaoti2.png"/></th>
+											<th data-options="field:'number'">5分30秒</th>
+											<th data-options="field:'smile'">98%</th>
+										</tr>
+										<tr>
+											<th data-options="field:'code'"></th>
+											<th data-options="field:'price'"></th>
+											<th data-options="field:'happy'"></th>
+											<th data-options="field:'time'"></th>
+											<th data-options="field:'star'"></th>
+											<th data-options="field:'number'"></th>
+											<th data-options="field:'smile'"></th>
+										</tr>
+										<tr>
+											<th data-options="field:'code'"></th>
+											<th data-options="field:'price'"></th>
+											<th data-options="field:'happy'"></th>
+											<th data-options="field:'time'"></th>
+											<th data-options="field:'star'"></th>
+											<th data-options="field:'number'"></th>
+											<th data-options="field:'smile'"></th>
+										</tr>
+										<tr>
+											<th data-options="field:'code'"></th>
+											<th data-options="field:'price'"></th>
+											<th data-options="field:'happy'"></th>
+											<th data-options="field:'time'"></th>
+											<th data-options="field:'star'"></th>
+											<th data-options="field:'number'"></th>
+											<th data-options="field:'smile'"></th>
+										</tr>
+										</thead>
+									</table>
+								</div>
+									</div>
+							</div>
+							<div title="<div style='height:102px;width:137%;margin:0 0 0 -17%;background:url(/static/images/bjyinying.png);background-size:100% 108%;background-repeat:no-repeat;color:#ffffff'><span style='font-size:18px;'>标准库</span><br><p style='margin-top:17%';>昨日更新<i style='color:#ed2323;font-style:normal'>60</i>种</p><br><p  style='margin-top:-71%'><i style='color:#ed2323;font-style:normal'>23万2580</i>条</p></div>">
+								<div style="height: 275px;overflow: hidden;">
+									<div style="margin-left:28%"><img src="/static/images/biaozhunku.png"/></div>
+									<div style="margin-left:28%">
+										<table class="easyui-datagrid" data-options="toolbar:'#collectTaskListToolbar'," id="collectTaskList">
+										<thead>
+										<tr>
+											<th data-options="field:'code'">数据来源</th>
+											<th data-options="field:'price'">数据种类</th>
+											<th data-options="field:'happy'">数据总量</th>
+											<th data-options="field:'time'">昨日更新数</th>
+											<th data-options="field:'star'">工作状态</th>
+											<th data-options="field:'number'">正常率</th>
+										</tr>
+										<tr>
+											<th data-options="field:'code'">治安-常驻人口<br>信息管理系统</th>
+											<th data-options="field:'price'">10</th>
+											<th data-options="field:'happy'">1亿5600万</th>
+											<th data-options="field:'time'">112万1250条</th>
+											<th data-options="field:'star'"><img src="/static/images/xiaobiaoti2.png"/></th>
+											<th data-options="field:'number'">98%</th>
+										</tr>
+										<tr>
+											<th data-options="field:'code'"></th>
+											<th data-options="field:'price'"></th>
+											<th data-options="field:'happy'"></th>
+											<th data-options="field:'time'"></th>
+											<th data-options="field:'star'"></th>
+											<th data-options="field:'number'"></th>
+										</tr>
+										<tr>
+											<th data-options="field:'code'"></th>
+											<th data-options="field:'price'"></th>
+											<th data-options="field:'happy'"></th>
+											<th data-options="field:'time'"></th>
+											<th data-options="field:'star'"></th>
+											<th data-options="field:'number'"></th>
+										</tr>
+										<tr>
+											<th data-options="field:'code'"></th>
+											<th data-options="field:'price'"></th>
+											<th data-options="field:'happy'"></th>
+											<th data-options="field:'time'"></th>
+											<th data-options="field:'star'"></th>
+											<th data-options="field:'number'"></th>
+										</tr>
+										</thead>
+									</table>
+								</div>
+									</div>
+							</div>
+							<div title="<div><span style='display: block;margin-left: 20px;margin-top: 9px;color: black;height: 24px;width: 60px;'>同步</span><img src='/static/images/jiantou.png'/></div>">
+								<div style="height: 275px;overflow: hidden;">
+									<div style="margin-left:40%"><img src="/static/images/jiankongETL.png"/></div>
+									<div style="margin-left:40%">
+									<table class="easyui-datagrid" data-options="toolbar:'#collectTaskListToolbar'," id="collectTaskList">
+										<thead>
+										<tr>
+											<th data-options="field:'code'">作业名称</th>
+											<th data-options="field:'price'">作业类型</th>
+											<th data-options="field:'happy'">作业包</th>
+											<th data-options="field:'time'">上次执行时间</th>
+											<th data-options="field:'star'">上次执行状态</th>
+											<th data-options="field:'number'">上次执行耗时</th>
+											<th data-options="field:'smile'">正常率</th>
+										</tr>
+										<tr>
+											<th data-options="field:'code'">DS_T_R_CZR<br>RJBXX_01</th>
+											<th data-options="field:'price'">Datastage<br>目录名</th>
+											<th data-options="field:'happy'">Datastage</th>
+											<th data-options="field:'time'">2013-09-20<br>20:12:00</th>
+											<th data-options="field:'star'"><img src="/static/images/xiaobiaoti2.png"/></th>
+											<th data-options="field:'number'">5分30秒</th>
+											<th data-options="field:'smile'">98%</th>
+										</tr>
+										<tr>
+											<th data-options="field:'code'"></th>
+											<th data-options="field:'price'"></th>
+											<th data-options="field:'happy'"></th>
+											<th data-options="field:'time'"></th>
+											<th data-options="field:'star'"></th>
+											<th data-options="field:'number'"></th>
+											<th data-options="field:'smile'"></th>
+										</tr>
+										<tr>
+											<th data-options="field:'code'"></th>
+											<th data-options="field:'price'"></th>
+											<th data-options="field:'happy'"></th>
+											<th data-options="field:'time'"></th>
+											<th data-options="field:'star'"></th>
+											<th data-options="field:'number'"></th>
+											<th data-options="field:'smile'"></th>
+										</tr>
+										<tr>
+											<th data-options="field:'code'"></th>
+											<th data-options="field:'price'"></th>
+											<th data-options="field:'happy'"></th>
+											<th data-options="field:'time'"></th>
+											<th data-options="field:'star'"></th>
+											<th data-options="field:'number'"></th>
+											<th data-options="field:'smile'"></th>
+										</tr>
+										</thead>
+									</table>
+								 </div>
+									</div>
+							</div>
+							<div title="<div style='height:102px;width:137%;margin:0 0 0 -17%;background:url(/static/images/bjyinying.png);background-size:100% 108%;background-repeat:no-repeat;color:#ffffff'><span style='font-size:18px;'>专题库</span><br><p style='margin-top:17%'>昨日更新<i style='color:#ed2323;font-style:normal'>20</i>种<i style=></i></p></div>">
+								<div style="height: 275px;overflow: hidden;">
+									<div style="margin-left:48%"><img src="/static/images/shujugengxin.png"/></div>
+									<div style="margin-left:48%">
+									<table class="easyui-datagrid" data-options="toolbar:'#collectTaskListToolbar'," id="collectTaskList">
+										<thead>
+										<tr>
+											<th data-options="field:'code'">专题库名称</th>
+											<th data-options="field:'price'">数据种类</th>
+											<th data-options="field:'happy'">数据总里</th>
+											<th data-options="field:'time'">昨日更新数据种类</th>
+											<th data-options="field:'star'">昨日更新数</th>
+											<th data-options="field:'number'">工作状态</th>
+											<th data-options="field:'smile'">正常率</th>
+										</tr>
+										<tr>
+											<th data-options="field:'code'">关联查询专题库</th>
+											<th data-options="field:'price'">856</th>
+											<th data-options="field:'happy'">1亿5600万</th>
+											<th data-options="field:'time'">150类</th>
+											<th data-options="field:'star'">1200万52条</th>
+											<th data-options="field:'number'"><img src="/static/images/xiaobiaoti1.png"/></th>
+											<th data-options="field:'smile'">98%</th>
+										</tr>
+										<tr>
+											<th data-options="field:'code'"></th>
+											<th data-options="field:'price'"></th>
+											<th data-options="field:'happy'"></th>
+											<th data-options="field:'time'"></th>
+											<th data-options="field:'star'"></th>
+											<th data-options="field:'number'"></th>
+											<th data-options="field:'smile'"></th>
+										</tr>
+										<tr>
+											<th data-options="field:'code'"></th>
+											<th data-options="field:'price'"></th>
+											<th data-options="field:'happy'"></th>
+											<th data-options="field:'time'"></th>
+											<th data-options="field:'star'"></th>
+											<th data-options="field:'number'"></th>
+											<th data-options="field:'smile'"></th>
+										</tr>
+										<tr>
+											<th data-options="field:'code'"></th>
+											<th data-options="field:'price'"></th>
+											<th data-options="field:'happy'"></th>
+											<th data-options="field:'time'"></th>
+											<th data-options="field:'star'"></th>
+											<th data-options="field:'number'"></th>
+											<th data-options="field:'smile'"></th>
+										</tr>
+										</thead>
+									</table>
+								</div>
+									</div>
+							</div>
+							<div title="<div><span style='display: block;margin-left: 20px;margin-top: 9px;color: black;height: 24px;width: 60px;'>共享</span><img src='/static/images/jiantou.png'/></div>">
+								<div style="height: 275px;overflow: hidden;">
+									<div style="margin-left:63%"><img src="/static/images/jiankongETL.png"/></div>
+									<div style="margin-left:63%">
+									<table class="easyui-datagrid" data-options="toolbar:'#collectTaskListToolbar'," id="collectTaskList">
+										<thead>
+										<tr>
+											<th data-options="field:'code'">服务名称</th>
+											<th data-options="field:'price'">服务编号</th>
+											<th data-options="field:'happy'">服务类型</th>
+											<th data-options="field:'time'">上次服务时间</th>
+											<th data-options="field:'star'">上次服务状态</th>
+											<th data-options="field:'number'">上次服务耗时</th>
+											<th data-options="field:'smile'">正常率</th>
+										</tr>
+										<tr>
+											<th data-options="field:'code'">常住人口<br>查询服务</th>
+											<th data-options="field:'price'">5L_3400123</th>
+											<th data-options="field:'happy'">查询服务</th>
+											<th data-options="field:'time'">2013-9-20<br>20：12：00</th>
+											<th data-options="field:'star'" style="text-align: center"><img src="/static/images/xiaobiaoti2.png"/></th>
+											<th data-options="field:'number'">5分30秒</th>
+											<th data-options="field:'smile'">98%</th>
+										</tr>
+										<tr>
+											<th data-options="field:'code'"></th>
+											<th data-options="field:'price'"></th>
+											<th data-options="field:'happy'"></th>
+											<th data-options="field:'time'"></th>
+											<th data-options="field:'star'"></th>
+											<th data-options="field:'number'"></th>
+											<th data-options="field:'smile'"></th>
+										</tr>
+										<tr>
+											<th data-options="field:'code'"></th>
+											<th data-options="field:'price'"></th>
+											<th data-options="field:'happy'"></th>
+											<th data-options="field:'time'"></th>
+											<th data-options="field:'star'"></th>
+											<th data-options="field:'number'"></th>
+											<th data-options="field:'smile'"></th>
+										</tr>
+										<tr>
+											<th data-options="field:'code'"></th>
+											<th data-options="field:'price'"></th>
+											<th data-options="field:'happy'"></th>
+											<th data-options="field:'time'"></th>
+											<th data-options="field:'star'"></th>
+											<th data-options="field:'number'"></th>
+											<th data-options="field:'smile'"></th>
+										</tr>
+										</thead>
+									</table>
+								</div>
+									</div>
+							</div>
+							<div title="<div style='height:102px;width:137%;margin:0 0 0 -17%;background:url(/static/images/bjyinying.png);background-size:100% 108%;background-repeat:no-repeat;color:#ffffff'><span style='font-size:18px;'>标准库</span><br><p style='margin-top:21%'>数据来源<i style='color:#ed2323;font-style:normal'>7</i>个</p><br><p style='margin-top:-71%'>联通异常<i style='color:#ed2323;font-style:normal'>0</i>个</p></div>">
+								<div style="height: 275px;overflow: hidden;">
+									<div style="margin-left:73%"><img src="/static/images/fuwugongxiang.png"/></div>
+									<div style="margin-left:73%">
+									<table class="easyui-datagrid" data-options="toolbar:'#collectTaskListToolbar'," id="collectTaskList">
+										<thead>
+										<tr style="background-color: #f8f8f8">
+											<th data-options="field:'code'">地域</th>
+											<th data-options="field:'price'">昨日访问次数</th>
+											<th data-options="field:'happy'">昨日访问资源数</th>
+											<th data-options="field:'star'">正常率</th>
+										</tr>
+										<tr style="background-color: #ffffff">
+											<th data-options="field:'code'">公安部</th>
+											<th data-options="field:'price'">10231</th>
+											<th data-options="field:'happy'">10231</th>
+											<th data-options="field:'star'">98%</th>
+										</tr>
+										<tr style="background-color: #f8f8f8">
+											<th data-options="field:'code'"></th>
+											<th data-options="field:'price'"></th>
+											<th data-options="field:'happy'"></th>
+											<th data-options="field:'star'"></th>
+										</tr>
+										<tr style="background-color: #ffffff">
+											<th data-options="field:'code'"></th>
+											<th data-options="field:'price'"></th>
+											<th data-options="field:'happy'"></th>
+											<th data-options="field:'star'"></th>
+										</tr>
+										<tr style="background-color: #f8f8f8">
+											<th data-options="field:'code'"></th>
+											<th data-options="field:'price'"></th>
+											<th data-options="field:'happy'"></th>
+											<th data-options="field:'star'"></th>
+										</tr>
+										</thead>
+									</table>
+									</div>
+									</div>
+							</div>
+						</div>
+					</div>
+			   </div>
+		</div>
+			
+		</div>
+		<div class="bgQulity" data-options="region:'south',collapsible:false,border:false,bodyCls:'body_bg'" style="height:70px;">
+			<p style="margin:40px auto 0 auto;width:450px;text-align:center">Copyright © All Rights Reserved 建议使用1280*800分辨率，IE8.0以上浏览</p>
+		</div>
+	</div>						
+</div>
+
+<script>
+	$(document).ready(function(){
+		$("tr:even").addClass("even");
+		$("tr:odd").addClass("odd");
+	})
+	$(".tabs .tabs-first a").removeClass("tabs-inner");
+</script>
+
+{% endblock %}
+
+

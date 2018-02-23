@@ -1,0 +1,213 @@
+
+<!--<div class="easyui-dialog" id="basDialog" data-options="title:'新增',width:800,height:400,buttons:'#dialogBtn333'" style="display:none">-->
+		<!-- 选择校验对象 -->
+    <!--<div id="tb" class="easyui-tabs"  style="height:364px;">
+         <div data-options="title:'选择校验对象'">
+             <form class="objForm" id="basic_info" method="get" style="width: 100%;height: 100%">
+                <table border="0" cellpadding="0" cellspacing="0" class="dialog_table" id="">
+
+                     <tr>
+                     <td>数据源：</td>
+                     <td><input class="easy-combobox" data-options="" name='datasource' id="combobox_type222"></td>
+                     </tr>
+                    <tr>
+                     <td>关键字：</td>
+                      <td> <input id="crlSearchBox" name='keyword'data-options="" /></td>
+                    </tr>
+{#                    <tr id="">#}
+{##}
+{#                    </tr>#}
+                    <tr>
+                    <td></td>
+                    </tr>
+                    <tr>
+                    <td><a id="xiss" href="javascript:;" class="easyui-linkbutton nextsave" data-options=" ">下一步</a></td>
+                    <td><a id=" " href="#" class="easyui-linkbutton reset" data-options=" ">重置</a></td>
+                    </tr>
+
+                 </table>
+             </form>
+         </div>
+                <input class="easyui-validatebox textbox" name="id" type="hidden"/>
+         </div>
+
+
+
+<div class="easyui-dialog" id="bbDialog" data-options="title:'新增规则',width:800,height:400,buttons:'#dialogBtn30'" style="display:none">
+   <form id="bbForm" method="get" enctype="multipart/form-data" class="form_reset">
+       <table cellpadding="0" cellspacing="0" border="0" class="dialog_table" data-options="toolbar:'#toolbar',"id="parameters2">
+
+        <div id="dialogBtn30">
+        <a href="javascript:bb();" class="easyui-linkbutton bule_btn">确定</a>
+        <a href="javascript:;" class="easyui-linkbutton white_btn">取消</a>
+        </div>
+
+            <tr>
+                <td>规则类型：</td>
+               <td><input class="easy-combobox" data-options="" id="combobox_type666"  name="ruletype" ></td>
+                <td>校验方法：</td>
+               <td> <input class="easy-combobox" data-options="" id="combobox_type667"  name="methodname" ></td>
+            </tr>
+            <tr>
+                <td>校验字段：</td>
+                <td><input class="easy-textbox"data-options=""name="card"></td>
+                <td>规则名称：</td>
+                <td><input class="easy-textbox"data-options=""name="rulename"></td>
+            </tr>
+            <tr>
+                <td>严重程度：</td>
+                <td><input class="easy-combobox"data-options=""id="combobox_type668" name="serious"></td>
+            </tr>
+        </table>
+    </form>
+
+</div>-->
+
+
+
+
+
+
+
+<div id="baseDialog" class="easyui-dialog" title="<span style='display:inline-block;margin-left:250px;margin-top:10px;font-size:14px;'>新增基础监测方案</span>" style="width:650px;height:300px;display:none;border:none;margin-top:25px;" data-options="resizable:true,modal:true,buttons:'#cleaningDialogBtn'"> 
+		
+	<form id="addBaseForm" method="post" style="width: 100%;height: 100%">
+		<div id="cleaningDialogBtn">
+			<a href="javascript:;" id="next_save" class="easyui-linkbutton bule_btn">下一步</a>
+			<a href="javascript:;" onclick="addBaseCancel()" class="easyui-linkbutton white_btn">取消</a>
+		</div>
+		<div class="easyui-tabs" id="dataQualityTab" data-options="border:false,fit:true">
+			<div data-options="title:'方案基本信息'">
+				<table style="border:none;margin:0 auto;">
+					<tr style="display: none">
+						<td>id：</td>
+						<td><input class="easyui-validatebox textbox" name="id" id="id" data-options="" /></td>
+					</tr>
+					<tr style="height:45px;">
+						<td><span style="margin-right:12px;display:inline-block;">校验对象</span></td>
+						<td><input class="easyui-combobox" data-options="textField:'tcname', valueField:'tid',url:'{% url 'getCheckObjectList' %}'" name='Checkobject' id="" style="width:200px;"></td>
+						<td>方案名称</td>
+						<td><input class="easyui-validatebox textbox" data-options="" name='SchemeName' id="" style="width:200px;"></td>
+					</tr>
+					
+					<tr style="height:45px;">
+						<td><span style="margin-right:px;display:inline-block;">增量字段</span></td>
+						<td><input class="easyui-combobox" data-options="textField:'fename', valueField:'fid',url:'{% url 'getNameList' %}'" name='IncrementField' id="" style="width:200px;"></td>
+						<td><span style="margin-right:px;display:inline-block;">单位字段</span></td>
+						<td><input class="easyui-combobox" data-options="textField:'fename', valueField:'fid',url:'{% url 'getNameList' %}'" name='UnitField' id="" style="width:200px;"></td>		
+					</tr>
+					
+					<tr style="height:45px;">
+						<td><span style="margin-right:px;display:inline-block;">业务时间字段</span></td>
+						<td><input class="easyui-combobox" data-options="textField:'fename', valueField:'fid',url:'{% url 'getNameList' %}'" name='ServiceTimeField' id="" style="width:200px;"></td>
+						<td><span style="margin-right:px;display:inline-block;">录入人字段</span></td>
+						<td><input class="easyui-combobox" data-options="textField:'fename', valueField:'fid',url:'{% url 'getNameList' %}'" name='EntryFieldField' id="" style="width:200px;"></td>		
+					</tr>
+					<!--<tr>
+						<td>业务时间字段</td>
+						<td colspan="3"><input class="easyui-textbox" data-options="multiline:true" name="ServiceTimeField" style="width:500px;height:50px"/></td>
+					</tr>-->
+				</table>
+			</div>
+		</div>
+		
+	</form>
+	
+	<!--第二步-->
+	<div class="frequencySetting" style="display: none">
+		<div id="ruleDialogBtn">
+			<a href="javascript:addCommonRule();" id="" class="easyui-linkbutton bule_btn">添加常用规则</a>
+			<a href="javascript:addCheckRule();" id="" class="easyui-linkbutton white_btn">添加校验规则</a>
+		</div>
+        <table id="ManyResourceList"></table>
+		
+    </div>
+	
+	
+	<!--第三步-->
+	<div class="frequencySetting" style="display: none">
+        <table id="fieldCheckList">
+
+        </table>
+    </div>
+	
+	<!--最后一步-->
+    <div class="frequencySetting" style="display: none">
+        <table class="dialog_table" border="0" cellpadding="0" cellspacing="0" id="">
+			<tr>
+				<td>调度计划：</td>
+				<td>
+					<input type="radio" class="checkbox_position"  name="timeType" checked="checked" value="1"  />固定时间
+					<input type="radio" class="checkbox_position"  name="timeType" value="2" />一次性
+					<input type="radio" class="checkbox_position"  name="timeType"  value="3" />手动
+					<input type="radio" class="checkbox_position"  name="timeType" value="4"  />间隔
+				</td>
+			</tr>
+			<tr class="month_day1">
+				<td>执行周期：</td>
+				<td>
+					<input class="easyui-combobox" id="cycle1" name="cycle1" style="width:80px" data-options="onSelect:selectCycle,required:true,required:true,valueField:'value',textField:'text',data:[{value:1,text:'每月'},{value:2,text:'每周'},{value:3,text:'每天'}]" />
+					<input class="easyui-combobox" id="days1" name="days1" style="width:80px" data-options="required:true,valueField:'value',textField:'text', data:initComboBox(1, 31).concat([{'value':'lastDay','text':'最后一天'}]),"  /> <span class="words">日</span>
+					<input class="easyui-combobox" id="intervalDay1" name="intervalDay1" style="width:80px" data-options="required:true,valueField:'value',textField:'text', data:initComboBox(0, 8),"  /> <span class="words">天</span>
+					<input class="easyui-datetimebox" id="once_time1" name="once_time1" data-options="showSeconds:false,required:true" />
+				</td>
+			</tr>
+			<tr class="week_day1" style="display:none;">
+				<td></td>
+				<td>
+					<input type="checkbox" class="checkbox_position"  name="week_day" value="0" />周日
+					<input type="checkbox" class="checkbox_position"  name="week_day" value="1" />周一
+					<input type="checkbox" class="checkbox_position"  name="week_day" value="2" />周二
+					<input type="checkbox" class="checkbox_position"  name="week_day" value="3" />周三
+					<input type="checkbox" class="checkbox_position"  name="week_day" value="4" />周四
+					<input type="checkbox" class="checkbox_position"  name="week_day" value="5" />周五
+					<input type="checkbox" class="checkbox_position"  name="week_day" value="6" />周六
+				</td>
+			</tr>
+			<tr class="play_time1">
+				<td>执行时间：</td>
+				<td>
+					<input class="easyui-combobox" id="hours1" name="hours1" style="width:80px;" data-options="required:true,valueField:'value',textField:'text', data:initComboBox(0, 23)," /> 时
+					<input class="easyui-combobox" id="minutes1" name="minutes1" style="width:80px;"  data-options="required:true,valueField:'value',textField:'text', data:initComboBox(0, 59),"  /> 分
+				</td>
+			</tr>
+		</table>
+    </div>
+</div>
+
+<div class="easyui-dialog" id="commonRuleDialog" data-options="title:'添加常用规则',width:750,height:400,buttons:'#commonDialogBtn'" style="display:none">
+		
+	<form id="addCommonForm" enctype="multipart/form-data" method="post" style="width: 100%;height: 100%">
+		<div id="commonDialogBtn">
+			<a href="javascript:bas();" class="easyui-linkbutton bule_btn">确定</a>
+			 <a href="javascript:;" onclick="$('#commonRuleDialog').dialog('close')" class="easyui-linkbutton white_btn">取消</a>
+		</div>
+		<!--添加常用规则-->
+		<table id="commonRuleTable"></table>
+	</form>
+</div>
+
+<div class="easyui-dialog" id="checkRuleDialog" data-options="title:'添加校验规则',width:600,height:400,buttons:'#checkDialogBtn'" style="display:none">
+	<form id="addCheckForm" enctype="multipart/form-data" method="post" style="width: 100%;height: 100%">
+		<div id="checkDialogBtn">
+			<a href="javascript:bas();" class="easyui-linkbutton bule_btn">确定</a>
+			 <a href="javascript:;" onclick="$('#checkRuleDialog').dialog('close')" class="easyui-linkbutton white_btn">取消</a>
+		</div>
+		<!--添加校验规则-->
+		<table style="border:none;margin:0 auto;">
+			<tr>
+				<td>规则类型</td>
+				<td><input name="Method_type" id="methodTypes" data-options="required:true,"/></td>
+				<td>校验方法</td>
+				<td><input id="checkWays" class="easyui-combobox" name="CheckMethod" data-options=""/></td>
+			</tr>
+			<tr>
+				<td>校验字段</td>
+				<td><input class="easyui-validatebox textbox" name="CheckField" data-options=""/></td>
+				<td>严重程度</td>
+				<td><input id="severity" class="easyui-combobox" name="severity" data-options=""/></td>
+			</tr>
+		</table>
+		<table id="checkRuleTable"></table>
+	</form>
+</div>

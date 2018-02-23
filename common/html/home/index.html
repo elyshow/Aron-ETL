@@ -1,0 +1,426 @@
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>首页</title>
+		<link rel="stylesheet" type="text/css" href="/static/themes/default/easyui.css">
+		<link rel="stylesheet" type="text/css" href="/static/themes/default/icon.css">
+		<link rel="stylesheet" type="text/css" href="/static/css/shouye.css">
+		<!--<script type="text/javascript" data-main="themes/js/app/main" async="false" src="themes/js/requires.js"></script> -->
+		<script type="text/javascript" src="/static/js/libs/jquery-3.0.0.min.js"></script>
+		<script type="text/javascript" src="/static/js/libs/jquery.easyui.min.js"></script>
+		<script type="text/javascript" src="/static/js/libs/easyui-lang-zh_CN.js"></script>
+		<script type="text/javascript" src="/static/js/app/main.js"></script>
+		<script type="text/javascript" src="/static/js/libs/jquery.easyui.extends.js"></script>
+		<script type="text/javascript" src="/static/js/app/date.js"></script>
+		<!--script type="text/javascript" src="themes/js/app/index/index.js"></script -->
+		<script>
+			/*function updateImg() {
+				if (document.readyState == "complete") {
+					try{
+
+						clearInterval(start);//执行成功，清除监听
+					}
+					catch(err){
+						return true;
+					}
+				}
+			}
+			window.onload = function(){
+				updateImg();
+				var box = document.getElementById('box');
+				document.body.appendChild(box);
+				box.style.display = "block";
+			}
+			$(function () {
+				var divStructCenter = $('.tabs-panels')
+				var dotab = $('.tabs-header');
+				var doLayout = $('.index_tab');//让layout正常显示
+				showLayout(dotab, 'west', 245);///刷新工作区的大小，以避免layout在延迟加载后内部元素宽度为0
+				resizeWorkArea(doLayout, divStructCenter);
+			})
+			function showLayout(dotab, region, width) {
+				dotab.css('display', 'block');//防止界面加载时变样    //不加此句，会导致west面板不在layout内
+
+			}///刷新工作区的大小，以避免layout在延迟加载后内部元素宽度为0
+			function resizeWorkArea(parentLayout, workPanel) {
+				var pp = parentLayout.layout('panel', 'center');
+				workPanel.panel('resize', {
+					width: pp.clientWidth,
+					height: pp.clientHeight
+				});
+			}*/
+		</script>		
+    <style>
+		.panel-header{
+			padding:10px;
+			background:#f8f8f8;
+		}
+
+		.nav_menu {
+			float: left;
+			margin-left: 10%;
+			list-style: none;
+			display: block;
+		}
+		.nav_menu li {
+			float: left;
+			padding-left: 30px;
+			width:250px;
+			height:220px;
+			line-height:20px;
+			text-align: center;
+
+		}
+		.nav_menu a {
+			text-decoration: none;
+			color: black;
+			font-size: 14px;
+		}
+		.nav_menu bus_o {
+			float: left;
+			margin-left: 8%;
+			list-style: none;
+			width: 850px;
+			height: 600px;
+			margin-top: 5%;
+			display: block;
+		}
+		.nav_menu bus_o li {
+			float: left;
+			padding-left: 45px;
+			width: 300px;
+			height: 250px;
+			line-height: 30px;
+			text-align: center;
+		}
+		.nav_menu bus_o a {
+			text-decoration: none;
+			color: black;
+			font-size: 14px;
+		}
+		.nav_menu bus_one {
+			float: left;
+			margin-left: 13%;
+			list-style: none;
+			width: 850px;
+			height: 528px;
+			margin-top: 10%;
+			display: block;
+		}
+		.nav_menu bus_one li {
+			float: left;
+			padding-left: 45px;
+			width: 260px;
+			height: 235px;
+			line-height: 28px;
+			text-align: center;
+			margin-top:28px;
+		}
+		.nav_menu bus_one a {
+			text-decoration: none;
+			color: black;
+			font-size: 14px;
+		}
+		.nav_menu bus_two{
+			float: left;
+			margin-left: 13%;
+			list-style: none;
+			width: 850px;
+			height: 528px;
+			margin-top: 10%;
+			display: block;
+		}
+		.nav_menu bus_two li {
+			float: left;
+			padding-left: 45px;
+			width: 260px;
+			height: 235px;
+			line-height: 28px;
+			text-align: center;
+
+		}
+		.nav_menu bus_two a {
+			text-decoration: none;
+			color: black;
+			font-size: 14px;
+		}
+
+	</style>
+	</head>
+
+	<body>
+	<div id="contents" class="easyui-layout" style="width:100%;height:100%" data-options="border:false">
+		   <div data-options="region:'north',bodyCls:'headerBg',border:false" style="height:85px;display:none" >
+				<!--<a id="tabs-inner" href="{% url 'homeIndex' %}" class="logo"><img src="/static/images/logo _01.png" /></a>-->
+				<h2 class="logo" style="color:#ffffff;">信息资源服务平台</h2>
+			<div class="welcome">欢迎您! <span class="adminUser">{{ request.user }}</span>【<span class="adminArea">省厅</span>】</div>
+
+		  </div>
+			<div data-options="region:'west',border:false,bodyCls:'menuBg'" style="width:15%;display:none">
+				<ul class='nav' id="nav">
+					<li class="first"><div class='menuBtnBg'></div><a class='dataSource active dataSourceActive'></a></li>
+					<li class="second"><a class="dataLines"></a></li>
+					<li class="third"><a class="serviceLines"></a></li>
+					<li class="fourth "><a class="systemService"></a></li>
+					<li class="fifth"><a  href="{% url 'logouturl' %}" class="loginOut"></a></li>
+					<li class="last"></li>
+				</ul>
+			</div>
+			<div data-options="region:'center',bodyCls:'body_position_bg'" id="divStructCenter">
+
+				<div class="easyui-panel" title="<img src='/static/images/littlehouse.png' style='vertical-align:middle;margin:0 8px 0 35px;'/><span>您当前的位置：<a href='/' style='text-decoration:none;'>首页</a> > </span><span class='i_btn_cla_shouye'>数据资源管理</span><div class='datime' style='width:210px;height:16px;display:inline-block;float:right;margin-right:60px;'></div>" style="height:100%;height:100%;background:#fff;display: none">
+								<div class="easyui-layout" data-options = "fit:true">
+									<div class="bgQulity" data-options="region:'west',collapsible:false,width:'4%',border:false,bodyCls:'body_bg'" style="background:#f1f1f1;">
+
+									</div>
+
+									<div class="bgQulity" data-options="region:'north',collapsible:false,width:'100%',height:'20px',border:false,bodyCls:'body_bg'" style="background:#f1f1f1;">
+
+									</div>
+									<div id="contentFluid" data-options="region:'center',collapsible:false,border:false,bodyCls:'body_bg',width:'96%'">
+										<div class="easyui-panel" data-options="fit:true,border:false">
+											<div class="easyui-layout" data-options="fit:true,border:false">
+												<div class="titleNorth" data-options="region:'north',border:false" style="height:33px;border-top:3px solid #00a5a5;border-bottom:2px solid #f8f8f8;">
+													<div class="nav_title" style="line-height:26px;margin-left:10px;">
+														<span>数据资源管理</span>
+													</div>
+												</div>
+												<div data-options="region:'center',border:false" >
+													<ul class="nav_menu">
+														<li class="collect">
+															<div>
+																<a href="{% url 'collectNode' %}"><img src="/static/images/a.png"/></a><br>
+																<a data-hover="数据采集" href="/dataCollect/collectNode/">数据采集</a><br>
+																<span>以公安内外部为数据源收集数据，由若干个采集任务构成</span>
+															</div>
+														</li>
+														<li class="survey">
+															<div>
+																<a href="{% url 'dataprofile' %}"><img src="/static/images/b.png"/></a><br>
+																<a data-hover="资源目录" href="/huafeng/dataprofile/">资源目录</a><br>
+																<span>资源在注册发布之后的具体展示</span>
+															</div>
+														</li>
+														<li class="integration">
+															<div>
+																<a href="{% url 'dataCleaningRules:index' %}"><img src="/static/images/c.png"/></a><br>
+																<a data-hover="数据整合" href="/dataCleaningRules/">数据整合</a><br>
+																<span>即ETL流程，完成数据从采集库到标准库的过程。包括数据清洗和数据清洗规则</span>
+															</div>
+														</li>
+														<li class="monitor">
+															<div>
+																<a href="{% url 'dataMonitoringStatistics' %}"><img src="/static/images/d.png"/></a><br>
+																<a data-hover="数据监控统计" href="/huafeng/shujujiankong/">数据监控统计</a><br>
+																<span>对采集任务和清洗任务进行监控</span>
+															</div>
+														</li>
+														<li class="resource">
+															<div>
+																<a href="{% url 'catalogManagementIndex' %}"><img src="/static/images/e.png"/></a><br>
+																<a data-hover="数据资源管理" href="/catalogueManagement/index/">数据资源管理</a><br>
+																<span>资源的编目管理及注册发布到标准库</span>
+															</div>
+														</li>
+														<li class="quality">
+															<div>
+																<a href="{% url 'dataQualityManagementIndex' %}"><img src="/static/images/f.png"/></a><br>
+																<a data-hover="数据质量检测" href="/dataQualityManagement/index/">数据质量检测</a><br>
+																<span>对采集库、标准库等中的数据进行质量检测并生成质量报告</span>
+															</div>
+														</li>
+														<li class="standard">
+															<div>
+																<a href="{% url 'codeStandard:standardIndex' %}"><img src="/static/images/j.png"/></a><br>
+																<a data-hover="数据标准管理" href="/standardIndex/">数据标准管理</a><br>
+																<span>制定机构信息、业务代码、数据库类型等标准</span>
+															</div>
+														</li>
+													</ul>
+													<ul class="nav_menu bus_o" style="display: none">
+														<li class="data_config">
+															<div>
+																<a href="{% url 'datawayIndex' %}"><img src="/static/images/aa.png"/></a><br>
+																<a data-hover="新增接口" href="/dataway/index/">新增接口</a><br>
+																<span>添加一个新的接口，设置查询条件，查询结束后将返回的数据内容以及接口放到接口目录下</span>
+															</div>
+														</li>
+														<li class="data_interface">
+															<div>
+																<a href="/huafeng/interface/"><img src="/static/images/bb.png"/></a><br>
+																<a data-hover="接口展示" href="/huafeng/interface/">接口展示</a><br>
+																<span>展示接口的详细内容，例如名称、接口ID、创建时间、接口请求参数、来源库和来源表的接口返回字段</span>
+															</div>
+														</li>
+														<li class="data_list">
+															<div>
+																<a href="/cataloguedataway/index"><img src="/static/images/cc.png"/></a><br>
+																<a data-hover="接口编目" href="/cataloguedataway/index">接口编目</a><br>
+																<span>在接口目录下添加新目录或者修改、删除目录</span>
+															</div>
+														</li>
+														<li class="data_monitor">
+															<div>
+																<a href="/huafeng/journallog/"><img src="/static/images/dd.png"/></a><br>
+																<a data-hover="接口日志" href="/huafeng/journallog/">接口日志</a><br>
+																<span>记录接口的使用情况，并展示请求的数据、请求时间、发起请求的用户、返回的数据、返回的时间</span>
+															</div>
+														</li>
+														<li class="data_bus">
+															<div>
+																<a href="#"><img src="/static/images/ee.png"/></a><br>
+																<a data-hover="使用手册" href="#">使用手册</a><br>
+																<span>使用接口的说明书，例如接口调用方法、接口的请求方式、接口的请求参数、调用接口后的返回值形式</span>
+															</div>
+														</li>
+													</ul>
+													<ul class="nav_menu bus_one" style="display: none">
+														<li class="service_config">
+															<div>
+																<a href=""><img src="/static/images/fuwu1.png"/></a><br>
+																<a data-hover="服务配置" href="">服务配置</a><br>
+																<span>服务配置</span>
+															</div>
+														</li>
+														<li class="service_interface">
+															<div>
+																<a href=""><img src="/static/images/2.png"/></a><br>
+																<a data-hover="更新数据接口" href="">数据接口</a><br>
+																<span>更新数据接口</span>
+															</div>
+														</li>
+														<li class="service_list">
+															<div>
+																<a href=""><img src="/static/images/3.png"/></a><br>
+																<a data-hover="目录" href="">服务目录</a><br>
+																<span>目录</span>
+															</div>
+														</li>
+														<li class="service_monitor">
+															<div>
+																<a href=""><img src="/static/images/4.png"/></a><br>
+																<a data-hover="监控服务" href="">服务监控</a><br>
+																<span>监控服务</span>
+															</div>
+														</li>
+														<li class="service_bus">
+															<div>
+																<a href=""><img src="/static/images/5.png"/></a><br>
+																<a data-hover="服务总线规划" href="">服务总线</a><br>
+																<span>服务总线规划</span>
+															</div>
+														</li>
+													</ul>
+													<ul class="nav_menu bus_two" style="display: none">
+														<li class="auth_service">
+															<div>
+																<a href="/user/list"><img src="/static/images/aaa.png"/></a><br>
+																<a data-hover="用户权限" href="/user/list">用户鉴权服务</a><br>
+																<span>用户权限</span>
+															</div>
+														</li>
+														<li class="notice">
+															<div>
+																<a href=""><img src="/static/images/bbb.png"/></a><br>
+																<a data-hover="公告管理" href="">公告发布</a><br>
+																<span>公告管理</span>
+															</div>
+														</li>
+														<li class="system_config">
+															<div>
+																<a href=""><img src="/static/images/ccc.png"/></a><br>
+																<a data-hover="系统配置" href="">系统配置</a><br>
+																<span>系统配置</span>
+															</div>
+														</li>
+														<li class="clound_searrch">
+															<div>
+																<a href=""><img src="/static/images/ddd.png"/></a><br>
+																<a data-hover="云搜索系统" href="">云搜索</a><br>
+																<span>云搜索系统</span>
+															</div>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+
+			</div>
+	</div>
+	<script>
+		$("#nav li").click(function(){
+			$(this).find('a').css({"border":"1px solid #bbb"});
+			$(this).siblings().find('a').css({"border":"none"});
+			$(this).find(".loginOut").css({"border":"none"});
+		})
+		$("#nav li:eq(0)").click(function(){
+			$(".nav_title span").html("数据资源管理");
+			$(".panel-title .i_btn_cla_shouye").html("数据资源管理");
+		});
+		$("#nav li:eq(1)").click(function(){
+			$(".nav_title span").html("数据总线管理");
+			$(".panel-title .i_btn_cla_shouye").html("数据总线管理");
+		});
+		$("#nav li:eq(2)").click(function(){
+			$(".nav_title span").html("服务总线管理");
+			$(".panel-title .i_btn_cla_shouye").html("服务总线管理");
+		});
+		$("#nav li:eq(3)").click(function(){
+			$(".nav_title span").html("系统公共服务");
+			$(".panel-title .i_btn_cla_shouye").html("系统公共服务");
+		});
+		$("#nav li:eq(4)").click(function(){
+			$(".nav_title span").html("退出系统");
+			$(".panel-title .i_btn_cla_shouye").html("退出系统");
+		});
+		$(".first").click(function () {
+			$(".dataSource").css({"background-image":"url(/static/images/data_source_active.png)","background-color":"#fff","box-shadow":"0px 10px 10px"});
+			$(".dataLines").css({"background-image":"url(/static/images/data_lines.png)","background-color":"transparent","box-shadow":"none"});
+			$(".serviceLines").css({"background-image":"url(/static/images/service_lines.png)","background-color":"transparent","box-shadow":"none"});
+			$(".systemService").css({"background-image":"url(/static/images/system_service.png)","background-color":"transparent","box-shadow":"none"});
+			$(".nav_menu ").show();
+			$(".bus_o").hide();
+			$(".bus_one").hide();
+			$(".bus_two").hide()
+		})
+		$(".second").click(function () {
+			$(".dataSource").css({"background-image":"url(/static/images/data_source.png)","background-color":"transparent","box-shadow":"none"});
+			$(".dataLines").css({"background-image":"url(/static/images/data_lines_active.png)","background-color":"#fff","box-shadow":"0px 10px 10px"});
+			$(".serviceLines").css({"background-image":"url(/static/images/service_lines.png)","background-color":"transparent","box-shadow":"none"});
+			$(".systemService").css({"background-image":"url(/static/images/system_service.png)","background-color":"transparent","box-shadow":"none"});
+			$(".nav_menu ").hide();
+			$(".bus_o").show();
+			$(".bus_one").hide();
+			$(".bus_two").hide()
+		})
+		$(".third").click(function () {
+			$(".dataSource").css({"background-image":"url(/static/images/data_source.png)","background-color":"transparent","box-shadow":"none"});
+			$(".dataLines").css({"background-image":"url(/static/images/data_lines.png)","background-color":"transparent","box-shadow":"none"});
+			$(".serviceLines").css({"background-image":"url(/static/images/service_lines_active.png)","background-color":"#fff","box-shadow":"0px 10px 10px"});
+			$(".systemService").css({"background-image":"url(/static/images/system_service.png)","background-color":"transparent","box-shadow":"none"});
+			$(".nav_menu ").hide();
+			$(".bus_o").hide();
+			$(".bus_one").show();
+			$(".bus_two").hide()
+		})
+		$(".fourth").click(function () {
+			$(".dataSource").css({"background-image":"url(/static/images/data_source.png)","background-color":"transparent","box-shadow":"none"});
+			$(".dataLines").css({"background-image":"url(/static/images/data_lines.png)","background-color":"transparent","box-shadow":"none"});
+			$(".serviceLines").css({"background-image":"url(/static/images/service_lines.png)","background-color":"transparent","box-shadow":"none"});
+			$(".systemService").css({"background-image":"url(/static/images/system_service_active.png)","background-color":"#fff","box-shadow":"0px 10px 10px"});
+			$(".nav_menu ").hide();
+			$(".bus_o").hide();
+			$(".bus_one").hide();
+			$(".bus_two").show()
+
+		})
+
+	</script>
+	</body>
+	</html>

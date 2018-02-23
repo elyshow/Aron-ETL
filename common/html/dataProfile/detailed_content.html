@@ -1,0 +1,74 @@
+<div class="easyui-panel" data-options="fit:true,border:false">
+    <div class="easyui-layout" data-options="fit:true,border:false">
+         <div data-options="region:'north',border:false" style="height:50px;">
+            <div class="nav_title">
+                <a href="/huafeng/dataprofile/"><span>资源目录</span></a> >>
+                <span>资源或目录</span>
+            </div>
+         </div>
+         <div data-options="region:'center',border:false" >
+<select id="select" style="display:none">
+	{% for t in content %}
+	<option id="forloop.counter" value="forloop.counter" >{{t}}</option>
+	{% endfor %}
+</select>
+	<div style="float:right;margin-right:20px;">
+        <a href="javascript:" onclick="returnBiaozhunku()" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">返回</a>
+	</div>	
+	<table class="rwk" id="mytable">
+		 <thead>
+				<tr class="tr1">
+				{% for ct in ctitle %}
+				<th class="th1">{{ct}}</th>
+				{% endfor %}
+				</tr>
+		 </thead>			
+		 <tbody>
+				{% for i in rowRange %}
+					<tr class="tr2">
+						{% for j in tRange %}
+							<td class="td1"></td>
+						{% endfor%} 
+					</tr>
+				{% endfor%} 
+		</tbody>
+	</table>
+			<input type="hidden" id="tlen" value="{{tlen}}">
+			<input type="hidden" id="clen" value="{{clen}}">
+         </div>
+    </div>
+</div>
+<style>
+.rwk{
+	border :solid 1px #ccc;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size:14px;
+	border-collapse:collapse;
+	/* width:97%; */
+	table-layout :fixed ;
+	cellpadding:0;
+	cellspacing:1;
+	text-align:center;
+	top: 30px;
+	position:absolute;
+}
+.tr1{
+	font-weight :bold ;
+	color:#000;
+	background-color :#f2f2f2;
+	border :solid 1px red;
+	height:25px;
+}
+.tr2 {border:1px #c0c0c0 solid; background-color:white;height:20px;}
+.td2{width:0%;border:1px #c0c0c0 solid;}
+.th1{
+	width:50%;
+	border:1px #c0c0c0 solid;
+}
+</style>
+<script>
+function returnBiaozhunku() {
+		window.open('/huafeng/table/','_self','refresh')
+		
+} 
+</script>

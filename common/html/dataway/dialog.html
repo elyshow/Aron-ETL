@@ -1,0 +1,187 @@
+<div class="easyui-dialog" id="metDialog" data-options="title:'新增接口',width:800,height:600,buttons:'#addDialogBtn', onClose:function(){
+        $('#table1').datagrid('reload');
+}" style="display:none">
+    <div class="easyui-tabs" id="dataTbas" style="height:563px;">
+        <div data-options="title:'数据来源' "><br>
+            <form id="dataFrom" method="post">
+                   <div style="position:absolute;margin-top: 10px;left:25px;">
+                   接口名称：<input class="easyui-validatebox textbox" data-options="required:true," id="apiName" name="nameapi"/>
+                   <input   type="hidden" id="idapi22" name="idapi22"/>
+                   </div>
+                        <div style="position:absolute;margin-top: 60px;left:30px;width:220px;height:300px;" >
+                        <table  id="treeList" style="position:absolute; ">
+                        </table>
+                        </div>
+                        <div style="position:absolute;width:500px;height:300px; left:275px;margin-top:60px;">
+                        <table class="easyui-datagrid" data-options="toolbar:'#toolbar'," id="mylist1" width="580px" >
+                        </table>
+                        </div>
+            </form>
+        </div>
+
+
+        <div data-options="title:'接口配置'"><br />
+
+            <form id="cleaningRulesForm" method="post">
+                <input type="hidden" name="idapi" />
+                <input type="hidden" id="dataid22" name="dataid22" />
+                <div class="laber_input2" style="padding-top:20px;padding-left:30px;">
+                <b>请选择返回值字段并移动到右侧</b>
+                </div>
+                <div class="laber_input3" style=" position:absolute;top:100px;left:530px;">
+                <b>请勾选请求参数字段</b>
+                </div>
+                <div class="drag1"  style="padding-top:30px;padding-left:10px; height:380px;width: 330px;">
+                    <table class="easyui-datagrid"  id="drag1" width="30px" >
+                    </table>
+                </div>
+
+                <div class="drag" style="height:380px;width: 330px;margin-top: -30px; position:absolute;top:181px;left:430px;">
+                    <table class="easyui-datagrid drag2"  id="drag2" width="30px" >
+                    </table>
+                </div>
+            </form>
+
+            <div style="position:absolute;top:200px;left:385px;">
+                <a href="javascript:;" id="addCleaningRulesBtn" onclick="leftToRight(false, false)" class="easyui-linkbutton" data-options="iconCls:'icon-redo'" ></a>
+            </div>
+            <div style="position:absolute;top:240px;left:385px;">
+                <a href="javascript:;" id="addCleaningRulesBtn" onclick="leftToRight(true, false)" class="easyui-linkbutton" data-options="iconCls:'icon-undo'"></a>
+            </div>
+            <div style="position:absolute;top:280px;left:385px;">
+                <a href="javascript:;" id="addCleaningRulesBtn" onclick="leftToRight(false, true)" class="easyui-linkbutton" data-options="iconCls:'icon-drag'"></a>
+            </div>
+            <div style="position:absolute;top:320px;left:385px;">
+                <a href="javascript:;" id="addCleaningRulesBtn" onclick="leftToRight(true, true)" class="easyui-linkbutton" data-options="iconCls:'icon-drag2'"></a>
+            </div>
+            <div style="position:absolute;top:540px;left:700px;">
+            <a id="nextdataway2"  href="javascript:nextDataway2();" class="easyui-linkbutton bule_btn" data-options=" ">下一步</a>
+            </div>
+        </div>
+
+
+
+        <div data-options="title:'编目'"><br />
+
+            <form id="cleaningRulesForm2" method="post">
+                <div class="laber_input4" style="padding-top:20px;padding-left:120px;">
+                <b>请选择目录进行编目</b>
+                </div>
+                <div class="laber_input5" style=" position:absolute;top:30px;left:530px;">
+                <b>请确认编目</b>
+                </div>
+
+               <div   style="padding-top:30px;padding-left:10px;width:360px;height:300px;">
+                 <table  id="drag5"   style="padding-top:10px;">
+                </table>
+               </div>
+
+
+               <div  style="margin-top: -30px; position:absolute;top:175px;left:420px;width:360px;height:300px;">
+                    <table  id="drag6" style="padding-top:12px;" >
+                    </table>
+               </div>
+
+
+            </form>
+
+            <div style="position:absolute;top:30px;left:385px;">
+                <a href="javascript:;" id="addCleaningRulesBtn2" onclick="leftToRight2(false, false)" class="easyui-linkbutton" data-options="iconCls:'icon-redo'" ></a>
+            </div>
+            <div style="position:absolute;top:230px;left:385px;">
+                <a href="javascript:;" id="addCleaningRulesBtn2" onclick="leftToRight2(true, false)" class="easyui-linkbutton" data-options="iconCls:'icon-undo'"></a>
+            </div>
+            <div style="position:absolute;top:280px;left:385px;">
+                <a href="javascript:;" id="addCleaningRulesBtn2" onclick="leftToRight2(false, true)" class="easyui-linkbutton" data-options="iconCls:'icon-drag'"></a>
+            </div>
+            <div style="position:absolute;top:320px;left:385px;">
+                <a href="javascript:;" id="addCleaningRulesBtn2" onclick="leftToRight2(true, true)" class="easyui-linkbutton" data-options="iconCls:'icon-drag2'"></a>
+            </div>
+            <div style="position:absolute;top:530px;left:700px;">
+            <a id="nextdataway3"  href="javascript:nextDataway3();" class="easyui-linkbutton bule_btn" data-options=" ">下一步</a>
+            </div>
+        </div>
+
+
+
+
+        <div data-options="title:'确认接口'"><br>
+            <form id="datawayForm" method="post">
+            <div style="position:absolute;margin-top: 10px;left:30px;">
+            <input   id="idapi11" type="hidden" name="idapi11"/>
+            <input   id="catalogueTypeid" type="hidden" name="catalogueTypeid"/>
+            接口名称：<input class="easyui-validatebox textbox"  id="APIName" name="nameapi"/>
+            </div>
+            <div style="position:absolute;margin-top: 10px;left:320px;">
+            来源库  ：<input class="easyui-validatebox textbox"  id="warehouseName" name="namewarehouse"/>
+            </div>
+            <div style="position:absolute;margin-top: 50px;left:30px;">
+            来源表  ：<input class="easyui-validatebox textbox"  id="tableName" name="nametable"/>
+            </div>
+
+            <div style="position:absolute; left:20px;margin-top:105px;">
+            接口返回值字段
+            </div>
+            <div style="position:absolute;width:330px;height:330px; left:20px;margin-top:120px;">
+            <table class="easyui-datagrid drag2" data-options="toolbar:'#toolbar'," id="drag4" width="330px" >
+            </table>
+            </div>
+            <div style="position:absolute; left:420px;margin-top:105px;">
+            接口请求参数
+            </div>
+            <div style="position:absolute;width:330px;height:330px; left:420px;margin-top:120px;">
+            <table class="easyui-datagrid" data-options="toolbar:'#toolbar'," id="mylist_condition" width="330px" >
+            </table>
+            </div>
+            </form>
+            <div style="position:absolute;top:530px;left:580px;">
+            <a id="datawayAdd"  href="javascript:adddataway();" class="easyui-linkbutton bule_btn" data-options=" ">确认新增</a>
+            </div>
+            <div style="position:absolute;top:530px;left:680px;">
+            <a id="datawayExit"  href="javascript:remove();" class="easyui-linkbutton bule_btn" data-options=" ">取消新增</a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<div class="easyui-dialog" id="cheDialog" data-options="title:'接口详情页面',width:800,height:600,buttons:'#dialogBtn11111'" style="display:none">
+    <div id="dialogBtn11111">
+        <a href="javascript:che();" class="easyui-linkbutton white_btn">取消</a>
+    </div>
+        <div class="inputdata" style="padding-top:15px;padding-left:30px;">
+        <p>接口名称：<input  data-options="" class="nameapi" id="nameapidata" onfocus=this.blur() style="border:none" ></p>
+        <p>接口ID：<input class="idapi"  id="idapidata" onfocus=this.blur() style="border:none" ></p>
+        <p>创建时间：<input class="createtime" id="createtimedata" onfocus=this.blur() style="border:none" ></p>
+        <p>来源库：<input class="warehouseapi" id="warehouseapidata" onfocus=this.blur() style="border:none" ></p>
+        <p>来源表：<input class="tableapi" id="tableapidata" onfocus=this.blur() style="border:none" ></p>
+        </div>
+
+        <div style="position:absolute; left:20px;margin-top:30px;">
+        接口返回值字段
+        </div>
+        <div style="position:absolute;width:330px;height:330px; left:20px;margin-top:30px;">
+        <table class="easyui-datagrid" data-options="toolbar:'#toolbar'," id="datawayfield" width="330px" >
+        </table>
+        </div>
+        <div style="position:absolute; left:420px;margin-top:30px;">
+        接口请求参数
+        </div>
+        <div style="position:absolute;width:330px;height:330px; left:420px;margin-top:30px;">
+        <table class="easyui-datagrid" data-options="toolbar:'#toolbar'," id="datawaycondition" width="330px" >
+        </table>
+        </div>
+
+</div>
+
+
+<div class="easyui-dialog" id="changeMet" data-options="title:'修改页面',width:800,height:600,buttons:'#dialogBtn24546'"
+     style="display:none">
+
+
+
+
+</div>

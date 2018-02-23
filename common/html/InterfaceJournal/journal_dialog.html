@@ -1,0 +1,45 @@
+
+<div class="easyui-dialog" id="journal_dialog" data-options="title:'接口数据详情',width:400,height:400,buttons:'#recdialogBtn'" style="display:none">
+    <div id="recdialogBtn">
+ <a href="javascript:;" onclick="$('#journal_dialog').dialog('close')" class="easyui-linkbutton bule_btn">确定</a>
+        
+    </div>
+
+    <form id="recognizeForm" method="post">
+        <input type="hidden" name="save_type" />
+        <table border="0" cellpadding="0" cellspacing="0" class="dialog_table">
+
+            <tr style="display:none">
+                <td>用户名：</td>
+                <td><input class="easyui-validatebox textbox" data-options="required:true,validType:'name'" id="username" name="username" readonly="true"/></td>
+            </tr>
+            <tr>
+                <td>接口编号：</td>
+                <td><input class="easyui-validatebox textbox" data-options="required:true," id="apiID" name="apiID" readonly="true"/></td>
+            </tr>
+            <tr>
+                <td>请求访问接口数据：</td>
+                <td>
+                    <input class="easyui-textbox" id="data" name="data" readonly="true" data-options="multiline:'4',height:72" />
+                </td>
+            </tr>
+            
+            <tr>
+                <td>请求时间：</td>
+                <td><input class="easyui-validatebox textbox" data-options="" id="requesttime" name="requesttime" readonly="true"/></td>
+            </tr>
+            <tr>
+                <td>返回接口数据：</td>
+                <td>
+                    <input class="easyui-textbox" id="returnvalue" name="returnvalue" readonly="true" data-options="multiline:'4',height:72" />
+                </td>
+            </tr>
+			 <tr>
+                <td>返回时间：</td>
+                <td><input class="easyui-validatebox textbox" id="returntime" data-options=" " name="returntime" readonly="true"
+                /></td>
+            </tr>
+			
+        </table>
+    </form>
+</div>

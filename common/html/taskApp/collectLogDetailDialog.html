@@ -1,0 +1,297 @@
+<div class="easyui-dialog" id="collectdetailDialog" data-options="title:'任务详情',width:800,height:400" style="display:none">
+		<!-- 数据库接口采集详情 -->
+
+       <form id="standardDataForm"  method="post">
+          <table border="0" cellpadding="10" style="margin: 10px auto; border-spacing: 0;">
+              <tr>
+                  <td style="text-align: right">文件类型:</td>
+                  <td><input class="easyui-validatebox type" name="insideIdentifier" id="insideIdenti" readonly="true" style="border:0px;" data-options=""/></td>
+                  <td style="text-align: right">任务名称:</td>
+                  <td><input class="easyui-validatebox textbox" name="taskName" data-options="" readonly="true" style="border:0px;" id="taskName"/></td>
+              </tr>
+              <tr>
+                  <td style="text-align: right">所属机构:</td>
+                  <td><input class="easyui-validatebox textbox" name="belong" data-options="" readonly="true" style="border:0px;" id="belong" /></td>
+                  <td style="text-align: right">所属类型:</td>
+                  <td><input class="easyui-validatebox textbox" name="belType" data-options="" readonly="true" style="border:0px;" id="belType" /></td>
+              </tr>
+              <tr>
+                  <td style="text-align: right">数据源:</td>
+                  <td><input class="easyui-validatebox textbox" name="dataSoure" data-options="" readonly="true" style="border:0px;" id="dataSoure" /></td>
+
+              </tr>
+              <tr>
+                  <td style="text-align: right">用户名:</td>
+                  <td><input class="easyui-validatebox textbox" name="userName" data-options="" readonly="true" style="border:0px;" id="userName" /></td>
+                  <td style="text-align: right">用户密码:</td>
+                  <td colspan="3"><input class="easyui-validatebox textbox" name="password" data-options="" readonly="true" style="border:0px;" id="password" /></td>
+              </tr>
+              <tr>
+                  <td style="text-align: right">连接IP:</td>
+                  <td><input class="easyui-validatebox textbox" name="connIp" data-options="" readonly="true" style="border:0px;" id="connIp" /></td>
+                  <td style="text-align: right">端口:</td>
+                  <td><input class="easyui-validatebox textbox" name="port" data-options="" readonly="true" style="border:0px;" id="port" /></td>
+              </tr>
+              <tr>
+                  <td style="text-align: right">所属节点:</td>
+                  <td><input class="easyui-validatebox textbox" name="belongdoman" data-options="" readonly="true" style="border:0px;" id="belongdoman" /></td>
+                  <td style="text-align: right">任务ID:</td>
+                  <td><input class="easyui-validatebox textbox" name="taskId" data-options="" readonly="true" style="border:0px;" id="taskId" />
+
+                  </td>
+              </tr>
+              <tr>
+                  <td style="text-align: right" >数据库名:</td>
+                  <td><input class="easyui-validatebox textbox" name="dbName" data-options="" readonly="true" style="border:0px;" id="dbName" />
+
+                  </td>
+                  <td style="text-align: right">数据库类型:</td>
+                  <td><input class="easyui-validatebox textbox" name="sqltype" data-options="" readonly="true" style="border:0px;" id="sqltype" /></td>
+              </tr>
+              <tr>
+                  <td style="text-align: right">包含表名:</td>
+                  <td><input class="easyui-validatebox textbox" name="table" data-options="" readonly="true" style="border:0px;" id="table" /></td>
+                  <td style="text-align: right">包含字段:</td>
+                  <td><input class="easyui-validatebox textbox" name="fields" data-options="" readonly="true" style="border:0px;" id="fields" />
+
+                  </td>
+              </tr>
+              <tr>
+                  <td style="text-align: right">执行频率:</td>
+                  <td><input class="easyui-validatebox textbox" name="runtime" data-options="" readonly="true" style="border:0px;" id="runtime" /></td>
+
+              </tr>
+
+               <tr>
+                   <td></td>
+                   <td></td>
+                   <td> <a href="javascript:sqlApiDialogClose();"class="easyui-linkbutton bule_btn">关闭</a></td>
+               </tr>
+
+              </table>
+           </form>
+
+
+
+</div>
+
+{##dialog  API接口#}
+<div class="easyui-dialog" id="apiDetailDialog" data-options="title:'任务详情',width:800,height:400" style="display:none">
+		<!-- 数据库接口采集详情 -->
+
+       <form id="standardDataForm"  method="post">
+          <table border="0" cellpadding="10" style="margin: 10px auto; border-spacing: 0;">
+              <tr>
+                  <td style="text-align: right">文件类型:</td>
+                  <td><input class="easyui-validatebox type" name="insideIdentifier" id="insideIdenti" readonly="true" style="border:0px;" data-options=""/></td>
+                  <td style="text-align: right">任务名称:</td>
+                  <td><input class="easyui-validatebox textbox" name="taskName" data-options="" readonly="true" style="border:0px;" id="apiTasName"/></td>
+              </tr>
+              <tr>
+                  <td style="text-align: right">所属机构:</td>
+                  <td><input class="easyui-validatebox textbox" name="belong" data-options="" readonly="true" style="border:0px;" id="apiBelong" /></td>
+                  <td style="text-align: right">所属类型:</td>
+                  <td><input class="easyui-validatebox textbox" name="belType" data-options="" readonly="true" style="border:0px;" id="apiBelType" /></td>
+              </tr>
+              <tr>
+                  <td style="text-align: right">URL地址:</td>
+                  <td><input class="easyui-validatebox textbox" name="dataSoure" data-options="" readonly="true" style="border:0px;" id="urlAd" /></td>
+
+              </tr>
+              <tr>
+                  <td style="text-align: right">调用方法:</td>
+                  <td><input class="easyui-validatebox textbox" name="userName" data-options="" readonly="true" style="border:0px;" id="useMethod" /></td>
+                  <td style="text-align: right">参数:</td>
+                  <td colspan="3"><input class="easyui-validatebox textbox" name="password" data-options="" readonly="true" style="border:0px;" id="param" /></td>
+              </tr>
+              <tr>
+                  <td style="text-align: right">读取字节数(byte):</td>
+                  <td><input class="easyui-validatebox textbox" name="connIp" data-options="" readonly="true" style="border:0px;" id="byteAmout" /></td>
+                  <td style="text-align: right">保存文件类型:</td>
+                  <td><input class="easyui-validatebox textbox" name="port" data-options="" readonly="true" style="border:0px;" id="saveType" /></td>
+              </tr>
+              <tr>
+                  <td style="text-align: right">保存路径:</td>
+                  <td><input class="easyui-validatebox textbox" name="belongdoman" data-options="" readonly="true" style="border:0px;" id="belongdoman" /></td>
+                  <td style="text-align: right">保存日期:</td>
+                  <td><input class="easyui-validatebox textbox" name="taskId" data-options="" readonly="true" style="border:0px;" id="taskId" />
+
+                  </td>
+              </tr>
+              <tr>
+                  <td style="text-align: right">所属节点:</td>
+                  <td><input class="easyui-validatebox textbox" name="belongdoman" data-options="" readonly="true" style="border:0px;" id="aTaskdom" /></td>
+                  <td style="text-align: right">任务ID:</td>
+                  <td><input class="easyui-validatebox textbox" name="taskId" data-options="" readonly="true" style="border:0px;" id="taskIdApi" />
+
+                  </td>
+              </tr>
+
+               <tr>
+                   <td></td>
+                   <td></td>
+                   <td> <a href="javascript:apiDialogClose();"class="easyui-linkbutton bule_btn">关闭</a></td>
+               </tr>
+
+              </table>
+
+
+           </form>
+
+</div>
+
+{##数据库文件详情#}
+<div class="easyui-dialog" id="sqlDetailDialog" data-options="title:'任务详情',width:800,height:400" style="display:none">
+
+       <form id="standardDataForm"  method="post">
+          <table border="0" cellpadding="10" style="margin: 10px auto; border-spacing: 0;">
+              <tr>
+                  <td style="text-align: right">文件类型:</td>
+                  <td><input class="easyui-validatebox type" name="insideIdentifier" id="insideIdenti" readonly="true" style="border:0px;" data-options=""/></td>
+                  <td style="text-align: right">任务名称:</td>
+                  <td><input class="easyui-validatebox textbox" name="taskName" data-options="" readonly="true" style="border:0px;" id="sqlTasName"/></td>
+              </tr>
+              <tr>
+                  <td style="text-align: right">所属机构:</td>
+                  <td><input class="easyui-validatebox textbox" name="belong" data-options="" readonly="true" style="border:0px;" id="sqlBelong" /></td>
+                  <td style="text-align: right">所属类型:</td>
+                  <td><input class="easyui-validatebox textbox" name="belType" data-options="" readonly="true" style="border:0px;" id="sqlBelType" /></td>
+              </tr>
+              <tr>
+                  <td style="text-align: right">文件名:</td>
+                  <td><input class="easyui-validatebox textbox" name="dataSoure" data-options="" readonly="true" style="border:0px;" id="urlAd" /></td>
+
+              </tr>
+              <tr>
+                  <td style="text-align: right">文件保存路径:</td>
+                  <td><input class="easyui-validatebox textbox" name="userName" data-options="" readonly="true" style="border:0px;" id="useMethod" /></td>
+                  <td style="text-align: right">保存文件类型:</td>
+                  <td colspan="3"><input class="easyui-validatebox textbox" name="password" data-options="" readonly="true" style="border:0px;" id="param" /></td>
+              </tr>
+              <tr>
+                  <td style="text-align: right">所属节点:</td>
+                  <td><input class="easyui-validatebox textbox" name="belongdoman" data-options="" readonly="true" style="border:0px;" id="sqlTaskdom" /></td>
+                  <td style="text-align: right">任务ID:</td>
+                  <td><input class="easyui-validatebox textbox" name="taskId" data-options="" readonly="true" style="border:0px;" id="sqltaskId" />
+
+                  </td>
+              </tr>
+
+               <tr>
+                   <td></td>
+                   <td></td>
+                   <td> <a href="javascript:sqlDialogClose();"class="easyui-linkbutton bule_btn">关闭</a></td>
+               </tr>
+
+              </table>
+
+
+           </form>
+
+</div>
+
+{##普通文件上传#}
+<div class="easyui-dialog" id="fileUploadDetailDialog" data-options="title:'任务详情',width:800,height:400" style="display:none">
+
+       <form id="standardDataForm"  method="post">
+          <table border="0" cellpadding="10" style="margin: 10px auto; border-spacing: 0;">
+              <tr>
+                  <td style="text-align: right">文件类型:</td>
+                  <td><input class="easyui-validatebox type" name="insideIdentifier" id="insideIdenti" readonly="true" style="border:0px;" data-options=""/></td>
+                  <td style="text-align: right">任务名称:</td>
+                  <td><input class="easyui-validatebox textbox" name="taskName" data-options="" readonly="true" style="border:0px;" id="fileTasName"/></td>
+              </tr>
+              <tr>
+                  <td style="text-align: right">所属机构:</td>
+                  <td><input class="easyui-validatebox textbox" name="belong" data-options="" readonly="true" style="border:0px;" id="fileBelong" /></td>
+                  <td style="text-align: right">所属类型:</td>
+                  <td><input class="easyui-validatebox textbox" name="belType" data-options="" readonly="true" style="border:0px;" id="fileBelType" /></td>
+              </tr>
+              <tr>
+                  <td style="text-align: right">文件名:</td>
+                  <td><input class="easyui-validatebox textbox" name="dataSoure" data-options="" readonly="true" style="border:0px;" id="sfileName" /></td>
+
+              </tr>
+              <tr>
+                  <td style="text-align: right">文件保存路径:</td>
+                  <td><input class="easyui-validatebox textbox" name="userName" data-options="" readonly="true" style="border:0px;" id="sfileNameWay" /></td>
+                  <td style="text-align: right">保存文件类型:</td>
+                  <td colspan="3"><input class="easyui-validatebox textbox" name="password" data-options="" readonly="true" style="border:0px;" id="saveTypeFile" /></td>
+              </tr>
+              <tr>
+                  <td style="text-align: right">所属节点:</td>
+                  <td><input class="easyui-validatebox textbox" name="belongdoman" data-options="" readonly="true" style="border:0px;" id="fileTaskdom" /></td>
+                  <td style="text-align: right">任务ID:</td>
+                  <td><input class="easyui-validatebox textbox" name="taskId" data-options="" readonly="true" style="border:0px;" id="filetaskId" />
+
+                  </td>
+              </tr>
+
+               <tr>
+                   <td></td>
+                   <td></td>
+                   <td> <a href="javascript:sqlDialogClose();"class="easyui-linkbutton bule_btn">关闭</a></td>
+               </tr>
+
+              </table>
+
+
+           </form>
+
+</div>
+
+{##普通文件下载#}
+<div class="easyui-dialog" id="fileDownloadDetailDialog" data-options="title:'任务详情',width:800,height:400" style="display:none">
+
+       <form id="standardDataForm"  method="post">
+          <table border="0" cellpadding="10" style="margin: 10px auto; border-spacing: 0;">
+              <tr>
+                  <td style="text-align: right">文件类型:</td>
+                  <td><input class="easyui-validatebox type" name="insideIdentifier" id="insideIdenti" readonly="true" style="border:0px;" data-options=""/></td>
+                  <td style="text-align: right">任务名称:</td>
+                  <td><input class="easyui-validatebox textbox" name="taskName" data-options="" readonly="true" style="border:0px;" id="downloadfileTasName"/></td>
+              </tr>
+              <tr>
+                  <td style="text-align: right">所属机构:</td>
+                  <td><input class="easyui-validatebox textbox" name="belong" data-options="" readonly="true" style="border:0px;" id="dowlfileBelong" /></td>
+                  <td style="text-align: right">所属类型:</td>
+                  <td><input class="easyui-validatebox textbox" name="belType" data-options="" readonly="true" style="border:0px;" id="dowlfileBelType" /></td>
+              </tr>
+              <tr>
+                  <td style="text-align: right">文件名:</td>
+                  <td><input class="easyui-validatebox textbox" name="dataSoure" data-options="" readonly="true" style="border:0px;" id="sfileName" /></td>
+
+              </tr>
+              <tr>
+                  <td style="text-align: right">文件下载路径:</td>
+                  <td><input class="easyui-validatebox textbox" name="userName" data-options="" readonly="true" style="border:0px;" id="dfileNameWay" /></td>
+                  <td style="text-align: right">下载IP:</td>
+                  <td colspan="3"><input class="easyui-validatebox textbox" name="password" data-options="" readonly="true" style="border:0px;" id="downloadIp" /></td>
+              </tr>
+              <tr>
+                  <td style="text-align: right">文件下载IP用户:</td>
+                  <td><input class="easyui-validatebox textbox" name="userName" data-options="" readonly="true" style="border:0px;" id="dUsername" /></td>
+                  <td style="text-align: right">用户密码:</td>
+                  <td colspan="3"><input class="easyui-validatebox textbox" name="password" data-options="" readonly="true" style="border:0px;" id="downloadPwd" /></td>
+              </tr>
+              <tr>
+                  <td style="text-align: right">所属节点:</td>
+                  <td><input class="easyui-validatebox textbox" name="belongdoman" data-options="" readonly="true" style="border:0px;" id="dowlfileTaskdom" /></td>
+                  <td style="text-align: right">任务ID:</td>
+                  <td><input class="easyui-validatebox textbox" name="taskId" data-options="" readonly="true" style="border:0px;" id="dowlfiletaskId" />
+
+                  </td>
+              </tr>
+
+               <tr>
+                   <td></td>
+                   <td></td>
+                   <td> <a href="javascript:sqlDialogClose();"class="easyui-linkbutton bule_btn">关闭</a></td>
+               </tr>
+
+              </table>
+
+
+           </form>
+
+</div>

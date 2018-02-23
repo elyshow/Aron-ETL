@@ -1,0 +1,44 @@
+<div class="easyui-dialog" id="domDialog" data-options="title:'新增采集节点',width:500,height:250,buttons:'#dialogBtn'" style="display:none">
+   <form id="domForm" method="post">
+    <div id="dialogBtn">
+        <a href="javascript:addDom();" class="easyui-linkbutton bule_btn">确定</a>
+        <a href="javascript:cancelDom();" class="easyui-linkbutton white_btn">取消</a>
+    </div>
+
+        <table border="0" cellpadding="0" cellspacing="0" class="dialog_table">
+            <tr>
+                <td>节点名称：</td>
+                <td><input class="easyui-validatebox textbox" data-options="required:true,validType:'username'" name="domname"/></td>
+            </tr>
+            <tr>
+                <td>所属区域：</td>
+                <td><input class="easyui-validatebox textbox" name="domregion" data-options="required:true" /></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<div class="easyui-dialog" id="changeDom" data-options="title:'修改',width:400,height:200,buttons:'#dialogBtn2'"
+     style="left:500px;top:300px;display:none">
+    <form id="change_list" method="post">
+        <div id="dialogBtn2">
+            <a href="javascript:preserved();" class="easyui-linkbutton bule_btn">保存</a>
+        </div>
+        <table border="0" cellpadding="0" cellspacing="0" class="dialog_table">
+            <tr style="display: none">
+                <td>采集节点id：</td>
+                <td><input name="cjdomid_change"/></td>
+            </tr>
+            <tr>
+                <td>采集节点名称：</td>
+                <td><input class="easyui-validatebox textbox cjdomname_change" data-options="required:true,"
+                           name="cjdomname_change"/></td>
+            </tr>
+            <tr>
+                <td>所属区域：</td>
+                <td><input class="easyui-validatebox textbox cjregion_change" data-options="required:true,"
+                           name="cjregion_change"/></td>
+            </tr>
+        </table>
+    </form>
+</div>

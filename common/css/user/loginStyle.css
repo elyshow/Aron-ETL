@@ -1,0 +1,154 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+body{
+    font-family: '微软雅黑';
+
+}
+.wrapper{
+    width: 100%;
+    height: auto;
+}
+/*主要内容*/
+.main{
+    background: #80767a;
+    height: 650px;
+}
+/*登陆框*/
+.register-box{
+    position: absolute;
+    width: 350px;
+    height: 435px;
+    /*background: rgba(255,255,255,0.7);*/
+    background: rgba(238,238,238,0.6);
+    /*background-color:#eeeeee;*/
+    top:80px;
+    right:110px;
+    text-align: center;
+    color: #333333;
+    border-radius: 5px;
+
+}
+/*信息提示*/
+.register-box .msg{
+    width: 260px;
+    height: 28px;
+    line-height: 28px;
+    border-radius: 3px;
+    box-shadow: 3px;
+    margin: 8px auto;
+    font-size: 14px;
+    font-weight: bold;
+    color: #F02C06;
+    display: none;
+}
+/*提示图标*/
+.msg .msg-icon{
+    float: left;
+    width: 18px;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.register-box h1{
+    font-size: 20px;
+    color:#333333;
+    height: 50px;
+    line-height:50px;
+    margin-top: 10px;
+}
+/*输入框*/
+.register-box .input-filed{
+    width: 260px;
+    height: 255px;
+    margin: 0 auto;
+}
+.input-filed li{
+    width: 95%;
+    height: 60px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.input-filed li label {
+    display: block;
+    font-size: 14px;
+    text-align: left;
+}
+.input-filed li input{
+    width: 100%;
+    height: 28px;
+    border: 1px silver solid;
+    border-radius: 5px;
+    float: left;
+
+}
+.input-filed .correct-icon{
+    position: absolute;
+    left: 260px;
+    top:25px;
+}
+
+/*跳转登陆*/
+.register-box .go-login {
+    font-size: 14px;
+    height: 30px;
+}
+
+.register-box .go-login a {
+    color: #256fab;
+}
+
+.register-box .go-login a:hover {
+    text-decoration: underline;
+}
+
+/*注册按钮*/
+.register-box .register-btn {
+    width: 180px;
+    height: 35px;
+    color: #ffffff;
+    background-color: #256FC3;
+    border: 1px solid #256FC3;
+    border-radius: 5px;
+    font-size: 15px;
+    font-family: '微软雅黑';
+    margin-top: 10px;
+    cursor: pointer;
+}
+.register-box .register-btn:hover{
+    background: #256FAB;
+
+}
+
+    /*尾部*/
+.footer{
+	position: absolute;
+    bottom:0;
+    left:0;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    background-color: #333333;
+}
+.footer .foot-nav{
+    width: 70%;
+    margin: 0 auto;
+    text-align: center;
+}
+.footer .foot-nav li{
+    display: inline-block;
+}
+.footer .foot-nav li a{
+    color: white;
+    font-size: 14px;
+    margin: 0 10px;
+
+}

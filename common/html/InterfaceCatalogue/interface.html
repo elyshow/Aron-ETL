@@ -1,0 +1,24 @@
+{% extends 'base2.html' %}
+
+{% block title %}
+    接口展示
+{% endblock %}
+{% block js %}
+<script type="text/javascript" src="/static/js/app/InterfaceCatalogue/interface.js"></script>
+<script type="text/javascript" src="/static/js/app/date.js"></script>
+
+	
+{% endblock %}
+{% block css %}
+
+	<link rel="stylesheet" type="text/css" href="/static/css/InterfaceCatalogue/interface.css">
+{% endblock %}
+{% block content %}
+
+	{% include 'InterfaceCatalogue/interface_content.html' %}
+
+{% endblock %}
+{% block dialog %}
+ 
+   {#% include 'home/dialog.html' %#}
+{% endblock %}

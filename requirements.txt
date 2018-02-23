@@ -1,0 +1,7 @@
+django==1.8.14
+cx_Oracle==5.2.1
+PyMySQL==0.7.9
+petl==1.1.0
+celery==3.1.23
+django-celery==3.1.17
+lxml==3.6.4

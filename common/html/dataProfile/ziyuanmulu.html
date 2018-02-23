@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <title>Menu Alignment on MenuButton - jQuery EasyUI Demo</title>
+    <link rel="stylesheet" type="text/css" href="../css/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../css/icon.css">
+    <link rel="stylesheet" type="text/css" href="../css/main1.css">
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
+    <style>
+        .nav a{color:#000000;display: block;width: 100%}
+        .nav a::before {
+            color: #000000;
+            content: attr(data-hover);
+            position: absolute;
+            opacity: 0;
+            text-shadow: 0 0 1px rgba(255,255,255,0.3);
+            -webkit-transform: scale(1.1) translateX(10px) translateY(-10px) rotate(4deg);
+            -moz-transform: scale(1.1) translateX(10px) translateY(-10px) rotate(4deg);
+            transform: scale(1.1) translateX(10px) translateY(-10px) rotate(4deg);
+            -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+            -moz-transition: -moz-transform 0.3s, opacity 0.3s;
+            transition: transform 0.3s, opacity 0.3s;
+            pointer-events: none;
+        }
+        .nav a:hover::before, .nav a:focus::before {
+            opacity: 1;
+            transform: scale(1) translateX(0px) translateY(0px) rotate(0deg);
+        }
+    </style>
+</head>
+<body class="easyui-layout" data-options="border:false" id="box">
+
+<div data-options="region:'north',collapsible:false,border:false" style="height:80px;display:none;overflow:hidden;">
+    <a href="#" class="logo"></a>
+
+    <div class="login_welcome">
+        <div class="addr_welcome"><span>欢迎您! XXX【省厅】</span></div>
+        <a href="###"><img src="/static/images/head1.png/"/><span>回到首页</span></a>
+        <a href="###"><img src="/static/images/head2.png/"/><span>修改密码</span></a>
+        <a href="/login/"><img src="/static/images/head3.png/"/><span>退出</span></a>
+    </div>
+    <div style="clear:both;"></div>
+</div>
+<div data-options="region:'west',collapsible:false,width:'2%',border:false,bodyCls:'body_bg'">
+
+</div>
+
+<div data-options="region:'center',collapsible:false,border:false,width:'84%'" class="body_bg">
+    <div class="easyui-layout" data-options = "fit:true" >
+
+        <div id="accordion" data-options="region:'west',border:false" style="width:250px;height:100%;display:none;border-right:25px solid transparent">
+            <div class="easyui-accordion" id="accordionTab">
+                <div id="p" title="<span style='display:inline-block;color:black;font-size:18px;width:94px;height:28px;line-height:28px;text-align:center;border-radius:14px;margin:6px 0 0 8px;'>行业</span><span><img src='../img/title.png' style='padding-left:68px;'/></span>" data-options="selected:true">
+                    <div class="nav">
+                        <a href="/cjjdglIndex/" style="text-decoration:none">
+                            <img src="../img/xiala.png/"/>
+                            <span>内部行业</span>
+                        </a>
+                    </div>
+                    <div class="nav">
+                        <a href="/cjjdglIndex/" style="text-decoration:none">
+                            <img src="../img/xiala.png/"/>
+                            <span>外部行业</span>
+                        </a>
+                    </div>
+                </div>
+
+
+                <div id="p1" title="<span style='display:inline-block;color:black;font-size:18px;width:94px;height:28px;line-height:28px;text-align:center;border-radius:14px;margin:6px 0 0 8px;'>要素</span><span><img src='../img/title.png' style='padding-left:68px;'/></span>">
+                    <div class="nav">
+                        <a href="/cjjdglIndex/" style="text-decoration:none">
+                            <img src="../img/xiala.png/"/>
+                            <span>人</span>
+                        </a>
+                    </div>
+                    <div class="nav">
+                        <a href="/cjjdglIndex/" style="text-decoration:none">
+                            <img src="../img/xiala.png/"/>
+                            <span>事</span>
+                        </a>
+                    </div>
+                    <div class="nav">
+                        <a href="/cjjdglIndex/" style="text-decoration:none">
+                            <img src="../img/xiala.png/"/>
+                            <span>物</span>
+                        </a>
+                    </div>
+                    <div class="nav">
+                        <a href="/cjjdglIndex/" style="text-decoration:none">
+                            <img src="../img/xiala.png/"/>
+                            <span>组织</span>
+                        </a>
+                    </div>
+                    <div class="nav">
+                        <a href="/cjjdglIndex/" style="text-decoration:none">
+                            <img src="../img/xiala.png/"/>
+                            <span>地点</span>
+                        </a>
+                    </div>
+                    <div class="nav">
+                        <a href="/cjjdglIndex/" style="text-decoration:none">
+                            <img src="../img/xiala.png/"/>
+                            <span>其他</span>
+                        </a>
+                    </div>
+                </div>
+
+
+                <div id="p2" title="<span style='display:inline-block;color:black;font-size:18px;width:94px;height:28px;line-height:28px;text-align:center;border-radius:14px;margin:6px 0 0 8px;'>地区</span><span><img src='../img/title.png' style='padding-left:68px;'/></span>">
+                    <div class="nav">
+                        <a href="/catalogueManagement/index/" style="text-decoration:none">
+                            <img src="../img/xiala.png/"/>
+                            <span>鄂州</span>
+                        </a>
+                    </div>
+                    <div class="nav">
+                        <a href="/releaseRegister/index/" style="text-decoration:none">
+                            <img src="../img/xiala.png/"/>
+                            <span>十堰</span>
+                        </a>
+                    </div>
+                    <div class=" easyui-accordion nav">
+                        <a href="###" style="text-decoration:none">
+                            <img src="../img/xiala.png/"/>
+                            <span>武汉</span>
+                        </a>
+                        
+                    </div>
+                </div>
+
+
+                <div id="p3" title="<span style='display:inline-block;color:black;font-size:18px;width:94px;height:28px;line-height:28px;text-align:center;border-radius:14px;margin:6px 0 0 8px;'>组织</span><span><img src='../img/title.png' style='padding-left:68px;'/></span>">
+
+                </div>
+
+
+
+
+
+            </div>
+
+        </div>
+
+        <div id="contentQulity" data-options="region:'center',collapsible:false,border:false," style="width:100%;height:100%;display:none;overflow:hidden;">
+            <div class="easyui-panel" title="<img src='../img/dizhi.png' style='vertical-align:middle;margin:0 8px 0 35px;'/><span>您当前的位置：资源目录</span>" style="height:100%;height:100%;" style="background:#fff;">
+                <div class="easyui-layout" data-options = "fit:true">
+                    <div class="bgQulity" data-options="region:'west',collapsible:false,width:'4%',border:false,bodyCls:'body_bg'">
+
+                    </div>
+                    <div class="bgQulity" data-options="region:'east',collapsible:false,width:'4%',border:false,bodyCls:'body_bg'">
+
+                    </div>
+                    <div class="bgQulity" data-options="region:'north',collapsible:false,width:'100%',height:'15px',border:false,bodyCls:'body_bg'">
+
+                    </div>
+                    <div id="contentFluid" data-options="region:'center',collapsible:false,border:false,bodyCls:'body_bg',width:'92%'">
+
+                        <!-- 此处填充右侧主体内容 -->
+                        <div class="easyui-panel" data-options="fit:true,border:false">
+                            <div class="easyui-layout" data-options="fit:true,border:false">
+                                <div data-options="region:'north',border:false" style="height:220px;">
+                                    <div class="nav_title">
+                                        <span style="font-family:bold;">资源目录</span>
+                                    </div>
+                                    <div class="nav_conent" style="border:1px solid #d1d1d1;height:115px;">
+                                        <img src="../img/icon-tubiao.png" style="margin-left:50px;margin-top:20px;float:left;"/>
+                                        <div style="font-size:20px;margin-left:30px;margin-top:20px;"><span style="margin-left:30px;">截止<i style="color:#00af66">2015年06月17日</i>，数据中心汇集数据<i style="color:red">60</i>种，<i style="color:red">1亿5208万5261</i>条，其中公安数据<i style="color:red">4445万9597</i>条，社会数据<i style="color:red">1亿762万5664条</i>。</span></div>
+                                    </div>
+                                    <div class="nav_buttom" style="border:1px solid #d1d1d1;height:50px;">
+                                        <table>
+                                            <thead>
+                                            <tr>
+                                                <td style="padding-left:130px;padding-top:13px;">类型：</td>
+                                                <td>
+                                                    <select id="s" onchange="ch()" style="width:130px;height:30px;margin-top:7px;">
+                                                        <option value="功能性服务">功能性服务</option>
+                                                    </select>
+                                                    <select id="ss" onchange="che()" style="width:130px;height:30px;margin-top:7px;margin-left:10px;">
+                                                        <option value="查询服务">查询服务</option>
+                                                    </select>
+                                                    <div style="width: 300px;height:30px;border:1px solid #d1d1d1;margin-left:300px;margin-top:-31px;">
+                                                        <img src="../img/img14.png"/><input type="text" placeholder="输入关键字" style="border:none;border-top:none;"/>
+                                                    </div>
+                                                    <div style="margin-left:615px;margin-top:-31px;">
+                                                    <input type="submit" value="搜索" style="background:#327e33;color:#ffffff;width:100px;height:30px;border:none;border-radius: 2px;"/>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div data-options="region:'center',border:false" >
+                                    <ul style="list-style:none;">
+                                        <li style="border:1px solid #d1d1d1;float:left;padding:30px;background: url(../img/wendang.png) no-repeat;border-top:none;margin-right:30px;">
+                                            <div>
+                                                <span>更新时间：2015-6-17：05：03</span>
+                                                <h3>网吧上网记录<i style="color:red;">(63487108)</i></h3>
+                                                <span>提供单位：网监</span>
+                                                <span>数据源：数据中心_基础库</span>
+                                            </div>
+                                        </li>
+                                        <li style="border:1px solid #d1d1d1;float:left;padding:30px;background: url(../img/wendang.png) no-repeat;border-top:none;margin-right:30px;">
+                                            <div >
+                                                <span>更新时间：2015-6-17：04：10</span>
+                                                <h3>旅游业_国内旅客<i style="color:red;">(41745649)</i></h3>
+                                                <span>提供单位：治安</span>
+                                                <span>数据源：数据中心_基础库</span>
+                                            </div>
+                                        </li>
+                                        <li style="border:1px solid #d1d1d1;float:left;padding:30px;background: url(../img/wendang.png) no-repeat;border-top:none;">
+                                            <div>
+                                                <span>更新时间：2015-6-17：01：04</span>
+                                                <h3>户政_变更更正信息<i style="color:red;">(4369942)</i></h3>
+                                                <span>提供单位：治安</span>
+                                                <span>数据源：数据中心_基础库</span>
+                                            </div>
+                                        </li>
+                                        <li style="border:1px solid #d1d1d1;float:left;padding:30px;background: url(../img/wendang.png) no-repeat;border-top:none;margin-top:20px;margin-right:30px;">
+                                            <div>
+                                                <span>更新时间：2015-6-17：01：32</span>
+                                                <h3>户政_常住人口基本信息<i style="color:red;">(4309986)</i></h3>
+                                                <span>提供单位：治安</span>
+                                                <span>数据源：数据中心_基础库</span>
+                                            </div>
+                                        </li>
+                                        <li style="border:1px solid #d1d1d1;float:left;padding:30px;background: url(../img/wendang.png) no-repeat;border-top:none;margin-top:20px;margin-right:30px;">
+                                            <div>
+                                                <span>更新时间：2015-6-17：03：36</span>
+                                                <h3>派基_人口居住信息表<i style="color:red;">(2780034)</i></h3>
+                                                <span>提供单位：治安</span>
+                                                <span>数据源：数据中心_基础库</span>
+                                            </div>
+                                        </li>
+                                        <li style="border:1px solid #d1d1d1;float:left;padding:30px;background: url(../img/wendang.png) no-repeat;border-top:none;margin-top:20px">
+                                            <div>
+                                                <span>更新时间：2015-6-17：03：41</span>
+                                                <h3>派基_人口居住信息<i style="color:red;">(2780034)</i></h3>
+                                                <span>提供单位：治安</span>
+                                                <span>数据源：数据中心_基础库</span>
+                                            </div>
+                                        </li>
+                                        <li style="border:1px solid #d1d1d1;float:left;padding:30px;background: url(../img/wendang.png) no-repeat;border-top:none;margin-top:20px;margin-right:30px;">
+                                            <div>
+                                                <span>更新时间：2015-6-17：03：33</span>
+                                                <h3>交警_违法记录<i style="color:red;">(2653224)</i></h3>
+                                                <span>提供单位：治安</span>
+                                                <span>数据源：数据中心_基础库</span>
+                                            </div>
+                                        </li>
+                                        <li style="border:1px solid #d1d1d1;float:left;padding:30px;background: url(../img/wendang.png) no-repeat;border-top:none;margin-top:20px;margin-right:30px;">
+                                            <div>
+                                                <span>更新时间：2015-6-17：04：02</span>
+                                                <h3>旅游业_国内旅客<i style="color:red;">(2391091)</i></h3>
+                                                <span>提供单位：治安</span>
+                                                <span>数据源：数据中心_基础库</span>
+                                            </div>
+                                        </li>
+                                        <li style="border:1px solid #d1d1d1;float:left;padding:30px;background: url(../img/wendang.png) no-repeat;border-top:none;margin-top:20px">
+                                            <div>
+                                                <span>更新时间：2015-6-17：03：32</span>
+                                                <h3>交警_非现场文本记录<i style="color:red;">(53524)</i></h3>
+                                                <span>提供单位：治安</span>
+                                                <span>数据源：数据中心_基础库</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    <div class="bgQulity" data-options="region:'south',collapsible:false,border:false,bodyCls:'body_bg'" style="height:70px;">
+                        <p style="margin:40px auto 0 auto;width:450px;text-align:center">Copyright © All Rights Reserved 建议使用1280*800分辨率，IE8.0以上浏览</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 此处填充右dialog内容 -->
+
+
+</body>
+<script>
+    $(function(){
+        var TbRow = document.getElementById("table1");
+        if (TbRow != null)
+        {
+            for (var i=0;i<TbRow.rows.length ;i++ )
+            {
+                if (TbRow.rows[i].rowIndex%2==1)
+                {
+                    TbRow.rows[i].style.backgroundColor="#fff";
+                }
+                else
+                {
+                    TbRow.rows[i].style.backgroundColor="#F1F1F1";
+                }
+            }
+        }
+    });
+
+</script>
+</html>

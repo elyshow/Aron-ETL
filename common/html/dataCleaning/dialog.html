@@ -1,0 +1,335 @@
+<div class="easyui-dialog" id="cleaningDialog" data-options="width:800,height:600,buttons:'#cleaningDialogBtn'" style="display:none">
+    <div id="cleaningDialogBtn">
+        <a href="javascript:;" id="next_save" class="easyui-linkbutton bule_btn">下一步</a>
+        <a href="javascript:;" onclick="$('#cleaningDialog').dialog('close')" class="easyui-linkbutton white_btn">取消</a>
+    </div>
+    <form id="cleaningForm" method="post" style="width: 100%;height: 100%">
+        <div class="easyui-tabs" id="dataCleanTab" data-options="border:false,fit:true">
+            <div data-options="title:'基本信息'">
+                 <table border="0" cellpadding="0" cellspacing="0" class="dialog_table">
+                    <tr>
+                        <td width="111px">任务名称：</td>
+                        <td><input class="easyui-validatebox textbox" name="name" data-options="required:true,validType:'username'" /></td>
+                    </tr>
+                     <tr>
+                        <td>数据源数量：</td>
+                        <td>
+                            <input type="radio" name="resNum" value="1" checked="checked" />单数据源
+                            <input type="radio" name="resNum" value="2" />多数据源
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>清洗数据源：</td>
+                        <td>
+                            <input class="easyui-combobox" id="fromTableCombo" name="fromTable"  data-options="required:true,valueField:'value',textField:'text',url:'{% url "getCollectTable" %}',onSelect:function(record){
+                                $(this).combobox('checkSelect');
+                                if(record != undefined)
+                                    if(record.value != '')
+                                        joinTable[record.value] = record
+                            },onChange:function(newValue, oldValue){
+                                if(joinTable[oldValue] != undefined)
+                                    delete joinTable[oldValue]
+                            }" />
+                        </td>
+                       
+                    </tr>
+                     <tr>
+                        <td>标准数据表：</td>
+                        <td>
+                            <input class="easyui-combobox" id="toTableCombo" name="toTable"  data-options="required:true,valueField:'value',textField:'text',url:'{% url "dataCleaning:getStandardTable" %}',onSelect:function(){
+                                $(this).combobox('checkSelect');
+                                //$('input[comboname=\'toFieldName\']').combobox({queryParams:{tableName:$('#toTableCombo').combobox('getValue'), dbName:'{{standarddb}}'}}).combobox('reload');
+                            }" />
+                        </td>
+                    </tr>
+                     <tr>
+                        <td>清洗方式：</td>
+                        <td>
+                            <input class="easyui-combobox" id="cleanWay" name="cleanWay"  data-options="required:true,valueField:'value',textField:'text',data:[{value:'0', text:'全量清洗'},{value:'1', text:'增量清洗'}],onSelect:function(){
+
+                            }" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>任务描述：</td>
+                        <td><input class="easyui-validatebox textbox" name="description" data-options="" /></td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+        <input class="easyui-validatebox textbox" name="id" type="hidden"/>
+    </form>
+
+
+
+
+    <div class="frequencySetting" style="display: none">
+        <table id="ManyResourceList"></table>
+    </div>
+
+    <div class="frequencySetting" style="display: none">
+        <table class="dialog_table" border="0" cellpadding="0" cellspacing="0" id ='a'>
+            <tr>
+                <td>调度计划：</td>
+                <td>
+                    <input type="radio" class="checkbox_position"  name="timeType" checked="checked" value="1"  />固定时间
+                    <input type="radio" class="checkbox_position"  name="timeType" value="2" />一次性
+                    <input type="radio" class="checkbox_position"  name="timeType"  value="3" />手动
+                    <input type="radio" class="checkbox_position"  name="timeType" value="4"  />间隔
+                </td>
+            </tr>
+            <tr class="month_day">
+                <td>执行周期：</td>
+                <td>
+                    <input class="easyui-combobox" id="cycle" name="cycle" style="width:80px" data-options="onSelect:selectCycle,required:true,required:true,valueField:'value',textField:'text',data:[{value:1,text:'每月'},{value:2,text:'每周'},{value:3,text:'每天'}]" />
+                    <input class="easyui-combobox" id="days" name="days" style="width:80px" data-options="required:true,valueField:'value',textField:'text', data:initComboBox(1, 31).concat([{'value':'lastDay','text':'最后一天'}]),"  /> <span class="words">日</span>
+                    <input class="easyui-combobox" id="intervalDay" name="intervalDay" style="width:80px" data-options="required:true,valueField:'value',textField:'text', data:initComboBox(0, 8),"  /> <span class="words">天</span>
+                    <input class="easyui-datetimebox" id="once_time" name="once_time" data-options="showSeconds:false,required:true" />
+                </td>
+            </tr>
+            <tr class="week_day">
+                <td></td>
+                <td>
+                    <input type="checkbox" class="checkbox_position"  name="week_day" value="0" />周日
+                    <input type="checkbox" class="checkbox_position"  name="week_day" value="1" />周一
+                    <input type="checkbox" class="checkbox_position"  name="week_day" value="2" />周二
+                    <input type="checkbox" class="checkbox_position"  name="week_day" value="3" />周三
+                    <input type="checkbox" class="checkbox_position"  name="week_day" value="4" />周四
+                    <input type="checkbox" class="checkbox_position"  name="week_day" value="5" />周五
+                    <input type="checkbox" class="checkbox_position"  name="week_day" value="6" />周六
+                </td>
+            </tr>
+            <tr class="play_time">
+                <td>执行时间：</td>
+                <td>
+                    <input class="easyui-combobox" id="hours" name="hours" style="width:80px;" data-options="required:true,valueField:'value',textField:'text', data:initComboBox(0, 24)," /> 时
+                    <input class="easyui-combobox" id="minutes" name="minutes" style="width:80px;"  data-options="required:true,valueField:'value',textField:'text', data:initComboBox(0, 60),"  /> 分
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="frequencySetting" style="display: none">
+        <table id="fieldMapList">
+
+        </table>
+    </div>
+
+    <div class="frequencySetting" style="display: none">
+        <table id="fieldCheckList">
+
+        </table>
+    </div>
+
+    <div class="frequencySetting" style="display: none">
+        <table id="fieldCleanList">
+
+        </table>
+    </div>
+</div>
+
+<div id="fieldCleanToolBar" class="toolbar" style="display:none">
+    <div style="float:left;margin-left: 10px;">
+            <input id="fieldCleanSearch" />
+    </div>
+    <div style="float:right;margin-right:20px;">
+        <a data-hover="增加" title="增加" href="javascript:;" id="addFieldCleanBtn" onclick="addFieldClean()" class="easyui-linkbutton" data-options="iconCls:'icon-add'"></a>
+        <a data-hover="修改" title="修改" href="javascript:;" id="editFieldCleanBtn" onclick="editFieldClean()" class="easyui-linkbutton" data-options="iconCls:'icon-edit'"></a>
+        <a data-hover="删除" title="删除" href="javascript:;" id="delFieldCleanBtn" onclick="delFieldClean()" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'"></a>
+    </div>
+</div>
+
+<div id="fieldCheckToolBar" class="toolbar" style="display:none">
+    <div style="float:left;margin-left: 10px;">
+            <input id="fieldCheckSearch" />
+    </div>
+    <div style="float:right;margin-right:20px;">
+        <a data-hover="增加" title="增加" href="javascript:;" id="addFieldCheckBtn" onclick="addFieldCheck()" class="easyui-linkbutton" data-options="iconCls:'icon-add'"></a>
+        <a data-hover="修改" title="修改" href="javascript:;" id="editFieldCheckBtn" onclick="editFieldCheck()" class="easyui-linkbutton" data-options="iconCls:'icon-edit'"></a>
+        <a data-hover="删除" title="删除" href="javascript:;" id="delFieldCheckBtn" onclick="delFieldCheck()" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'"></a>
+    </div>
+</div>
+
+<div id="ManyResourceToolBar" class="toolbar" style="display:none">
+    <div style="float:left;margin-left: 10px;">
+            <input id="ManyResourceSearch" />
+    </div>
+    <div style="float:right;margin-right:20px;">
+        <a data-hover="增加" title="增加" href="javascript:;" id="addManyResourceBtn" onclick="addManyResource()" class="easyui-linkbutton" data-options="iconCls:'icon-add'"></a>
+        <a data-hover="修改" title="修改" href="javascript:;" id="editManyResourceBtn" onclick="editManyResource()" class="easyui-linkbutton" data-options="iconCls:'icon-edit'"></a>
+        <a data-hover="删除" title="删除" href="javascript:;" id="delManyResourceBtn" onclick="delManyResource()" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'"></a>
+    </div>
+</div>
+
+
+<div class="easyui-dialog" id="ManyResourceDialog" data-options="width:500,height:400,buttons:'#ManyResourceDialogBtn'" style="display:none">
+    <div id="ManyResourceDialogBtn">
+        <a href="javascript:;" onclick="addManyResourceToGrid()" class="easyui-linkbutton bule_btn">确定</a>
+        <a href="javascript:;" onclick="$('#ManyResourceDialog').dialog('close')" class="easyui-linkbutton white_btn">取消</a>
+    </div>
+    <form id="ManyResourceForm">
+        <input type="hidden" value="add" name="ManyResourceAction" />
+        <table border="0" cellpadding="0" cellspacing="0" class="dialog_table">
+            <tr>
+                <td>清洗数据源：</td>
+                <td>
+                    <input class="easyui-combobox" name="fromTableName"  data-options="required:true,valueField:'value',textField:'text',onSelect:function(record){
+                        $(this).combobox('checkSelect');
+                        console.log(record)
+                        console.log(1111111111)
+                        if(record != undefined)
+                            if(record.value != '')
+                                $('input[comboname=\'fromTableField\']').combobox('loadData', getFieldsByTable(record.value, collectdb)).combobox('select', '')
+                    },onChange:function(newValue, oldValue){
+                        var k = $('#fromTableCombo').combobox('getValue')
+                        if(joinTable[oldValue] != undefined && oldValue != k)
+                            delete joinTable[oldValue]
+                    }" />
+                </td>
+            </tr>
+            <tr>
+                <td>源表字段：</td>
+                <td>
+                    <input class="easyui-combobox" name="fromTableField" style="background-color: #efefef" data-options="required:true,valueField:'value',textField:'name',"  />
+
+                </td>
+            </tr>
+            <tr>
+                <td>关联表：</td>
+                <td>
+                    <input class="easyui-combobox" name="joinTableName"  data-options="required:true,valueField:'value',textField:'text',onSelect:function(record){
+                        $(this).combobox('checkSelect');
+                        $('input[name=\'toFieldCNName\']').val(record.name).validatebox('validate')
+                        $('input[comboname=\'joinTableField\']').combobox('loadData', getFieldsByTable(record.value, collectdb)).combobox('select', '')
+                    }" />
+                </td>
+            </tr>
+            <tr>
+                <td>关联表字段：</td>
+                <td><input class="easyui-combobox" name="joinTableField" style="background-color: #efefef" data-options="required:true,valueField:'value',textField:'name'," /></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+
+<div class="easyui-dialog" id="fieldCheckDialog" data-options="width:500,height:400,buttons:'#fieldCheckDialogBtn'" style="display:none">
+    <div id="fieldCheckDialogBtn">
+        <a href="javascript:;" onclick="addFieldCheckToGrid()" class="easyui-linkbutton bule_btn">确定</a>
+        <a href="javascript:;" onclick="$('#fieldCheckDialog').dialog('close')" class="easyui-linkbutton white_btn">取消</a>
+    </div>
+    <form id="fieldCheckForm">
+        <input type="hidden" value="add" name="fieldCheckAction" />
+        <table border="0" cellpadding="0" cellspacing="0" class="dialog_table">
+            <tr>
+                <td>源字段：</td>
+                <td>
+                    <input class="easyui-combobox" name="fromFieldName"  data-options="required:true,groupField:'tableName',valueField:'value',textField:'text',onSelect:function(record){
+                        $(this).combobox('checkSelect',$(this));
+                        $('input[name=\'fromFieldCNName\']').val(record.name)
+                    }" />
+                </td>
+            </tr>
+            <tr>
+                <td>源字段中文名：</td>
+                <td>
+                    <input class="easyui-validatebox textbox" name="fromFieldCNName" style="background-color: #efefef" data-options="readonly:true"  />
+                </td>
+            </tr>
+            <tr>
+                <td>规则类型：</td>
+                <td><input class="easyui-combobox" name="type" data-options="required:true,valueField:'value',textField:'text',
+                    data:[{value:'0',text:'格式校验'},
+                        {value:'1',text:'空值校验'},
+                        {value:'2',text:'长度及范围校验'},
+                        {value:'3',text:'代码校验'}],
+                    onSelect:function(record){
+                        $(this).combobox('checkSelect');
+                        if($(this).combobox('getValue') === 0){
+                            $('#ruleID').combobox('loadData',[])
+                        }else{
+                            $('#ruleID').combobox({
+                                url:'{% url 'dataCleaningRules:checkRuleComboData' %}',
+                                queryParams:{
+                                    type:record.value
+                                }
+                            })
+                        }
+                        $('#fieldCheckForm input[name=\'checkRule\']').val('').validatebox('validate')
+                    }" /></td>
+            </tr>
+            <tr>
+                <td>校验规则：</td>
+                <td>
+                    <input class="easyui-combobox" name="ruleID" id="ruleID" data-options="required:true,valueField:'id',textField:'name',onSelect:function(record){
+                        $(this).combobox('checkSelect',$(this));
+                        $('#fieldCheckForm input[name=\'checkRule\']').val(record.id).validatebox('validate')
+                    }" />
+                </td>
+            </tr>
+            <tr>
+                <td>规则ID：</td>
+                <td><input class="easyui-validatebox textbox" name="checkRule" style="background-color: #efefef" data-options="required:true, readonly:true," /></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+
+<div class="easyui-dialog" id="fieldCleanDialog" data-options="width:500,height:400,buttons:'#fieldCleanDialogBtn'" style="display:none">
+    <div id="fieldCleanDialogBtn">
+        <a href="javascript:;" onclick="addFieldCleanToGrid()" class="easyui-linkbutton bule_btn">确定</a>
+        <a href="javascript:;" onclick="$('#fieldCleanDialog').dialog('close')" class="easyui-linkbutton white_btn">取消</a>
+    </div>
+    <form id="fieldCleanForm">
+        <input type="hidden" value="add" name="fieldCleanAction" />
+        <table border="0" cellpadding="0" cellspacing="0" class="dialog_table">
+            <tr>
+                <td>源字段：</td>
+                <td>
+                    <input class="easyui-combobox" name="fromFieldName"  data-options="required:true,groupField:'tableName',valueField:'value',textField:'text',onSelect:function(record){
+                        $(this).combobox('checkSelect',$(this));
+                        $('input[name=\'fromFieldCNName\']').val(record.name)
+                    }" />
+                </td>
+            </tr>
+            <tr>
+                <td>源字段中文名：</td>
+                <td>
+                    <input class="easyui-validatebox textbox" name="fromFieldCNName" style="background-color: #efefef" data-options="readonly:true"  />
+                </td>
+            </tr>
+            <tr>
+                <td>规则类型：</td>
+                <td><input class="easyui-combobox" name="type" data-options="required:true,valueField:'value',textField:'text',data:[{value:'0',text:'字典转换'},{value:'1',text:'代码转换'}],onSelect:function(record){
+                        $(this).combobox('checkSelect');
+                        if($(this).combobox('getValue') === 0){
+                            $('#cleanRuleID').combobox('loadData',[])
+                        }else{
+                            $('#cleanRuleID').combobox({
+                                url:'{% url 'dataCleaningRules:cleanRuleComboData' %}',
+                                queryParams:{
+                                    type:record.value
+                                }
+                            })
+                        }
+                        $('#fieldCheckForm input[name=\'checkRule\']').val('').validatebox('validate')
+                    }" /></td>
+            </tr>
+            <tr>
+                <td>清洗规则：</td>
+                <td>
+                    <input class="easyui-combobox" name="ruleID" id="cleanRuleID"  data-options="required:true,valueField:'id',textField:'name',onSelect:function(record){
+                        $(this).combobox('checkSelect',$(this));
+                        $('#fieldCleanForm input[name=\'checkRule\']').val(record.name).validatebox('validate')
+                    },url:'{% url 'dataCleaningRules:cleanRuleComboData' %}'" />
+                </td>
+            </tr>
+            <tr>
+                <td>规则名称：</td>
+                <td><input class="easyui-validatebox textbox" name="checkRule" style="background-color: #efefef" data-options="required:true, readonly:true," /></td>
+            </tr>
+        </table>
+    </form>
+</div>

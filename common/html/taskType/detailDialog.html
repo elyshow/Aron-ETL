@@ -1,0 +1,424 @@
+<script type="text/javascript" src="/static/js/app/taskType/detailFile.js"></script>
+
+<div class="easyui-dialog" id="detailDialog" data-options="title:'任务详情',width:500,height:400" style="display:none">
+		<!-- 新增采集任务 -->
+    <div id="tt" class="easyui-tabs"  style="height:364px;">
+        <div data-options="title:'基本信息'"><br>
+{#数据接口#}
+     <form id="changeForm" method="get">
+         <table class="dialog_table" data-options="toolbar:'#toolbarDetail'," id="detailList">
+             <tr>
+                 <td>文件类型:</td>
+                 <td> <input class="easyui-validatebox type" name="fileType" id="combo_list" readonly="true" style="border:0px;" data-options="" /></td>
+             </tr>
+             <tr>
+                 <td><strong>基本配置</strong></td>
+                 <td></td>
+             </tr>
+             <tr>
+                 <td>任务名称：</td>
+
+                 <td><input class="easyui-validatebox textbox " name="taskName" data-options="required:true,validType:'username'"  id="tasName"/></td>
+             </tr>
+
+             <tr>
+                 <td>所属机构：</td>
+                 <td><input class="easyui-validatebox textbox" name="belong" data-options="required:true," id="belong" /></td>
+             </tr>
+             <tr>
+                 <td>所属类型：</td>
+                 <td><input class="easyui-validatebox textbox" name="belType" data-options="required:true," id="belType"/></td>
+             </tr>
+             <tr>
+                 <td>数据源：</td>
+                 <td><input class="easyui-validatebox textbox" name="dataSoure" data-options="required:true," id="dataSoure"/></td>
+             </tr>
+             <tr>
+                 <td>用户名：</td>
+                 <td><input class="easyui-validatebox textbox" name="userName" data-options="required:true," id="userName"/></td>
+             </tr>
+             <tr>
+                 <td>用户密码：</td>
+                 <td><input class="easyui-validatebox textbox" type="password"  name="userPwd" data-options="required:true," id="userPwd"/></td>
+             </tr>
+             <tr>
+                 <td>连接IP：</td>
+                 <td><input class="easyui-validatebox textbox" name="connIp" data-options="required:true," id="connIp"/></td>
+             </tr>
+             <tr>
+                 <td>端口：</td>
+                 <td><input class="easyui-validatebox textbox" name="port" data-options="required:true," id="port"/></td>
+             </tr>
+             <tr>
+                 <td>所属节点：</td>
+                 <td><input class="easyui-validatebox textbox" name="belongtype" data-options="" readonly="true" style="border:0px;" id="dom"/></td>
+             </tr>
+             <tr>
+                 <td>任务ID：</td>
+
+                 <td><input class="easyui-validatebox textbox " name="taskId" data-options="" readonly="true" style="border:0px;"  id="taskId"/></td>
+             </tr>
+             <tr>
+                 <td>数据库名：</td>
+                 <td><input class="easyui-validatebox textbox" name="dbName" data-options="" readonly="true" style="border:0px;" id="dbName"/></td>
+             </tr>
+             <tr>
+                 <td>数据库类型：</td>
+                 <td><input class="easyui-validatebox textbox" name="belongtype" data-options="" readonly="true" style="border:0px;" id="dbType"/></td>
+             </tr>
+
+             <tr>
+                 <td>包含表名：</td>
+                 <td><input class="easyui-validatebox textbox" name="belongtype" data-options="" readonly="true" style="border:0px;" id="tableName"/></td>
+             </tr>
+             <tr>
+                 <td>包含字段：</td>
+                 <td><input class="easyui-validatebox textbox" name="belongtype" data-options="" readonly="true" style="border:0px;" id="includeField"/></td>
+             </tr>
+             <tr>
+                 <td>执行频率：</td>
+                 <td>
+                     <input class="easyui-validatebox textbox" name="belongtype" data-options="" readonly="true" style="border:0px;" id="refreshChange"/>
+                     <a id="refreshModifyBtn" href="javascript:;" class="easyui-linkbutton" data-options=" ">点击修改执行频率</a>
+                 </td>
+             </tr>
+             <tr>
+                 <td></td>
+                 <td>
+                    <a id=" " href="JavaScript:testConn();" class="easyui-linkbutton close" data-options=" ">测试</a>
+                    <a id=" " href="JavaScript:changeSave();" class="easyui-linkbutton close bule_btn" data-options=" ">确定</a>
+                    <a id=" " href="JavaScript:closeDialog();" class="easyui-linkbutton cancel" data-options=" ">取消</a>
+                 </td>
+             </tr>
+         </table>
+     </form>
+        </div>
+        <div data-options="title:'修改执行频率'">
+            <form id="refreshModify_form" class="form_reset" method="get" >
+        <table class="dialog_table" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>调度计划：</td>
+                <td>
+                    <input type="radio" class="checkbox_position"  name="FreSetting" value="1" checked="checked"/>固定时间
+                    <input type="radio" class="checkbox_position"  name="FreSetting"  value="2" />一次性
+                    <input type="radio" class="checkbox_position"  name="FreSetting"  value="3" />手动
+                    <input type="radio" class="checkbox_position"  name="FreSetting"  value="4" />间隔
+                </td>
+            </tr>
+            <tr class="month_day">
+                <td>执行周期：</td>
+                <td>
+                    <input class="easyui-combobox" id="cycle" name="cycle" style="width:80px" data-options="onSelect:selectCycle,required:true,required:true,valueField:'value',textField:'text',data:[{value:1,text:'每月'},{value:2,text:'每周'},{value:3,text:'每天'}]" />
+                    <input class="easyui-combobox" id="days" name="days" style="width:80px" data-options="required:true,valueField:'value',textField:'text', data:initComboBox(1, 31),"  /> <span class="words">日</span>
+                    <input class="easyui-combobox" id="interval_day" name="interval_day"  style="width:80px" data-options="required:true,valueField:'value',textField:'text', data:initComboBox(0, 8),"  /> <span class="words">天</span>
+                    <input class="easyui-datetimebox" id="once_time"  name="once_time"  data-options="showSeconds:false,required:true" />
+                </td>
+            </tr>
+            <tr class="week_day">
+                <td></td>
+                <td>
+                    <input type="checkbox" class="checkbox_position"  name="week_day"  value="1"/>周一
+                    <input type="checkbox" class="checkbox_position"  name="week_day"  value="2"/>周二
+                    <input type="checkbox" class="checkbox_position"  name="week_day"  value="3"/>周三
+                    <input type="checkbox" class="checkbox_position"  name="week_day"  value="4"/>周四
+                    <input type="checkbox" class="checkbox_position"  name="week_day"  value="5"/>周五
+                    <input type="checkbox" class="checkbox_position"  name="week_day"  value="6"/>周六
+                    <input type="checkbox" class="checkbox_position"  name="week_day"  value="7"/>周日
+                </td>
+            </tr>
+            <tr class="play_time">
+                <td>执行时间：</td>
+                <td>
+                    <input class="easyui-combobox" id="hours" name="hours" style="width:80px;" data-options="required:true,valueField:'value',textField:'text', data:initComboBox(0, 24)," /> 时
+                    <input class="easyui-combobox" id="minutes" name="minutes" style="width:80px;"  data-options="required:true,valueField:'value',textField:'text', data:initComboBox(0, 60),"  /> 分
+                </td>
+            </tr>
+        </table>
+
+       <div style="margin-left: 40px;">
+             <a id="refreshModify_btn_sure"  href="javascript:refreshModify_btn_sure();" class="easyui-linkbutton" data-options=" ">确认修改频率</a>
+             <a id=" "  href="javascript:;" class="easyui-linkbutton reset" data-options=" ">重置</a>
+       </div>
+     </form>
+    </div>
+    </div>
+
+</div>
+
+{##dialog  API接口#}
+<div class="easyui-dialog" id="apiDetailDialog" data-options="title:'任务详情',width:500,height:400" style="display:none">
+		<!-- 新增采集任务 -->
+    <div id="tb" class="easyui-tabs"  style="height:364px;">
+        <div data-options="title:'基本信息'"><br>
+            <form id="changeFormA" method="get">
+         <table class="dialog_table" data-options="toolbar:'#toolbarDetail'," id="detailListA">
+             <tr>
+                 <td>文件类型:</td>
+                 <td> <input class="easyui-validatebox type" name="fileType" id="combo_list"  readonly="true" style="border:0px;" data-options="" /></td>
+             </tr>
+             <tr>
+                 <td><strong>基本配置</strong></td>
+                 <td></td>
+             </tr>
+             <tr>
+                 <td>任务名称：</td>
+
+                 <td><input class="easyui-validatebox textbox " name="taskName" data-options="required:true," id="apiTasName"/></td>
+             </tr>
+
+             <tr>
+                 <td>所属机构：</td>
+                 <td><input class="easyui-validatebox textbox" name="belong" data-options="" id="apiBelong" /></td>
+             </tr>
+             <tr>
+                 <td>所属类型：</td>
+                 <td><input class="easyui-validatebox textbox" name="belType" data-options="" id="apiBelType"/></td>
+             </tr>
+
+             <tr>
+                 <td>URL地址：</td>
+                 <td><input class="easyui-validatebox textbox" name="urlAd" data-options="required:true," id="urlAd"/></td>
+             </tr>
+             <tr>
+                 <td>调用方法：</td>
+                 <td><input class="easyui-validatebox textbox" name="useMethod" data-options="required:true," id="useMethod"/></td>
+             </tr>
+             <tr>
+                 <td>参数：</td>
+                 <td><input class="easyui-validatebox textbox" name="param" data-options="required:true," id="param"/></td>
+             </tr>
+             <tr>
+                 <td>读取字节数(byte)：</td>
+                 <td><input class="easyui-validatebox textbox" name="byteAmout" data-options="required:true," id="byteAmout"/></td>
+             </tr>
+             <tr>
+                 <td>保存文件类型：</td>
+                 <td><input class="easyui-validatebox textbox" name="saveType" data-options="" id="saveType"/></td>
+             </tr>
+             <tr>
+                 <td>所属节点：</td>
+                 <td><input class="easyui-validatebox textbox" name="aTaskdom" data-options="" readonly="true" style="border:0px;"  id="aTaskdom"/></td>
+             </tr>
+              <tr>
+                 <td>任务ID：</td>
+
+                 <td><input class="easyui-validatebox textbox " name="taskId" readonly="true" style="border:0px;" data-options="required:false,"  id="taskIdApi"/></td>
+             </tr>
+             <tr>
+                      <td></td>
+                 <td>
+                    <a id=" " href="JavaScript:apiChangeSave();" class="easyui-linkbutton close bule_btn" data-options=" ">确定</a>
+                    <a id=" " href="JavaScript:closeApiDialog();" class="easyui-linkbutton cancel" data-options=" ">取消</a>
+                 </td>
+             </tr>
+         </table>
+                </form>
+        </div>
+    </div>
+</div>
+
+
+{##数据库文件保存#}
+<div class="easyui-dialog" id="sqlDetailDialog" data-options="title:'任务详情',width:500,height:400" style="display:none">
+		<!-- 新增采集任务 -->
+    <div id="tb" class="easyui-tabs"  style="height:364px;">
+        <div data-options="title:'基本信息'"><br>
+            <form id="changeFormSql" method="get">
+         <table class="dialog_table" data-options="toolbar:'#toolbarDetail'," id="detailListSql">
+             <tr>
+                 <td>文件类型:</td>
+                 <td> <input class="easyui-validatebox type" name="fileType" id="combo_list"  readonly="true" style="border:0px;" data-options="" /></td>
+             </tr>
+             <tr>
+                 <td><strong>基本配置</strong></td>
+                 <td></td>
+             </tr>
+             <tr>
+                 <td>任务名称：</td>
+
+                 <td><input class="easyui-validatebox textbox " name="taskName" data-options="required:true," id="sqlTasName"/></td>
+             </tr>
+
+             <tr>
+                 <td>所属机构：</td>
+                 <td><input class="easyui-validatebox textbox" name="belong" data-options="" id="sqlBelong" /></td>
+             </tr>
+             <tr>
+                 <td>所属类型：</td>
+                 <td><input class="easyui-validatebox textbox" name="belType" data-options="" id="sqlBelType"/></td>
+             </tr>
+             <tr>
+                 <td>所属节点：</td>
+                 <td><input class="easyui-validatebox textbox" name="aTaskdom" data-options="" readonly="true" style="border:0px;"  id="sqlTaskdom"/></td>
+             </tr>
+             <tr>
+                 <td>任务ID：</td>
+
+                 <td><input class="easyui-validatebox textbox " name="taskId" readonly="true" style="border:0px;" data-options=""  id="sqltaskId"/></td>
+             </tr>
+             <tr>
+                 <td>文件名：</td>
+                 <td><input class="easyui-validatebox textbox" name="sqlfileName" data-options="" readonly="true" style="border:0px;" id="sqlfileName"/></td>
+             </tr>
+             <tr>
+                 <td>文件保存路径：</td>
+                 <td><input class="easyui-validatebox textbox" name="sqlfileNameWay" data-options="" readonly="true" style="border:0px;" id="sqlfileNameWay"/></td>
+             </tr>
+
+             <tr>
+                 <td>保存文件类型：</td>
+                 <td><input class="easyui-validatebox textbox" name="sqlsaveType" data-options="" readonly="true" style="border:0px;" id="sqlsaveType"/></td>
+             </tr>
+
+             <tr>
+                      <td></td>
+                 <td>
+                    <a id=" " href="JavaScript:sqlChangeSave();" class="easyui-linkbutton close bule_btn" data-options=" ">确定</a>
+                    <a id=" " href="JavaScript:closeSqlDialog();" class="easyui-linkbutton cancel" data-options=" ">取消</a>
+                 </td>
+             </tr>
+         </table>
+                </form>
+
+        </div>
+
+    </div>
+</div>
+
+{##普通文件上传#}
+<div class="easyui-dialog" id="fileDetailDialog" data-options="title:'任务详情',width:500,height:400" style="display:none">
+		<!-- 新增采集任务 -->
+    <div id="tb" class="easyui-tabs"  style="height:364px;">
+        <div data-options="title:'基本信息'"><br>
+            <form id="changeFormFile" method="get">
+         <table class="dialog_table" data-options="toolbar:'#toolbarDetail'," id="detailListFile">
+             <tr>
+                 <td>文件类型:</td>
+                 <td> <input class="easyui-validatebox type" name="fileType" id="combo_list"  readonly="true" style="border:0px;" data-options="" /></td>
+             </tr>
+             <tr>
+                 <td><strong>基本配置</strong></td>
+                 <td></td>
+             </tr>
+             <tr>
+                 <td>任务名称：</td>
+
+                 <td><input class="easyui-validatebox textbox " name="taskName" data-options="required:true," id="fileTasName"/></td>
+             </tr>
+
+             <tr>
+                 <td>所属机构：</td>
+                 <td><input class="easyui-validatebox textbox" name="belong" data-options="" id="fileBelong" /></td>
+             </tr>
+             <tr>
+                 <td>所属类型：</td>
+                 <td><input class="easyui-validatebox textbox" name="belType" data-options="" id="fileBelType"/></td>
+             </tr>
+             <tr>
+                 <td>所属节点：</td>
+                 <td><input class="easyui-validatebox textbox" name="aTaskdom" data-options="" readonly="true" style="border:0px;"  id="fileTaskdom"/></td>
+             </tr>
+             <tr>
+                 <td>任务ID：</td>
+
+                 <td><input class="easyui-validatebox textbox " name="taskId" readonly="true" style="border:0px;" data-options=""  id="filetaskId"/></td>
+             </tr>
+             <tr>
+                 <td>文件名：</td>
+                 <td><input class="easyui-validatebox textbox" name="sfileName" data-options="" readonly="true" style="border:0px;" id="sfileName"/></td>
+             </tr>
+             <tr>
+                 <td>文件保存路径：</td>
+                 <td><input class="easyui-validatebox textbox" name="sfileNameWay" data-options="" readonly="true" style="border:0px;" id="sfileNameWay"/></td>
+             </tr>
+
+             <tr>
+                 <td>保存文件类型：</td>
+                 <td><input class="easyui-validatebox textbox" name="saveTypeFile" data-options="" readonly="true" style="border:0px;" id="saveTypeFile"/></td>
+             </tr>
+
+             <tr>
+                      <td></td>
+                 <td>
+                    <a id=" " href="JavaScript:fileChangeSave();" class="easyui-linkbutton close bule_btn" data-options=" ">确定</a>
+                    <a id=" " href="JavaScript:closeFileDialog();" class="easyui-linkbutton cancel" data-options=" ">取消</a>
+                 </td>
+             </tr>
+         </table>
+                </form>
+        </div>
+    </div>
+</div>
+
+
+{##普通文件下载#}
+<div class="easyui-dialog" id="DowfileDetailDialog" data-options="title:'任务详情',width:500,height:400" style="display:none">
+		<!-- 新增采集任务 -->
+    <div id="tb" class="easyui-tabs"  style="height:364px;">
+        <div data-options="title:'基本信息'"><br>
+            <form id="changeFormFileDow" method="get">
+         <table class="dialog_table" data-options="toolbar:'#toolbarDetail'," id="detailListFileDow">
+             <tr>
+                 <td>文件类型:</td>
+                 <td> <input class="easyui-validatebox type" name="fileType" id="combo_list"  readonly="true" style="border:0px;" data-options="" /></td>
+             </tr>
+             <tr>
+                 <td><strong>基本配置</strong></td>
+                 <td></td>
+             </tr>
+             <tr>
+                 <td>任务名称：</td>
+
+                 <td><input class="easyui-validatebox textbox " name="taskName" data-options="required:true," id="downloadfileTasName"/></td>
+             </tr>
+
+             <tr>
+                 <td>所属机构：</td>
+                 <td><input class="easyui-validatebox textbox" name="belong" data-options="" id="dowlfileBelong" /></td>
+             </tr>
+             <tr>
+                 <td>所属类型：</td>
+                 <td><input class="easyui-validatebox textbox" name="belType" data-options="" id="dowlfileBelType"/></td>
+             </tr>
+             <tr>
+                 <td>文件下载源IP：</td>
+
+                 <td><input class="easyui-validatebox textbox " name="downloadIp"  data-options=""  id="downloadIp"/></td>
+             </tr>
+             <tr>
+                 <td>用户名：</td>
+
+                 <td><input class="easyui-validatebox textbox " name="dUsername"  data-options=""  id="dUsername"/></td>
+             </tr>
+             <tr>
+                 <td>密码：</td>
+
+                 <td><input class="easyui-validatebox textbox " type="password" name="downloadPwd"  data-options=""  id="downloadPwd"/></td>
+             </tr>
+             <tr>
+                 <td>文件下载路径：</td>
+                 <td><input class="easyui-validatebox textbox" name="dfileNameWay" data-options=""  id="dfileNameWay"/></td>
+             </tr>
+             <tr>
+                 <td>所属节点：</td>
+                 <td><input class="easyui-validatebox textbox" name="aTaskdom" data-options="" readonly="true" style="border:0px;"  id="dowlfileTaskdom"/></td>
+             </tr>
+             <tr>
+                 <td>任务ID：</td>
+
+                 <td><input class="easyui-validatebox textbox " name="taskId" readonly="true" style="border:0px;" data-options=""  id="dowlfiletaskId"/></td>
+             </tr>
+
+
+             <tr>
+                      <td></td>
+                 <td>
+                    <a id=" " href="JavaScript:dowfileChangeSave();" class="easyui-linkbutton close bule_btn" data-options=" ">确定</a>
+                    <a id=" " href="JavaScript:dowcloseFileDialog();" class="easyui-linkbutton cancel" data-options=" ">取消</a>
+                 </td>
+             </tr>
+         </table>
+                </form>
+        </div>
+    </div>
+</div>

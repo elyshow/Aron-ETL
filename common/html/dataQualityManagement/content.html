@@ -1,0 +1,196 @@
+<!--<div class="easyui-panel" data-options="fit:true,border:false" style="width:100%;">
+    <div class="easyui-layout" data-options="fit:true,border:false">
+         
+        <div data-options="region:'center',border:false" >
+            <div class="easyui-tabs" id="check_method" data-options="border:false,fit:true,tabHeight:50,plain:true">
+                <!--第1个选项卡-->
+                 <!--<div data-options="title:'校验方法管理'">
+                   <table class="easyui-datagrid" data-options="toolbar:'#metToolBar'," id="table1">
+                        <div id="metToolBar" class="toolbar">
+                            <form id="metDelForm" method="post">
+								<div style="float:right;margin-right:20px;">
+									 关键字：<input id="metSearchBox" />
+									<a data-hover="增加" title="增加" href="javascript:" onclick="addMethodBtn()" class="easyui-linkbutton" data-options="iconCls:'icon-add'" id="addMetBtn"></a>
+									<a data-hover="修改" title="修改" href="javascript:;" onclick="editMethodBtn()" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" id="editMetBtn"></a>
+									<a data-hover="删除" title="删除" href="javascript:;" onclick="delMethodBtn()" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" id="delMetBtn"></a>
+								</div>
+                            </form>
+                        </div>
+
+                   </table>
+                  </div>
+                <!--第2个选项卡-->
+                <!--<div data-options="title:'常用规则设置'">
+                    <table class="easyui-datagrid" data-options="toolbar:'#rulToolBar'," id="table2">
+                        <div id="rulToolBar" class="toolbar">
+                            <form id="rulDelForm" method="post">
+								<div style="float:right;margin-right:20px;">
+									 关键字：<input id="rulSearchBox" />
+									<a data-hover="增加" title="增加" href="javascript:;" onclick="addRuleBtn()" class="easyui-linkbutton" data-options="iconCls:'icon-add'" id="addRuleBtn"></a>
+									<a data-hover="修改" title="修改" href="javascript:" onclick="editRuleBtn()" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" id="editRuleBtn"></a>
+									<a data-hover="删除" title="删除" href="javascript:;" onclick="delRuleBtn()" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" id="delRuleBtn"></a>
+								</div>
+                            </form>
+                        </div>
+
+                   </table>
+                </div>
+                 <!--第3个选项卡-->
+                <!--<div data-options="title:'基础监测方案管理'">
+                     <table class="easyui-datagrid" data-options="toolbar:'#basToolBar'," id="table3">
+                        <div id="basToolBar" class="toolbar">
+                            <form id="basDelForm" method="post">
+                            <div style="float:right;margin-right:20px;">
+                                 关键字：<input id="basSearchBox" />
+                                <a data-hover="增加" title="增加" href="javascript:addMonitorBase();" class="easyui-linkbutton" onclick="" data-options="iconCls:'icon-add'" id="addBaseBtn"></a>
+                                <a data-hover="修改" title="修改" href="javascript:changeBas();" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" id="editBaseBtn"></a>
+                                <a data-hover="删除" title="删除" href="javascript:basDel();" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" id="delBaseBtn"></a>
+                            </div>
+                            </form>
+                        </div>
+                   </table>
+                </div>
+				
+         
+                <!--第4个选项卡-->
+                <!--<div data-options="title:'数据质量监测任务管理'">
+                     <table class="easyui-datagrid" data-options="toolbar:'#taskToolBar'," id="table5">
+                        <div id="taskToolBar" class="toolbar">
+                            <form id="taskDelForm" method="post">
+                            <div style="float:right;margin-right:20px;">
+                                关键字：<input id="taskSearchBox" />
+                                <!--<a href="javascript:linkbutton_click('open_dialog',{dialog:'#tasDialog'});" class="easyui-linkbutton" data-options="iconCls:'icon-add'" id="addTaskBtn">增加</a>-->
+                               <!-- <a data-hover="修改" title="修改" href="javascript:editTaskBtn();" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" id="editTaskBtn"></a>
+      
+                            </div>
+                            </form>
+                        </div>
+                     </table>
+                </div>
+                <!--第5个选项卡-->
+                <!--<div data-options="title:'数据质量监测日志管理'">
+                      <table class="easyui-datagrid" data-options="toolbar:'#logToolBar'," id="table6">
+                        <div id="logToolBar" class="toolbar">
+                            <form id="logDelForm" method="post">
+                            <div style="float:right;margin-right:20px;">
+                                关键字：<input id="logSearchBox" />
+                                <a data-hover="日志" title="日志" href="javascript:rezhi();" class="easyui-linkbutton" data-options="iconCls:'icon-search'"></a>
+                                <a data-hover="删除" title="删除" href="javascript:Table6Del();" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'"></a>
+                            </div>
+                            </form>
+                        </div>
+                     </table>
+                </div>
+             </div>
+        </div>
+    </div>
+</div>-->
+
+
+<div class="easyui-panel" title="<img src='/static/images/littlehouse.png' style='vertical-align:middle;margin:0 8px 0 35px;'/><span>您当前的位置：数据质量检测 > 数据质量检测表</span><div class='datime' style='width:210px;height:16px;display:inline-block;float:right;margin-right:60px;'></div>" style="height:100%;height:100%;" style="background:#fff;">
+	<div class="easyui-layout" data-options = "fit:true">
+		<div class="bgQulity" data-options="region:'west',collapsible:false,width:'4%',border:false,bodyCls:'body_bg'">
+
+		</div>
+		<div class="bgQulity" data-options="region:'east',collapsible:false,width:'4%',border:false,bodyCls:'body_bg'">
+
+		</div>
+		<div class="bgQulity" data-options="region:'north',collapsible:false,width:'100%',height:'15px',border:false,bodyCls:'body_bg'">
+			
+		</div>
+		<div id="contentFluid" data-options="region:'center',collapsible:false,border:false,bodyCls:'body_bg',width:'92%'">
+			
+			<div class="easyui-panel" data-options="fit:true,border:false" style="width:100%;">
+				<div class="easyui-layout" data-options="fit:true,border:false">
+					 
+					<div data-options="region:'center',border:false" >
+						<div class="easyui-tabs" id="check_method" data-options="border:false,fit:true,tabHeight:50,plain:true">
+							<!--第1个选项卡-->
+							 <div data-options="title:'校验方法管理'">
+							   <table class="easyui-datagrid" data-options="toolbar:'#metToolBar'," id="table1">
+									<div id="metToolBar" class="toolbar">
+										<form id="metDelForm" method="post">
+											<div style="float:right;margin-right:20px;">
+												 关键字：<input id="metSearchBox" />
+												<a data-hover="增加" title="增加" href="javascript:" onclick="addMethodBtn()" class="easyui-linkbutton" data-options="iconCls:'icon-add'" id="addMetBtn"></a>
+												<a data-hover="修改" title="修改" href="javascript:;" onclick="editMethodBtn()" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" id="editMetBtn"></a>
+												<a data-hover="删除" title="删除" href="javascript:;" onclick="delMethodBtn()" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" id="delMetBtn"></a>
+											</div>
+										</form>
+									</div>
+
+							   </table>
+							  </div>
+							<!--第2个选项卡-->
+							<div data-options="title:'标准规则管理'">
+								<table class="easyui-datagrid" data-options="toolbar:'#rulToolBar'," id="table2">
+									<div id="rulToolBar" class="toolbar">
+										<form id="rulDelForm" method="post">
+											<div style="float:right;margin-right:20px;">
+												 关键字：<input id="rulSearchBox" />
+												<a data-hover="增加" title="增加" href="javascript:;" onclick="addRuleBtn()" class="easyui-linkbutton" data-options="iconCls:'icon-add'" id="addRuleBtn"></a>
+												<a data-hover="修改" title="修改" href="javascript:" onclick="editRuleBtn()" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" id="editRuleBtn"></a>
+												<a data-hover="删除" title="删除" href="javascript:;" onclick="delRuleBtn()" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" id="delRuleBtn"></a>
+											</div>
+										</form>
+									</div>
+
+							   </table>
+							</div>
+							 <!--第3个选项卡-->
+							<div data-options="title:'基础监测方案管理'">
+								 <table class="easyui-datagrid" data-options="toolbar:'#basToolBar'," id="table3">
+									<div id="basToolBar" class="toolbar">
+										<form id="basDelForm" method="post">
+										<div style="float:right;margin-right:20px;">
+											 关键字：<input id="basSearchBox" />
+											<a data-hover="增加" title="增加" href="javascript:;" class="easyui-linkbutton" onclick="addMonitorBase()" data-options="iconCls:'icon-add'" id="addBaseBtn"></a>
+											<a data-hover="修改" title="修改" href="javascript:;" class="easyui-linkbutton" onclick="changeBas()" data-options="iconCls:'icon-edit'" id="editBaseBtn"></a>
+											<a data-hover="删除" title="删除" href="javascript:;" class="easyui-linkbutton" onclick="basDel()" data-options="iconCls:'icon-cancel'" id="delBaseBtn"></a>
+										</div>
+										</form>
+									</div>
+							   </table>
+							</div>
+							
+					 
+							<!--第4个选项卡-->
+							<div data-options="title:'数据质量监测任务管理'">
+								 <table class="easyui-datagrid" data-options="toolbar:'#taskToolBar'," id="table5">
+									<div id="taskToolBar" class="toolbar">
+										<form id="taskDelForm" method="post">
+										<div style="float:right;margin-right:20px;">
+											关键字：<input id="taskSearchBox" />
+											<!--<a href="javascript:linkbutton_click('open_dialog',{dialog:'#tasDialog'});" class="easyui-linkbutton" data-options="iconCls:'icon-add'" id="addTaskBtn">增加</a>-->
+											<a data-hover="修改" title="修改" href="javascript:editTaskBtn();" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" id="editTaskBtn"></a>
+				  
+										</div>
+										</form>
+									</div>
+								 </table>
+							</div>
+							<!--第5个选项卡-->
+							<div data-options="title:'数据质量监测日志管理'">
+								  <table class="easyui-datagrid" data-options="toolbar:'#logToolBar'," id="table6">
+									<div id="logToolBar" class="toolbar">
+										<form id="logDelForm" method="post">
+										<div style="float:right;margin-right:20px;">
+											关键字：<input id="logSearchBox" />
+											<a data-hover="日志" title="日志" href="javascript:rezhi();" class="easyui-linkbutton" data-options="iconCls:'icon-search'"></a>
+											<a data-hover="删除" title="删除" href="javascript:Table6Del();" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'"></a>
+										</div>
+										</form>
+									</div>
+								 </table>
+							</div>
+						 </div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<div class="bgQulity" data-options="region:'south',collapsible:false,border:false,bodyCls:'body_bg'" style="height:70px;">
+			<p style="margin:40px auto 0 auto;width:450px;text-align:center">Copyright © All Rights Reserved 建议使用1280*800分辨率，IE8.0以上浏览</p>
+		</div>
+	</div>						
+</div>

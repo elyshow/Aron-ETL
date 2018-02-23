@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{% block title %}首页{% endblock %}</title>
+	<link rel="stylesheet" type="text/css" href="/static/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="/static/themes/default/icon.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/main.css">
+	<!--<script type="text/javascript" data-main="themes/js/app/main" async="false" src="themes/js/requires.js"></script> -->
+	<script type="text/javascript" src="/static/js/libs/jquery-3.0.0.min.js"></script>
+	<script type="text/javascript" src="/static/js/libs/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="/static/js/libs/easyui-lang-zh_CN.js"></script>
+	<script type="text/javascript" src="/static/js/app/main.js"></script>
+	<script type="text/javascript" src="/static/js/libs/jquery.easyui.extends.js"></script>
+	{% block js %}
+	<script type="text/javascript" src="/static/js/app/index/index.js"></script>
+	<script type="text/javascript">
+        var urls = {
+           'collectNode': '{% url 'collectNode' %}',
+		   'dataCleaningRules': "{% url 'dataCleaningRules:index' %}",
+		   'dataCleaning': "{% url 'dataCleaning:index' %}",
+		   'catalogManagementIndex': '{% url 'catalogManagementIndex' %}',
+		   'releaseRegisterIndex': '{% url 'releaseRegisterIndex' %}',
+		   
+		   'dataprofile':'{% url 'dataprofile' %}',
+		   'dataMonitoringStatistics': '{% url 'dataMonitoringStatistics' %}',
+		   'dataQualityManagementIndex': '{% url 'dataQualityManagementIndex' %}',
+		   'dataQualityAssessmentIndex':'{% url 'dataQualityAssessmentIndex' %}',
+		   'question':'{% url 'question' %}',
+		   'standardIndex':'{% url 'standardIndex' %}',
+		   'recognizeIndex':'{% url 'recognizeIndex' %}',
+		   
+		   'dataTypeIndex':'{% url 'dataTypeIndex' %}',
+		   'busCodeIndex':'{% url 'busCodeIndex' %}',
+		   'databaseIndex':'{% url 'databaseIndex' %}',
+		   'taskIndex':'{% url 'taskIndex' %}',
+        }
+    </script>
+	{% endblock %}
+	{% block css %}{% endblock %}
+	<style>
+		.nav a{color:#000000;display: block;width: 100%}
+		.nav a::before {
+			color: #000000;
+			content: attr(data-hover);
+			position: absolute;
+			opacity: 0;
+			text-shadow: 0 0 1px rgba(255,255,255,0.3);
+			-webkit-transform: scale(1.1) translateX(10px) translateY(-10px) rotate(4deg);
+			-moz-transform: scale(1.1) translateX(10px) translateY(-10px) rotate(4deg);
+			transform: scale(1.1) translateX(10px) translateY(-10px) rotate(4deg);
+			-webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+			-moz-transition: -moz-transform 0.3s, opacity 0.3s;
+			transition: transform 0.3s, opacity 0.3s;
+			pointer-events: none;
+		}
+		.nav a:hover::before, .nav a:focus::before {
+			opacity: 1;
+			transform: scale(1) translateX(0px) translateY(0px) rotate(0deg);
+		}
+	</style>
+</head>
+<body class="easyui-layout" data-options="border:false" id="box">
+	
+<div data-options="region:'north',collapsible:false,border:false" style="height:80px;display:none;overflow:hidden;">
+	<a href="{% url 'homeIndex' %}" class="logo"></a>
+	
+	<div class="login_welcome">
+		<div class="addr_welcome" style="color:#ffffff">欢迎您! <span class="adminUser">{{ request.user }}</span>【<span class="adminArea">省厅</span>】</div>
+		<a href="{% url 'homeIndex' %}"><img src="/static/images/head1.png"/><span>回到首页</span></a>
+		<a href="{% url 'changepasswordurl' %}"><img src="/static/images/head2.png"/><span>修改密码</span></a>
+		<a href="{% url 'logouturl' %}"><img src="/static/images/head3.png"/><span>退出</span></a>
+	</div>
+	<div style="clear:both;"></div>
+</div> 
+<div data-options="region:'west',collapsible:false,width:'2%',border:false,bodyCls:'body_bg'">
+
+</div>
+
+<div data-options="region:'center',collapsible:false,border:false,width:'84%'" class="body_bg">
+	<div class="easyui-layout" data-options = "fit:true" >
+		
+		<div id="accordion" data-options="region:'west',border:false," style="width:250px;height:100%;display:none;border-right:25px solid transparent">
+			<div class="easyui-accordion" id="accordionTab">
+				<div id="p" title="<span style='display:inline-block;color:#fff;width:94px;height:28px;line-height:28px;text-align:center;background:#1a1a1a;background-color: rgba(0,0,0,0.5);border-radius:14px;margin:6px 0 0 8px;'>数据采集</span>" data-options="">
+					<div class="nav">
+						<a href="{% url 'collectNode' %}" style="text-decoration:none">
+							<img src="/static/images/img1.png"/>
+							<span>采集节点</span>
+						</a>
+					</div>
+				</div>
+				
+			
+				<div id="p1" title="<span style='display:inline-block;color:#fff;width:94px;height:28px;line-height:28px;text-align:center;background:#1a1a1a;background-color: rgba(0,0,0,0.5);border-radius:14px;margin:6px 0 0 8px;'>数据整合</span>">
+					<div class="nav">
+						<a href="{% url 'dataCleaningRules:index' %}" style="text-decoration:none">
+							<img src="/static/images/img2.png"/>
+							<span>数据清洗规则</span>
+						</a>
+					</div>
+					<div class="nav">
+						<a href="{% url 'dataCleaning:index' %}" style="text-decoration:none">
+							<img src="/static/images/img3.png"/>
+							<span>数据清洗</span>
+						</a>
+					</div>
+				</div>
+				
+			
+				<div id="p2" title="<span style='display:inline-block;color:#fff;width:94px;height:28px;line-height:28px;text-align:center;background:#1a1a1a;background-color: rgba(0,0,0,0.5);border-radius:14px;margin:6px 0 0 8px;'>数据资源管理</span>">
+					<div class="nav">
+						<a href="{% url 'catalogManagementIndex' %}" style="text-decoration:none">
+							<img src="/static/images/img4.png"/>
+							<span>编目管理</span>
+						</a>
+					</div>
+					<div class="nav">
+						<a href="{% url 'releaseRegisterIndex' %}" style="text-decoration:none">
+							<img src="/static/images/img5.png"/>
+							<span>注册发布管理</span>
+						</a>
+					</div>
+				</div>
+				
+			
+				<div id="p3" title="<span style='display:inline-block;color:#fff;width:94px;height:28px;line-height:28px;text-align:center;background:#1a1a1a;background-color: rgba(0,0,0,0.5);border-radius:14px;margin:6px 0 0 8px;'>资源目录</span>">
+					<div class="nav">
+						<a href="{% url 'dataprofile' %}" style="text-decoration:none">
+							<img src="/static/images/img6.png"/>
+							<span>资源目录</span>
+						</a>
+					</div>
+				</div>
+				
+			
+				<div id="p4" title="<span style='display:inline-block;color:#fff;width:94px;height:28px;line-height:28px;text-align:center;background:#1a1a1a;background-color: rgba(0,0,0,0.5);border-radius:14px;margin:6px 0 0 8px;'>数据监控统计</span>">
+					<div class="nav">
+						<a href="{% url 'dataMonitoringStatistics' %}" style="text-decoration:none">
+							<img src="/static/images/img7.png"/>
+							<span>数据监控统计</span>
+						</a>
+					</div>
+				</div>
+				
+			
+				<div id="p5" title="<span style='display:inline-block;color:#fff;width:94px;height:28px;line-height:28px;text-align:center;background:#1a1a1a;background-color: rgba(0,0,0,0.5);border-radius:14px;margin:6px 0 0 8px;'>数据质量检测</span>">
+					<div class="nav">
+						<a href="{% url 'dataQualityManagementIndex' %}" style="text-decoration:none">
+							<img src="/static/images/img6.png"/>
+							<span>数据质量检测</span>
+						</a>
+					</div>
+					<div class="nav">
+						<a href="{% url 'dataQualityAssessmentIndex' %}" style="text-decoration:none">
+							<img src="/static/images/img7.png"/>
+							<span>数据质量评估</span>
+						</a>
+					</div>
+					<div class="nav">
+						<a href="{% url 'question' %}" style="text-decoration:none">
+							<img src="/static/images/img8.png"/>
+							<span>问题数据管理</span>
+						</a>
+					</div>
+				</div>
+				
+		
+				<div id="p6" title="<span style='display:inline-block;color:#fff;width:94px;height:28px;line-height:28px;text-align:center;background:#1a1a1a;background-color: rgba(0,0,0,0.5);border-radius:14px;margin:6px 0 0 8px;'>数据标准管理</span>">
+					<div class="nav">
+						<a href="{% url 'codeStandard:standardIndex' %}" style="text-decoration:none">
+							<img src="/static/images/img9.png"/>
+							<span>标准数据元管理</span>
+						</a>
+					</div>
+					<div class="nav">
+						<a href="{% url 'codeStandard:recognizeIndex' %}" style="text-decoration:none">
+							<img src="/static/images/img10.png"/>
+							<span>机构信息管理</span>
+						</a>
+					</div>
+					<div class="nav">
+						<a href="{% url 'codeStandard:dataTypeIndex' %}" style="text-decoration:none">
+							<img src="/static/images/img11.png"/>
+							<span>信息类型管理</span>
+						</a>
+					</div>
+					<div class="nav">
+						<a href="{% url 'codeStandard:busCodeIndex' %}" style="text-decoration:none">
+							<img src="/static/images/img12.png"/>
+							<span>业务代码管理</span>
+						</a>
+					</div>
+					<div class="nav">
+						<a href="{% url 'codeStandard:databaseIndex' %}" style="text-decoration:none">
+							<img src="/static/images/img13.png"/>
+							<span>数据库类型管理</span>
+						</a>
+					</div>
+					<div class="nav">
+						<a href="{% url 'codeStandard:taskIndex' %}" style="text-decoration:none">
+							<img src="/static/images/img14.png"/>
+							<span>标准代码管理</span>
+						</a>
+					</div>
+				</div>
+				
+			</div>
+
+		</div>
+
+		<div id="contentQulity" data-options="region:'center',collapsible:false,border:false," style="width:100%;height:100%;display:none;overflow:hidden;">
+			
+			{% block content %}{% endblock %}
+		</div>
+	</div>
+</div>
+{% block dialog %}{% endblock %}
+</body>
+	<script>
+		$(function () { 
+			var pp = $('#contentQulity').accordion('getSelected'); // 获取选择的面板 
+			if (pp){    
+				pp.panel('refresh',urls['dataCleaningRules']);  // 调用'refresh'方法刷新 
+			}  
+
+		}); 
+	</script>
+</html>

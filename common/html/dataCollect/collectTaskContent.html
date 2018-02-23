@@ -1,0 +1,25 @@
+<div class="easyui-panel" data-options="fit:true,border:false">
+    <div class="easyui-layout" data-options="fit:true,border:false">
+        <div data-options="region:'north',border:false" style="height:50px;border-top:3px solid #00a6a6">
+            <div class="nav_title" style="height:46px">
+                <span>数据采集</span> >>
+                <span>采集任务</span>
+            </div>
+        </div>
+        <div data-options="region:'center',border:false" >
+            <table data-options="toolbar:'#collectTaskListToolbar'," id="collectTaskList">
+
+                <div id="collectTaskListToolbar" class="toolbar">
+                    <span style="">当前所在节点：{{ collectNodeName }}</span>
+                    <div style="float:right;margin-right:20px;">
+                        <input id="taskSearchBox"/>
+                        <a title="增加" href="javascript:addCollectTask();" class="easyui-linkbutton" data-options="iconCls:'icon-add'"></a>
+                        <a title="删除" href="javascript:delCollectTask();" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'"></a>
+                        <a title="详情或修改" href="javascript:editCollectTask();" class="easyui-linkbutton" data-options="iconCls:'icon-edit'"></a>
+                        <a title="查看采集日志" href="javascript:collectTaskLogDetail();" class="easyui-linkbutton" data-options="iconCls:'icon-search'"></a>
+                    </div>
+                </div>
+            </table>
+        </div>
+    </div>
+</div>

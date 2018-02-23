@@ -1,0 +1,162 @@
+@charset "utf-8";
+
+.tuichu {
+	position: absolute;
+	left: 470px;
+	top: 345px;
+}
+
+ul {
+	list-style: none;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+
+li {
+	margin-bottom: 0px;
+}
+.ll{
+	color: red;
+}
+label{
+	display: block;
+   	font-size: 14px;
+    text-align: left;
+
+}
+.box{
+	position: relative;
+	left: 0px;
+	top: 0px;
+	margin-top:0 ;
+}
+
+.kuang1 {
+	display: block;
+	text-align: left;
+	width: 100px;
+	height: 28px;
+    border: 1px silver solid;
+    border-radius: 5px;
+    float: left;
+}
+
+.kuang2 {
+	display: block;
+	text-align: left;
+	width: 100px;
+	height: 28px;
+    border: 1px silver solid;
+    border-radius: 5px;
+    float: left;
+}
+
+.kuang3 {
+	display: block;
+	text-align: left;
+	width: 100px;
+	height: 28px;
+    border: 1px silver solid;
+    border-radius: 5px;
+    float: left;
+}
+.kuang4{
+	display: block;
+	text-align: left;
+	width: 100px;
+	height: 28px;
+    border: 1px silver solid;
+    border-radius: 5px;
+    float: left;
+}
+.kuang5 {
+	display: block;
+	text-align: left;
+	width: 100px;
+	height: 28px;
+    border: 1px silver solid;
+    border-radius: 5px;
+    float: left;
+}
+
+
+/*输入框*/
+.div01 {
+	position: absolute;
+	left: 10px;
+	top: 0px;
+}
+
+.div02 {
+	position: absolute;
+	left: 215px;
+	top: 0px;
+}
+.div0201{
+	position: absolute;
+	left: 385px;
+	top: 20px;
+}
+.div03 {
+	position: absolute;
+	left: 575px;
+	top: 5px;
+}
+.div0302 {
+	position: absolute;
+	left: 15px;
+	top: 135px;
+}
+.div04 {
+	position: absolute;
+	left: 215px;
+	top: 120px;
+}
+.div0402 {
+	position: absolute;
+	left: 385px;
+	top: 142px;
+}
+.div0402  .ll2{
+	position: absolute;
+	left: 40px;
+	top: 22px;
+}
+.div0402  .ll3{
+	position: absolute;
+	left: 240px;
+	top: 22px;
+}
+/*添加按钮*/
+.div3 {
+	position: absolute;
+	left: 295px;
+	top: 290px;
+}
+
+.button1 {
+	width: 100px;
+	height: 30px;
+	color: #ffffff;
+	background-color: #256FC3;
+	border: 1px solid #256FC3;
+	border-radius: 5px;
+	font-size: 15px;
+	font-family: '微软雅黑';
+	cursor: pointer;
+}
+/*添加内容区域*/
+.register-box {
+	width: 1200px;
+	height: 1305px;
+
+	color: #333333;
+	border-radius: 5px;
+	position: absolute;
+	top: 55px;
+	left: 0px;
+}
+input#days1.easyui-combobox.combobox-f.combo-f.textbox-f{
+	display:none;
+}

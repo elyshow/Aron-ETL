@@ -1,0 +1,73 @@
+<!--<div class="easyui-panel" data-options="fit:true,border:false">
+    <div class="easyui-layout" data-options="fit:true,border:false">
+         <div id="i_btn_second_southern" data-options="region:'north',border:false" style="height:50px">
+            <div class="nav_title">
+                <span>数据采集</span> >>
+                <span>采集节点</span>
+            </div>
+         </div>
+
+         <div data-options="region:'center',border:false" >
+             <div class="easyui-tabs" data-options="fit:true,showHeader:false,border:false">
+                 <div>
+                     <div id="collectNodeToolBar"  class="toolbar">
+                        <div style="margin-right:20px;float:right">
+                            <input id="collectNodeSearchBox" />
+                            <a data-hover="增加" title="增加" href="javascript:;" class="easyui-linkbutton" onclick="addCollectNode()" data-options="iconCls:'icon-add'"></a>
+                            <a data-hover="修改" title="修改" href="javascript:;" class="easyui-linkbutton" onclick="editCollectNode()" data-options="iconCls:'icon-edit'"></a>
+                            <a data-hover="删除" title="删除" href="javascript:;" class="easyui-linkbutton" onclick="delCollectNode()" data-options="iconCls:'icon-cancel'"></a>
+                        </div>
+                     </div>
+                    <table id="collectNodeList"></table>
+                 </div>
+             </div>
+         </div>
+    </div>
+</div>-->
+
+
+<div class="easyui-panel" title="<img src='/static/images/littlehouse.png' style='vertical-align:middle;margin:0 8px 0 35px;'/><span>您当前的位置：数据采集 > 采集节点</span><div class='datime' style='width:210px;height:16px;display:inline-block;float:right;margin-right:60px;'></div>" style="height:100%;height:100%;" style="background:#fff;">
+	<div class="easyui-layout" data-options = "fit:true">
+		<div class="bgQulity" data-options="region:'west',collapsible:false,width:'4%',border:false,bodyCls:'body_bg'">
+
+		</div>
+		<div class="bgQulity" data-options="region:'east',collapsible:false,width:'4%',border:false,bodyCls:'body_bg'">
+
+		</div>
+		<div class="bgQulity" data-options="region:'north',collapsible:false,width:'100%',height:'15px',border:false,bodyCls:'body_bg'">
+			
+		</div>
+		<div id="contentFluid" data-options="region:'center',collapsible:false,border:false,bodyCls:'body_bg',width:'92%'">
+			<div class="easyui-panel" data-options="fit:true,border:false">
+				<div class="easyui-layout" data-options="fit:true,border:false">
+					 <div id="i_btn_content" data-options="region:'north',border:false" style="height:50px;border-top:3px solid  #00a5a5">
+						<div class="nav_title">
+							<span>数据采集</span> >>
+							<span>采集节点</span>
+						</div>
+					 </div>
+
+					 <div data-options="region:'center',border:false" >
+						 <div class="easyui-tabs" data-options="fit:true,showHeader:false,border:false">
+							 <div>
+								 <div id="collectNodeToolBar"  class="toolbar">
+									<div style="margin-right:20px;float:right">
+										<input id="collectNodeSearchBox" />
+										<a href="javascript:;" class="easyui-linkbutton" onclick="addCollectNode()" data-options="iconCls:'icon-add'">增加</a>
+										<a href="javascript:;" class="easyui-linkbutton" onclick="editCollectNode()" data-options="iconCls:'icon-edit'">修改</a>
+										<a href="javascript:;" class="easyui-linkbutton" onclick="delCollectNode()" data-options="iconCls:'icon-cancel'">删除</a>
+									</div>
+								 </div>
+								<table id="collectNodeList"></table>
+							 </div>
+						 </div>
+					 </div>
+				</div>
+			</div>
+		</div>
+		<div class="bgQulity" data-options="region:'south',collapsible:false,border:false,bodyCls:'body_bg'" style="height:70px;">
+			<p style="margin:40px auto 0 auto;width:450px;text-align:center">Copyright © All Rights Reserved 建议使用1280*800分辨率，IE8.0以上浏览</p>
+		</div>
+	</div>						
+</div>
+

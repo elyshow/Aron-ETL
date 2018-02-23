@@ -1,0 +1,21 @@
+<div class="easyui-dialog" id="cleaningRulesDialog" data-options="title:'新增目录',width:500,height:200,buttons:'#cleaningRulesDialogBtn'" style="display:none">
+    <div id="cleaningRulesDialogBtn">
+        <a href="javascript:;" onclick="saveCleaningRules(this)" class="easyui-linkbutton bule_btn">确定</a>
+        <a href="javascript:;" onclick="$('#cleaningRulesDialog').dialog('close')" class="easyui-linkbutton white_btn">取消</a>
+    </div>
+    <form id="cleaningRulesForm" method="post">
+        <input type="hidden" name="save_type" />
+        <input type="hidden" name="id" />
+        <table border="0" cellpadding="0" cellspacing="0" class="dialog_table" style="margin-top: 15px;">
+            <tr>
+                <td>目录名称：</td>
+                <td><input class="easyui-validatebox textbox" name="cataloguename" id='cataname' data-options="required:true,validType:'username'" /></td>
+            </tr>
+            <tr>
+                <td>目录层级：</td>
+                <td><input  onfocus=this.blur() style="border:none;" id="combo_" data-options=" " name="typeparentid"/></td>
+            </tr>
+        </table>
+    </form>
+</div>
+

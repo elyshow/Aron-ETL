@@ -1,0 +1,22 @@
+<div class="easyui-panel" data-options="fit:true,border:false">
+    <div class="easyui-layout" data-options="fit:true,border:false">
+         <div data-options="region:'north',border:false" style="height:50px;">
+            <div class="nav_title">
+                <span>数据采集</span> >>
+                <span>采集任务</span> >>
+                <span>采集日志</span>
+            </div>
+         </div>
+         <div data-options="region:'center',border:false" >
+                    <table class="easyui-datagrid" data-options="toolbar:'#toolbar'," id="collectLogList">
+
+                        <div id="toolbar" class="toolbar">
+                            <span style="">当前所在节点：{{ domname }}</span>
+                             <div style="float:right;margin-right:20px;">
+                            <input id="runTaskSearchBox"/>
+                        </div>
+                            </div>
+                    </table>
+         </div>
+    </div>
+</div>

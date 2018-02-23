@@ -1,0 +1,24 @@
+{% extends 'base2.html' %}
+
+{% block title %}
+   接口日志
+{% endblock %}
+{% block js %}
+
+<script type="text/javascript" src="/static/js/app/InterfaceJournal/journal.js"></script>
+<script type="text/javascript" src="/static/js/app/date.js"></script>
+
+{% endblock %}
+{% block css %}
+
+	
+{% endblock %}
+{% block content %}
+
+{% include 'InterfaceJournal/journal_content.html' %}
+
+{% endblock %}
+{% block dialog %}
+ 
+   {% include 'InterfaceJournal/journal_dialog.html' %}
+{% endblock %}

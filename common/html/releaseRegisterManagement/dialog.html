@@ -1,0 +1,301 @@
+<div class="easyui-dialog" id="unRegisterResourceDialog" data-options="title:'注册资源',width:950,height:600,buttons:'#unRegisterResourceDialogBtn'" style="display:none">
+    <div id="unRegisterResourceDialogBtn">
+        <a href="javascript:;" id="saveRegisterBtn" class="easyui-linkbutton bule_btn">下一步</a>
+        <a href="javascript:;" onclick="$('#unRegisterResourceDialog').dialog('close')" class="easyui-linkbutton white_btn">取消</a>
+    </div>
+
+    <form id="unRegisterResourceForm" method="post" style="width:100%;height:100%;" data-options="url:'{% url 'saveRegisterResource' %}'">
+        <div class="easyui-tabs" id="unRegisterResourceDialogTab" data-options="border:false,fit:true">
+            <div data-options="title:'基本信息'">
+                <input type="hidden" id="releasetable" name="releasetable" />
+                <table border="0" cellpadding="0" cellspacing="0" class="dialog_table">
+                    <tr>
+                        <td>资源名称:</td>
+                        <td><input class="easyui-validatebox textbox" name="resourcename" data-options="required:true,validType:'username'" /></td>
+                    </tr>
+                    <tr>
+                        <td>业务分类:</td>
+                        <td><input class="easyui-validatebox textbox" name="businessClassification" data-options="required:true,"  /></td>
+                    </tr>
+                    <tr>
+                        <td>数据来源:</td>
+                        <td><input class="easyui-validatebox textbox" name="dataSource" data-options="required:true," /></td>
+                    </tr>
+                    <tr>
+                        <td>行业分类:</td>
+                        <td><input class="easyui-validatebox textbox" name="industryClassification" data-options="required:true," /></td>
+                    </tr>
+                    <tr>
+                        <td>要素一级分类:</td>
+                        <td><input class="easyui-validatebox textbox" name="eleOneClassification" data-options="required:true," /></td>
+                    </tr>
+                    <tr>
+                        <td>要素二级分类:</td>
+                        <td><input class="easyui-validatebox textbox" name="eleTwoClassification" data-options="required:true," /></td>
+                    </tr>
+                    <tr>
+                        <td>要素细目:</td>
+                        <td><input class="easyui-validatebox textbox" name="eleBreakDown" data-options="required:true," /></td>
+                    </tr>
+                    <tr>
+                        <td>更新周期:</td>
+                        <td><input class="easyui-validatebox textbox" name="updateCycle" data-options="required:true," /></td>
+                    </tr>
+                    <tr>
+                        <td>更新方式:</td>
+                        <td><input class="easyui-validatebox textbox" name="updateMode" data-options="required:true," /></td>
+                    </tr>
+                    <tr>
+                        <td>资源属性分类:</td>
+                        <td><input class="easyui-validatebox textbox" name="resourceAttrClassification" data-options="required:true," /></td>
+                    </tr>
+                    <tr>
+                        <td>来源系统:</td>
+                        <td><input class="easyui-validatebox textbox" name="sourceSystem" data-options="required:true," /></td>
+                    </tr>
+                    <tr>
+                        <td>资源事权单位:</td>
+                        <td><input class="easyui-validatebox textbox" name="sourceUnit" data-options="required:true," /></td>
+                    </tr>
+                </table>
+            </div>
+            <div data-options="title:'表字段选择',disabled:true">
+                <div class="easyui-layout" data-options="border:false,fit:true">
+                    <div data-options="region:'west',title:'请选择字段进行注册',collapsible:false,headerCls:'registerHeader'" style="width:45%;">
+                        <table data-options="url:'{% url 'getRegisterTableFieldList' %}'" id="unRegisterTableFieldList"  >
+                           <!-- <div id="unRegisterTableFieldToolBar" class="toolbar">
+                                <div>
+                                    <input id="unRegisterTableFieldSearch" style="width: 200px;" />
+                                    <a href="javascript:;" id="addUnRegisterResourceBtn" onclick="addUnRegisterResource()" class="easyui-linkbutton" data-options="iconCls:'icon-add'">注册</a>
+                                </div>
+                            </div>-->
+                        </table>
+                    </div>
+                    <div data-options="region:'center',">
+                        <div class="registerButton">
+                            <div>
+                                <a href="javascript:;" id="" onclick="leftToRight(false, false)" class="easyui-linkbutton" data-options="iconCls:'icon-redo'" ></a>
+                            </div>
+                            <div>
+                                <a href="javascript:;" id="" onclick="leftToRight(true, false)" class="easyui-linkbutton" data-options="iconCls:'icon-undo'"></a>
+                            </div>
+                            <div>
+                                <a href="javascript:;" id="" onclick="leftToRight(false, true)" class="easyui-linkbutton" data-options="iconCls:'icon-drag'"></a>
+                            </div>
+                            <div>
+                                <a href="javascript:;" id="" onclick="leftToRight(true, true)" class="easyui-linkbutton" data-options="iconCls:'icon-drag2'"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-options="region:'east',title:'请确认注册的字段',collapsible:false,headerCls:'registerHeader'" style="width:45%;">
+                        <table data-options="url:'{% url 'getRegisterTableFieldList' %}'" id="RegisterTableFieldList"  >
+                            <!--<div id="RegisterTableFieldToolBar" class="toolbar">
+                                <div>
+                                    <input id="RegisterTableFieldSearch" style="width: 200px;" />
+                                    <a href="javascript:;" id="addUnRegisterResourceBtn" onclick="addUnRegisterResource()" class="easyui-linkbutton" data-options="iconCls:'icon-add'">注册</a>
+                                </div>
+                            </div>-->
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<div class="easyui-dialog" id="registerResourceDialog" data-options="title:'发布资源',width:950,height:600,buttons:'#registerResourceDialogBtn'" style="display:none">
+    <div id="registerResourceDialogBtn">
+        <a href="javascript:;" id="savePublishBtn" class="easyui-linkbutton bule_btn">下一步</a>
+        <a href="javascript:;" onclick="$('#registerResourceDialog').dialog('close')" class="easyui-linkbutton white_btn">取消</a>
+    </div>
+
+    <form id="registerResourceForm" method="post" style="width:100%;height:100%;" data-options="url:'{% url 'PublishResource' %}'">
+        <input type="hidden" name="resourceid" class="easyui-validatebox textbox" style="border:none"  data-options="required:true,"/>
+        <div class="easyui-tabs" id="registerResourceDialogTab" data-options="border:false,fit:true">
+            <div data-options="title:'基本信息'">
+                <table border="0" cellpadding="0" cellspacing="0" class="dialog_table">
+                    <tr>
+                        <td>资源编号：</td>
+                        <td><input class="easyui-validatebox textbox" name="resourceNum" data-options="required:true," /></td>
+                        <td>资源名称：</td>
+                        <td><input class="easyui-validatebox textbox" name="resourcename" data-options="required:true," /></td>
+                    </tr>
+                    <tr>
+                        <td>行业信息：</td>
+                        <td><input class="easyui-validatebox textbox" name="industryInfo" data-options="required:true," /></td>
+                        <td>要素分类：</td>
+                        <td><input class="easyui-validatebox textbox" name="cadastre" data-options="required:true," /></td>
+                    </tr>
+                    <tr>
+                        <td>资源属性分类：</td>
+                        <td><input class="easyui-validatebox textbox" name="resourceAttrCatalog" data-options="required:true," /></td>
+                        <td>共享范围：</td>
+                        <td><input class="easyui-validatebox textbox" name="sharedScope" data-options="required:true," /></td>
+                    </tr>
+                    <tr>
+                        <td>共享地区：</td>
+                        <td><input class="easyui-validatebox textbox" name="sharedArea" data-options="required:true," /></td>
+                        <td>共享部门：</td>
+                        <td><input class="easyui-validatebox textbox" name="sharedDepartment" data-options="required:true," /></td>
+                    </tr>
+                    <tr>
+                        <td>共享方式：</td>
+                        <td><input class="easyui-validatebox textbox" name="sharedMode" data-options="required:true," /></td>
+                        <td>资源事权单位：</td>
+                        <td><input class="easyui-validatebox textbox" name="sourceUnit" data-options="required:true," /></td>
+                    </tr>
+                    <tr>
+                        <td>公安业务分类：</td>
+                        <td><input class="easyui-validatebox textbox" name="businessCatalog" data-options="required:true," /></td>
+                        <td>资源提供单位：</td>
+                        <td><input class="easyui-validatebox textbox" name="resourceProUnit" data-options="required:true," /></td>
+                    </tr>
+                    <tr>
+                        <td>更新方式：</td>
+                        <td><input class="easyui-validatebox textbox" name="updateMode" data-options="required:true," /></td>
+                    </tr>
+                    <tr>
+                        <td>更新周期和资源描述信息：</td>
+                        <td><input class="easyui-textbox" name="updateCycleAndDes" data-options="required:true,multiline:'4',height:78" /></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div data-options="title:'目录选择',disabled:true">
+                <div class="easyui-layout" data-options="border:false,fit:true">
+                    <div data-options="region:'west',title:'请选择目录进行发布',collapsible:false,headerCls:'registerHeader'" style="width:45%;">
+                        <table data-options="url:'{% url 'getCatalogueManagementTree' %}'" id="unPublishCatalogList"  >
+                           <!-- <div id="unRegisterTableFieldToolBar" class="toolbar">
+                                <div>
+                                    <input id="unRegisterTableFieldSearch" style="width: 200px;" />
+                                    <a href="javascript:;" id="addUnRegisterResourceBtn" onclick="addUnRegisterResource()" class="easyui-linkbutton" data-options="iconCls:'icon-add'">注册</a>
+                                </div>
+                            </div>-->
+                        </table>
+                    </div>
+                    <div data-options="region:'center',">
+                        <div class="registerButton">
+                            <div>
+                                <a href="javascript:;" id="" onclick="Publish(true)" class="easyui-linkbutton" data-options="iconCls:'icon-redo'" ></a>
+                            </div>
+                            <div>
+                                <a href="javascript:;" id="" onclick="Publish(false)" class="easyui-linkbutton" data-options="iconCls:'icon-undo'"></a>
+                            </div>
+                            <!--
+                            <div>
+                                <a href="javascript:;" id="" onclick="leftToRight(false, true)" class="easyui-linkbutton" data-options="iconCls:'icon-drag'"></a>
+                            </div>
+                            <div>
+                                <a href="javascript:;" id="" onclick="leftToRight(true, true)" class="easyui-linkbutton" data-options="iconCls:'icon-drag2'"></a>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div data-options="region:'east',title:'请确认发布的目录',collapsible:false,headerCls:'registerHeader'" style="width:45%;">
+                        <table data-options="url:'{% url 'getRegisterTableFieldList' %}'" id="publishCatalogList"  >
+                            <!--<div id="publishCatalogToolBar" class="toolbar">
+                                <div>
+                                    <input id="publishCatalogSearch" style="width: 200px;" />
+                                    <a href="javascript:;" id="addPublishCatalogBtn" onclick="addPublishCatalog()" class="easyui-linkbutton" data-options="iconCls:'icon-add'">注册</a>
+                                </div>
+                            </div>-->
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<!--
+
+<div class="easyui-dialog" id="cleaningRulesDialog2" data-options="title:'注册资源',width:950,height:680,buttons:'#cleaningRulesDialogBtn2'" style="display:none;">
+    <div id="cleaningRulesDialogBtn2">
+        <a href="javascript:saveFabu();" class="easyui-linkbutton bule_btn">确定发布</a>
+        <a href="javascript:;" onclick="$('#cleaningRulesDialog2').dialog('close')" class="easyui-linkbutton white_btn">取消发布</a>
+    </div>
+    <form id="cleaningRulesForm2" method="post">
+        <div class="laber_input6" style="padding-top:15px;padding-left:25px;">
+        <label>资源名称：</label>
+        <input type="hidden" name="resourceid" class="easyui-validatebox textbox" style="border:none"  data-options="required:true,"/>
+        <input class="easyui-validatebox textbox" style="border:none" name="resourcename" data-options="required:true," />
+        </div>
+
+		<!--新增的input输入框-->
+		<!--<table border="0" cellpadding="10" style="margin: 10px auto; border-spacing: 0;width:98%;">
+			<tr>
+				<td style="text-align: right;padding:0;width:14%;">编号：</td>
+				<td><input class="easyui-validatebox"/></td>
+				<td style="text-align: right;padding:0;width:14%;">资源名称：</td>
+				<td><input class="easyui-validatebox"/></td>
+				<td style="text-align: right;padding:0;width:14%;">行业信息：</td>
+				<td><input class="easyui-validatebox"/></td>
+			</tr>
+			<tr>
+				<td style="text-align: right;padding:0;width:14%;">要素分类：</td>
+				<td><input class="easyui-validatebox"/></td>
+				<td style="text-align: right;padding:0;width:14%;">资源属性分类：</td>
+				<td><input class="easyui-validatebox"/></td>
+				<td style="text-align: right;padding:0;width:14%;">共享范围：</td>
+				<td><input class="easyui-validatebox"/></td>
+			</tr>
+			<tr>
+				<td style="text-align: right;padding:0;width:14%;">共享地区：</td>
+				<td><input class="easyui-validatebox"/></td>
+				<td style="text-align: right;padding:0;width:14%;">共享部门：</td>
+				<td><input class="easyui-validatebox"/></td>
+				<td style="text-align: right;padding:0;width:14%;">共享方式：</td>
+				<td><input class="easyui-validatebox"/></td>
+			</tr>
+			<tr>
+				<td style="text-align: right;padding:0;width:14%;">资源事权单位：</td>
+				<td><input class="easyui-validatebox"/></td>
+				<td style="text-align: right;padding:0;width:14%;">公安业务分类：</td>
+				<td><input class="easyui-validatebox"/></td>
+				<td style="text-align: right;padding:0;width:14%;">资源提供单位：</td>
+				<td><input class="easyui-validatebox"/></td>
+			</tr>
+			<tr>
+				<td style="text-align: right;padding:0;width:14%;">更新方式：</td>
+				<td><input class="easyui-validatebox"/></td>
+				<td style="text-align: right;padding:0;">更新周期和资源描述信息：</td>
+				<td><input class="easyui-validatebox"/></td>
+			</tr>
+		</table>
+
+		<div>
+			<div class="laber_input4" style="padding-top:10px;padding-left:120px;display:inline-block;">
+			<b>请选择目录进行发布</b>
+			</div>
+			<div class="laber_input5" style=" position:absolute;top:290px;left:660px;display:inline-block;padding-top:35px;">
+			<b>请确认编目并发布</b>
+			</div>
+		</div>
+
+        <div  class="drag5" style="position:absolute;top:350px;left:30px;width: 360px;height: 400px;">
+        <table  class="easyui-treegrid" id="drag5" style="padding-top:10px;height: 400px;">
+        </table>
+        </div>
+
+        <div class="drag4" style="margin-top: -40px; position:absolute;top:390px;left:560px;">
+
+            <table class="easyui-datagrid"  id="drag4" style="padding-top:10px;height: 400px;" >
+            </table>
+        </div>
+    </form>
+
+        <div style="position:absolute;top:420px;left:450px;">
+            <a href="javascript:;" id="" onclick="leftToRight2(false, false)" class="easyui-linkbutton" data-options="iconCls:'icon-redo'" ></a>
+        </div>
+        <div style="position:absolute;top:460px;left:450px;">
+            <a href="javascript:;" id="" onclick="leftToRight2(true, false)" class="easyui-linkbutton" data-options="iconCls:'icon-undo'"></a>
+        </div>
+        <div style="position:absolute;top:500px;left:450px;">
+            <a href="javascript:;" id="" onclick="leftToRight2(false, true)" class="easyui-linkbutton" data-options="iconCls:'icon-drag'"></a>
+        </div>
+        <div style="position:absolute;top:540px;left:450px;">
+            <a href="javascript:;" id="" onclick="leftToRight2(true, true)" class="easyui-linkbutton" data-options="iconCls:'icon-drag2'"></a>
+        </div>
+
+</div> -->

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+<!-- 该页面不允许出现js以及css代码,content代码和dialog代码可直接写在本文件中，下面只是content的实例代码 -->
+{% block title %}
+    信息类型管理
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript" src="/static/js/app/codeStandard/dataTypeIndex.js"></script>
+    <script src="/static/js/app/index.js"></script>
+	<script type="text/javascript" src="/static/js/app/date.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/standardContent.css">
+{% endblock %}
+
+{% block css %}
+    <!-- 此处填充css链接 -->
+{% endblock %}
+
+{% block content %}
+    <!-- 此处填充右侧主体内容 -->
+    {% include 'codeStandard/dataTypeContent.html' %}
+{% endblock %}
+
+{% block dialog %}
+     <!-- 此处填充右dialog内容 -->
+    {% include 'codeStandard/codeDialog.html' %}
+{% endblock %}

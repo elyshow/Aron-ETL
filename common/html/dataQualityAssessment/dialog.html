@@ -1,0 +1,174 @@
+<div class="easyui-dialog" id="assDialog" data-options="title:'新增资源',width:600,height:400,buttons:'#addDialogBtn'" style="display:none">
+   <form id="assForm" method="post">
+    <div id="addDialogBtn">
+        <a href="javascript:addMet();" class="easyui-linkbutton bule_btn">确定</a>
+    </div>
+
+        <table border="0" cellpadding="0" cellspacing="0" class="dialog_table" >
+            <tr>
+                <td>资源中文名：</td>
+                <td><input class="easyui-validatebox textbox" data-options="required:true,validType:'username'" name="resourcechname"/></td>
+            </tr>
+            <tr>
+                <td>资源名：</td>
+                <td><input class="easyui-validatebox textbox" name="resourcename" data-options="required:true，validType:'name'" /></td>
+            </tr>
+             <tr>
+                <td>数据源：</td>
+                <td><input class="easyui-validatebox textbox" name="datasource" data-options="required:true" /></td>
+            </tr>
+             <tr>
+                <td>预定抽样数：</td>
+                <td><input class="easyui-validatebox textbox" name="samplingnumber" data-options="required:true" /></td>
+            </tr>
+
+             <tr>
+                <td>评估字段值：</td>
+                <td><input class="easyui-validatebox textbox" name="card" data-options="required:true" /></td>
+            </tr>
+             <tr>
+                <td>任务状态：</td>
+                <td><input class="easy-combobox"data-options=""id="combobox_type009" name="taskstate"/></td>
+            </tr>
+            <tr>
+                <td>评估状态：</td>
+                <td><input class="easy-combobox"data-options=""id="combobox_type008" name="evaluationstate"/></td>
+            </tr>
+             <tr>
+                <td>评估时间：</td>
+                <td><input class="easyui-datetimebox time" data-options=""style="width: 200px;" type="date" name="assesstime"/></td>
+            </tr>
+        </table>
+
+    </form>
+
+</div>
+
+
+
+<div class="easyui-dialog" id="changeMet" data-options="title:'修改',width:400,height:300,buttons:'#dialogBtn24546'"
+     style="left:500px;top:300px;display:none">
+    <form id="change_list" method="post">
+        <div id="dialogBtn24546">
+            <a href="javascript:table1Preserved();" class="easyui-linkbutton bule_btn">保存</a>
+        </div>
+        <table border="0" cellpadding="0" cellspacing="0" class="dialog_table">
+            <tr style="display: none">
+                <td>id：</td>
+                <td><input class="easyui-validatebox textbox idchange"
+                           name="idchange"/></td>
+            </tr>
+            <tr>
+                <td>资源中文名：</td>
+                <td><input class="easyui-validatebox textbox resourcechnamechange" data-options="required:true,"
+                           name="resourcechnamechange"/></td>
+            </tr>
+            <tr>
+                <td>资源名：</td>
+                <td><input class="easyui-validatebox textbox resourcenamechange" data-options="required:true,"
+                           name="resourcenamechange"/></td>
+            </tr>
+            <tr>
+                <td>数据来源：</td>
+                <td><input class="easyui-validatebox textbox datasourcechange" data-options="required:true,"
+                           name="datasourcechange"/></td>
+            </tr>
+            <tr>
+                <td>预定抽样数：</td>
+                <td><input class="easyui-validatebox textbox samplingnumberchange" data-options="required:true,"
+                           name="samplingnumberchange"/></td>
+            </tr>
+
+             <tr>
+                <td>评估字段值：</td>
+                <td><input class="easyui-validatebox textbox cardchange" data-options="required:true,"
+                           name="cardchange"/></td>
+            </tr>
+
+        </table>
+    </form>
+</div>
+
+<div class="easyui-dialog" id="detDialog" data-options="title:'详情页面',width:600,height:400,buttons:'#dialogBtn'" style="display:none">
+    <div id="dialogBtn">
+        <a href="javascript:met();"class="easyui-linkbutton bule_btn">确定</a>
+        <a href="javascript:;" class="easyui-linkbutton white_btn">取消</a>
+    </div>
+
+        <p>资源中文名：<input  data-options="" class="resourcechname">
+        </p>
+        <p>
+            资源名：<input class="resourcename" >
+        </p>
+        <p>
+            数据来源：<input class="datasource" >
+
+        </p>
+        <p>
+            预定抽样数：<input  class="samplingnumber" >
+
+        </p>
+            <p>
+            评估状态：<input class="evaluationstate" >
+
+        </p>
+        <p>
+            评估时间：<input  class="assesstime" >
+
+        </p>
+
+        <table  id="parameters">
+
+        </table>
+
+</div>
+
+
+
+
+<div class="easyui-dialog" id="logDialog" data-options="title:'查看日志',width:800,height:500,buttons:'#dialogBtn300'" style="display:none">
+
+    <table  class="easyui-datagrid" data-options="toolbar:'#lltoolbar'," id="Logassessment">
+
+        <div id="lltoolbar" class="toolbar">
+            <div style="float:right;margin-right:20px;">
+            关键字：<input id="logSearchBox" />
+                <a href="javascript:lasDel();" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">删除</a>
+            </div>
+        </div>
+    <div id="dialogBtn300">
+        <a href="javascript:bc();" class="easyui-linkbutton bule_btn">确定</a>
+        </div>
+
+    </table>
+
+</div>
+
+
+
+<div class="easyui-dialog" id="cheDialog" data-options="title:'查看执行结果',width:600,height:400,buttons:'#dialogBtn11111'" style="display:none">
+    <div id="dialogBtn11111">
+        <a href="javascript:che();"class="easyui-linkbutton bule_btn">测试</a>
+        <a href="javascript:;" class="easyui-linkbutton white_btn">取消</a>
+    </div>
+
+         <p>
+            数据源：<input  data-options="" class="datasource">
+         </p>
+         <p>
+             总记录数：<input class=""  >
+         </p>
+         <p>
+            评估对象：<input class="resourcename">
+         </p>
+         <p>
+            评估时间：<input class="assesstime">
+         </p>
+         <p>
+            实际抽样数：<input class="truesampling">
+         </p>
+         <table  id="Result">
+
+         </table>
+
+</div>

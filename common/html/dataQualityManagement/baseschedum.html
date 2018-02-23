@@ -1,0 +1,76 @@
+
+ <div class="nav_title">
+                <span>数据质量监测管理</span> >>
+                <span>基础监测方案</span> >>
+                <span>新增基础监测方案</span>
+ </div>
+             <form enctype="multipart/form-data" action="/baseschedum/add/" method="post" >
+
+<!-- 添加内容显示 -->
+			<div class="register-box">
+				<div class="div01">
+					<ul>
+                        <li><span class="ll">选择校验对象</span></li>
+						<li><label>数据源： </label><input class="easy-combobox" data-options="" name='datasource' id="combobox_type222"></li>
+						<li><label>请输入资源名：</label> <input class="easyui-textbox" id="" data-options=""style="width: 120px;"  name='keyword'/></li>
+					</ul>
+				</div>
+				<div class="div02">
+					<ul>
+                        <li><span class="ll">填写基本信息</span></li>
+						<li><label>方案名称： </label><input class="easyui-textbox" id="" data-options=""style="width: 120px;" name="schemename"/></li>
+						<li><label>校验字段： </label><input class="easyui-combobox" id="combo_type008"  data-options="" name="card"/></li>
+					</ul>
+                 </div>
+                <div class="div0201">
+                    <ul>
+                        <li><label>录入人： </label><input class="easyui-textbox" style="width: 120px;"  data-options="" name="inputperson"/></li>
+						<li><label>方案描述： </label><input class="easyui-textbox" id="" style="width: 120px;" data-options="" name="detail"/></li>
+                    </ul>
+				</div>
+				<div class="div03">
+					<ul>
+                        <li><span class="ll">添加校验规则</span></li>
+                        <li><label>规则名称：</label> <input class="easyui-textbox" id="" data-options=""style="width: 120px;"name="rulename"></li>
+						<li><label>校验方法：</label> <input class="easy-combobox" data-options="" id="combobox_type667"  name="methodname" ></li>
+					</ul>
+                 </div>
+                <div class="div0302">
+                    <ul>
+                        <li><label>规则类型：</label> <input class="easy-combobox" data-options="" id="combobox_type666"  name="ruletype" ></li>
+                        <li><label>校验字段： </label><input class="easyui-combobox" id="combo_type009"  data-options="" name="card"/></li>
+                    </ul>
+				</div>
+                <div class="div04">
+					<ul>
+                        <li><span class="ll">配置调度方案</span></li>
+						<li><label>调度计划：</label> <input class="easyui-combobox" id="combo_type010"  data-options="" name="schedumplan"/></li>
+						<li><label>执行时间：</label>  <input class="easyui-datetimebox time" data-options=""style="width: 120px;" type="date" name="dotime"/></li>
+					</ul>
+                 </div>
+                <div class="div0402">
+                    <ul>
+                        <div class="ll2">
+                            <li><label >开始时间：</label>  <input class="easyui-datetimebox time" data-options=""style="width: 120px;" type="date" name="starttime"/></li>
+                       </div>
+                        <div class="ll3">
+                            <li><label >结束时间：</label>  <input class="easyui-datetimebox time" data-options=""style="width: 120px;" type="date" name="endtime"/></li>
+                        </div>
+                    </ul>
+				</div>
+
+			<!-- 保存按钮 -->
+				<div class="div3">
+					<input style="width: 80px;" class="easyui-linkbutton" data-options="iconCls:'icon-save'" type="submit" value="保存" /> &nbsp;&nbsp;
+				</div>
+             </div>
+             </form>
+			 <div class="tuichu">
+				<form enctype="multipart/form-data" action="/dataQualityManagement/index/">
+				<input style="width: 80px;" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" type="submit" value="退出" />
+				</form>
+             </div>
+			</div>
+
+
+

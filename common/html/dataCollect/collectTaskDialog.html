@@ -1,0 +1,410 @@
+<div class="easyui-dialog" id="collectTaskDialog" data-options="width:800,height:600, buttons:'#collectTaskDialogBtn'" style="display:none">
+    <!-- 采集任务对话框 -->
+	<div id="collectTaskDialogBtn">
+		<a href="javascript:;" id="next_save" class="easyui-linkbutton bule_btn">下一步</a>
+        <!--a href="javascript:;" class="easyui-linkbutton reset" data-options=" ">重置</a-->
+        <a href="javascript:;" onclick="$('#collectTaskDialog').dialog('close')" class="easyui-linkbutton white_btn">取消</a>
+	</div>
+	<form id="collectTaskForm" method="post" style="width: 100%;height: 100%">
+		<input class="easyui-validatebox textbox" name="id" type="hidden"/>
+		<div id="collectTaskTab" class="easyui-tabs"  data-options="border:false,fit:true">
+            <div data-options="title:'基本信息'"><br>
+                <table border="0" cellpadding="0" cellspacing="0" class="dialog_table">
+                    <tr>
+                        <td>任务名称：</td>
+                        <td><input class="easyui-validatebox textbox" name="taskName" id="name" data-options="required:true" /></td>
+                    </tr>
+                    <tr>
+                        <td>采集源类型:</td>
+                        <td> <input class="easyui-combobox" name="taskType" id="collectTaskTypeCombobox" data-options="required:true" /></td>
+                    </tr>
+                    <tr>
+                        <td>所属机构：</td>
+                        <td><input class="easyui-combobox" id="belongInstitutionCombobox" data-options="required:true" name="belongInstitution"/></td>
+                    </tr>
+                    <tr>
+                        <td>所属类型：</td>
+                        <td><input class="easyui-combobox" id="belongTypeCombobox" data-options="required:true" name="belongType"/></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+	</form>
+
+
+    <div class="frequencySetting configFile" style="display: none">
+        <form style="width: 100%;height: 100%" method="post" id="collectTaskFileTypeTable" action="{% url 'testServer' %}">
+            <table class="dialog_table" border="0" cellpadding="0" cellspacing="0" id="">
+                <tr>
+                    <td width="151px">生成表名:</td>
+                    <td><input class="easyui-validatebox textbox" data-options="required:true" name="databaseTableName"/></td>
+                </tr>
+                <tr>
+                    <td>文件类型:</td>
+                    <td><input class="easyui-combobox" id="collectTaskFileTypeCombobox" data-options="
+                    required:true,
+                    valueField: 'value',
+                    textField: 'text',
+                    data: [{
+                        'value': 'xml',
+                        'text': 'XML'
+                    }, {
+                        'value': 'csv',
+                        'text': 'CSV'
+                    }, {
+                        'value': 'txt',
+                        'text': 'TXT'
+                    }, {
+                        'value': 'xls',
+                        'text': 'Excel(xls)'
+                    }, {
+                        'value': 'xlsx',
+                        'text': 'Excel(xlsx)'
+                    }]," name="fileType"/></td>
+                </tr>
+                <tr>
+                    <td>文件路径:</td>
+                    <td><input class="easyui-validatebox textbox" data-options="required:true" id="filePath" name="filePath"/></td>
+                </tr>
+                <tr>
+                    <td>用户名:</td>
+                    <td><input class="easyui-validatebox textbox"   name="username"/></td>
+                </tr>
+                <tr>
+                    <td>密码:</td>
+                    <td><input class="easyui-validatebox textbox" onfocus="this.type='password'" autocomplete="off"  name="password"/></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center"><a class="easyui-linkbutton" onclick="testServer()" id="testServer" title="点击测试服务是否可用">测试连接</a></td>
+                </tr>
+                <tr>
+                    <td>文本限定符:</td>
+                    <td><input  name="fieldLimitCode" id="fieldLimitCode" /></td>
+                </tr>
+                <tr>
+                    <td>字段分隔符:</td>
+                    <td><input name="fieldSplitCode" id="fieldSplitCode" /></td>
+                </tr>
+            </table>
+        </form>
+		<table class="dialog_table" border="0" cellpadding="0" style="height:98%;padding:0 40px 2% 40px" cellspacing="0" id="collectTaskAddPreviewTable">
+            <tr>
+                <td>选择根目录：</td>
+                <td><input id="fileRoot" name="fileRoot" data-options="url:'{% url 'getRootElement' %}',required:true"/></td>
+            </tr>
+            <tr>
+                <td>选择行：</td>
+                <td><input id="rowField" name="rowField" data-options="url:'{% url 'getRootElement' %}',required:true"/></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="background-color: #ff0000;height: 100%;width:100%">
+                    <table id="fileField" style="width:100%;height:100%"></table>
+                </td>
+            </tr>
+
+        </table>
+		
+		
+		<table class="dialog_table" border="0" cellpadding="0" cellspacing="0" id="collectTaskTimeScheduleTable">
+			<tr>
+				<td>调度计划：</td>
+				<td>
+					<input type="radio" class="checkbox_position"  name="timeType" checked="checked" value="1"  />固定时间
+					<input type="radio" class="checkbox_position"  name="timeType" value="2" />一次性
+					<input type="radio" class="checkbox_position"  name="timeType"  value="3" />手动
+					<input type="radio" class="checkbox_position"  name="timeType" value="4"  />间隔
+				</td>
+			</tr>
+			<tr class="month_day">
+				<td>执行周期：</td>
+				<td>
+					<input class="easyui-combobox" id="cycle" name="cycle" style="width:80px" data-options="onSelect:selectCycle,required:true,required:true,valueField:'value',textField:'text',data:[{value:1,text:'每月'},{value:2,text:'每周'},{value:3,text:'每天'}]" />
+					<input class="easyui-combobox" id="days" name="days" style="width:80px" data-options="required:true,valueField:'value',textField:'text', data:initComboBox(1, 31).concat([{'value':'lastDay','text':'最后一天'}]),"  /> <span class="words">日</span>
+					<input class="easyui-combobox" id="intervalDay" name="intervalDay" style="width:80px" data-options="required:true,valueField:'value',textField:'text', data:initComboBox(0, 8),"  /> <span class="words">天</span>
+					<input class="easyui-datetimebox" id="once_time" name="once_time" data-options="showSeconds:false,required:true" />
+				</td>
+			</tr>
+			<tr class="week_day" style="display:none;">
+				<td></td>
+				<td>
+					<input type="checkbox" class="checkbox_position"  name="week_day" value="0" />周日
+					<input type="checkbox" class="checkbox_position"  name="week_day" value="1" />周一
+					<input type="checkbox" class="checkbox_position"  name="week_day" value="2" />周二
+					<input type="checkbox" class="checkbox_position"  name="week_day" value="3" />周三
+					<input type="checkbox" class="checkbox_position"  name="week_day" value="4" />周四
+					<input type="checkbox" class="checkbox_position"  name="week_day" value="5" />周五
+					<input type="checkbox" class="checkbox_position"  name="week_day" value="6" />周六
+				</td>
+			</tr>
+			<tr class="play_time">
+				<td>执行时间：</td>
+				<td>
+					<input class="easyui-combobox" id="hours" name="hours" style="width:80px;" data-options="required:true,valueField:'value',textField:'text', data:initComboBox(0, 23)," /> 时
+					<input class="easyui-combobox" id="minutes" name="minutes" style="width:80px;"  data-options="required:true,valueField:'value',textField:'text', data:initComboBox(0, 59),"  /> 分
+				</td>
+			</tr>
+		</table>
+		
+		
+    </div>
+
+    <div class="frequencySetting configData" style="display: none">
+        <table class="dialog_table" border="0" cellpadding="0" cellspacing="0" id="collectTaskDataBaseTypeTable">
+            <tr>
+				<td>数据类型：</td>
+                <td><input class="easyui-combobox" id="collectTaskDataBaseTypeCombobox" data-options="
+					required:true,
+					valueField: 'value',
+					textField: 'text',
+					data: [{
+						value: 'mysql',
+						text: 'MySQL'
+					}, {
+						value: 'oracle',
+						text: 'Oracle'
+					}, {
+						value: 'sqlserver',
+						text: 'MS SQL Server'
+					}, {
+						value: 'dmsql',
+						text: 'DM SQL'
+					}, {
+						value: 'sybase',
+						text: 'Sybase'
+					}],
+					" name="databaseType"
+					
+					/>
+				</td>
+            </tr>
+
+            <tr>
+                <td>主机名称：</td>
+                <td><input class="easyui-validatebox textbox" name="databaseHostName" data-options="required:true," /></td>
+            </tr>
+            <tr>
+                <td>数据库名称：</td>
+                <td><input class="easyui-validatebox textbox" name="databaseName" data-options="required:true" /></td>
+            </tr>
+
+            <tr id="collectTaskDataBaseOracleTr1" style="display: none">
+                <td>数据表空间：</td>
+                <td><input class="easyui-validatebox textbox" name="dataTableSpace" data-options="" /></td>
+            </tr>
+            <tr id="collectTaskDataBaseOracleTr2" style="display: none">
+                <td>索引表空间：</td>
+                <td><input class="easyui-validatebox textbox" name="indexTableSpace" data-options="" /></td>
+            </tr>
+
+            <tr>
+                <td>端口号：</td>
+                <td><input class="easyui-validatebox textbox" name="databasePort" data-options="required:true," /></td>
+            </tr>
+            <tr>
+                <td>用户名：</td>
+                <td><input class="easyui-validatebox textbox" name="databaseUserName" data-options="required:true," /></td>
+            </tr>
+            <tr>
+                <td>密码：</td>
+                <td><input class="easyui-validatebox textbox" onfocus="this.type='password'" autocomplete="off" name="databasePassword" data-options="required:true" /></td>
+            </tr>
+
+            
+            <tr>
+                <td></td>
+                <td>
+                    <a href="javascript:testDataBaseConnect();" class="easyui-linkbutton close" data-options=" ">测试连接</a>
+                </td>
+            </tr>
+        </table>
+		
+		
+		<table class="dialog_table" border="0" cellpadding="0" cellspacing="0" id="collectTaskAddPreviewTable">
+            <tr>
+                <td>选择表：</td>
+                <td><input id="databaseTableName" name="databaseTableName" /></td>
+            </tr>
+            <tr>
+                <td>SQL预览：</td>
+                <td><input class="easyui-textbox" id="databaseCollectSQL" data-options="multiline:true, required:true" name="databaseCollectSQL" style="height:250px;"/></td>
+            </tr>
+            <tr>
+                <td>预览条数：</td>
+                <td><input class="easyui-numberbox" id="databasePreviewNum" name="databasePreviewNum" value="1000" data-options="min:0, required:true"/></td>
+            </tr>
+            <tr>
+                <td>设置增量采集方式:</td>
+                <td><input class="easyui-combobox" id="collectTaskCollectWayCombobox" name="collectWay" data-options="
+					required:true,
+					valueField: 'value',
+					textField: 'text',
+					data: [{
+						value: '0',
+						text: '全量'
+					}, {
+						value: '1',
+						text: '增量'
+					}],
+                    onSelect: function(record){
+                        $(this).combobox('checkSelect')
+                        if(record.value == '0'){
+                            $('#databaseIncrementField').parent().parent().hide()
+                            $('#databaseIncrementField').validatebox({required: false}).validatebox('disable');
+                        } else {
+                            $('#databaseIncrementField').parent().parent().show()
+                            $('#databaseIncrementField').validatebox('enable').validatebox({required: true});
+                        }
+                    }"/>
+				</td>
+            </tr>
+            <tr>
+                <td>增量字段：</td>
+                <td><input class="easyui-validatebox textbox" id="databaseIncrementField" name="databaseIncrementField" data-options="" /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <a href="javascript:previewDialog();" class="easyui-linkbutton">预览</a>
+                </td>
+            </tr>
+        </table>
+		
+		
+		<table class="dialog_table" border="0" cellpadding="0" cellspacing="0" id="collectTaskTimeScheduleTable">
+			<tr>
+				<td>调度计划：</td>
+				<td>
+					<input type="radio" class="checkbox_position"  name="timeType" checked="checked" value="1"  />固定时间
+					<input type="radio" class="checkbox_position"  name="timeType" value="2" />一次性
+					<input type="radio" class="checkbox_position"  name="timeType"  value="3" />手动
+					<input type="radio" class="checkbox_position"  name="timeType" value="4"  />间隔
+				</td>
+			</tr>
+			<tr class="month_day">
+				<td>执行周期：</td>
+				<td>
+					<input class="easyui-combobox" id="cycle" name="cycle" style="width:80px" data-options="onSelect:selectCycle,required:true,required:true,valueField:'value',textField:'text',data:[{value:1,text:'每月'},{value:2,text:'每周'},{value:3,text:'每天'}]" />
+					<input class="easyui-combobox" id="days" name="days" style="width:80px" data-options="required:true,valueField:'value',textField:'text', data:initComboBox(1, 31).concat([{'value':'lastDay','text':'最后一天'}]),"  /> <span class="words">日</span>
+					<input class="easyui-combobox" id="intervalDay" name="intervalDay" style="width:80px" data-options="required:true,valueField:'value',textField:'text', data:initComboBox(0, 8),"  /> <span class="words">天</span>
+					<input class="easyui-datetimebox" id="once_time" name="once_time" data-options="showSeconds:false,required:true" />
+				</td>
+			</tr>
+			<tr class="week_day" style="display:none;">
+				<td></td>
+				<td>
+					<input type="checkbox" class="checkbox_position"  name="week_day" value="0" />周日
+					<input type="checkbox" class="checkbox_position"  name="week_day" value="1" />周一
+					<input type="checkbox" class="checkbox_position"  name="week_day" value="2" />周二
+					<input type="checkbox" class="checkbox_position"  name="week_day" value="3" />周三
+					<input type="checkbox" class="checkbox_position"  name="week_day" value="4" />周四
+					<input type="checkbox" class="checkbox_position"  name="week_day" value="5" />周五
+					<input type="checkbox" class="checkbox_position"  name="week_day" value="6" />周六
+				</td>
+			</tr>
+			<tr class="play_time">
+				<td>执行时间：</td>
+				<td>
+					<input class="easyui-combobox" id="hours" name="hours" style="width:80px;" data-options="required:true,valueField:'value',textField:'text', data:initComboBox(0, 23)," /> 时
+					<input class="easyui-combobox" id="minutes" name="minutes" style="width:80px;"  data-options="required:true,valueField:'value',textField:'text', data:initComboBox(0, 59),"  /> 分
+				</td>
+			</tr>
+		</table>
+		
+    </div>
+
+    <div class="frequencySetting configService" style="display: none">
+        <table class="dialog_table" border="0" cellpadding="0" cellspacing="0" id="collectTaskWebServiceTable">
+            <tr>
+                <td><strong>Web Service 配置</strong></td>
+                <td></td>
+            </tr>
+        </table>
+		
+        <table class="dialog_table" border="0" cellpadding="0" cellspacing="0" id="collectTaskAddPreviewTable">
+            <tr>
+                <td><strong>添加表</strong></td>
+            </tr>
+            <tr>
+                <td>选择表：</td>
+                <td><input class="easyui-combobox" id="" name="choiceGrid"/></td>
+            </tr>
+            <tr>
+                <td>SQL预览：</td>
+                <td><input class="easyui-textbox" data-options="multiline:true" name="SQLpreview" style="height:100px;"/></td>
+            </tr>
+            <tr>
+                <td>预览条数：</td>
+                <td><input class="easyui-numberbox" name="numPreview" value="1000" data-options="min:0,"/></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <a href="javascript:previewDialog();" class="easyui-linkbutton">预览</a>
+                </td>
+            </tr>
+        </table>
+		
+		
+		<table class="dialog_table" border="0" cellpadding="0" cellspacing="0" id="collectTaskTimeScheduleTable">
+			<tr>
+				<td>调度计划：</td>
+				<td>
+					<input type="radio" class="checkbox_position"  name="timeType" checked="checked" value="1"  />固定时间
+					<input type="radio" class="checkbox_position"  name="timeType" value="2" />一次性
+					<input type="radio" class="checkbox_position"  name="timeType"  value="3" />手动
+					<input type="radio" class="checkbox_position"  name="timeType" value="4"  />间隔
+				</td>
+			</tr>
+			<tr class="month_day">
+				<td>执行周期：</td>
+				<td>
+					<input class="easyui-combobox" id="cycle" name="cycle" style="width:80px" data-options="onSelect:selectCycle,required:true,required:true,valueField:'value',textField:'text',data:[{value:1,text:'每月'},{value:2,text:'每周'},{value:3,text:'每天'}]" />
+					<input class="easyui-combobox" id="days" name="days" style="width:80px" data-options="required:true,valueField:'value',textField:'text', data:initComboBox(1, 31).concat([{'value':'lastDay','text':'最后一天'}]),"  /> <span class="words">日</span>
+					<input class="easyui-combobox" id="intervalDay" name="intervalDay" style="width:80px;" data-options="required:true,valueField:'value',textField:'text', data:initComboBox(0, 8),"  /> <span class="words">天</span>
+					<input class="easyui-datetimebox" id="once_time" name="once_time" data-options="showSeconds:false,required:true" />
+				</td>
+			</tr>
+			<tr class="week_day" style="display:none;">
+				<td></td>
+				<td>
+					<input type="checkbox" class="checkbox_position"  name="week_day" value="0" />周日
+					<input type="checkbox" class="checkbox_position"  name="week_day" value="1" />周一
+					<input type="checkbox" class="checkbox_position"  name="week_day" value="2" />周二
+					<input type="checkbox" class="checkbox_position"  name="week_day" value="3" />周三
+					<input type="checkbox" class="checkbox_position"  name="week_day" value="4" />周四
+					<input type="checkbox" class="checkbox_position"  name="week_day" value="5" />周五
+					<input type="checkbox" class="checkbox_position"  name="week_day" value="6" />周六
+				</td>
+			</tr>
+			<tr class="play_time">
+				<td>执行时间：</td>
+				<td>
+					<input class="easyui-combobox" id="hours" name="hours" style="width:80px;" data-options="required:true,valueField:'value',textField:'text', data:initComboBox(0, 23)," /> 时
+					<input class="easyui-combobox" id="minutes" name="minutes" style="width:80px;"  data-options="required:true,valueField:'value',textField:'text', data:initComboBox(0, 59),"  /> 分
+				</td>
+			</tr>
+		</table>
+		
+    </div>
+	 
+	<!--增加的 点击预览按钮弹出的表格面板-->
+	<div id="addPreviewData" style="display:none;">
+		<div id="collectTaskDataPanel">
+			<table id="collectTaskDataGrid">
+				
+			</table>
+		</div>
+	</div>
+	 
+</div>
+
+<div class="easyui-dialog" id="collectTaskLogDialog" data-options="title:'新增采集节点',width:600,height:400,buttons:'#collectTaskLogDialogBtn'" style="display:none">
+    <div id="collectTaskLogDialogBtn">
+        <!--a href="javascript:saveCollectDom();" class="easyui-linkbutton bule_btn">确定</a-->
+        <a href="javascript:$('#collectTaskLogDialog').dialog('close');" class="easyui-linkbutton white_btn">取消</a>
+    </div>
+    <table id="collectTaskLogList">
+
+    </table>
+</div>
+

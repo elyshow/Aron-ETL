@@ -1,0 +1,303 @@
+<div class="easyui-panel" data-options="fit:true,border:false">
+    <div class="easyui-layout" data-options="fit:true,border:false">
+         <div data-options="region:'north',border:false" style="height:50px;">
+            <div class="nav_title">
+                <span>数据质量检测</span>>>
+                <span>数据质量评估</span>
+
+            </div>
+         </div>
+        <div data-options="region:'center',border:false" >
+                   <table class="easyui-datagrid" data-options="toolbar:'#metToolBar'," id="Assess">
+                        <div id="metToolBar" class="toolbar">
+                            <form id="metDelForm" method="get">
+                            <div style="float:right;margin-right:20px;">
+                                 关键字：<input id="metSearchBox" />
+                                <a href="javascript:linkbutton_click('open_dialog',{dialog:'#assDialog'});" class="easyui-linkbutton" data-options="iconCls:'icon-add'">增加</a>
+                                <a href="javascript:changeMet();" class="easyui-linkbutton" data-options="iconCls:'icon-edit'">修改</a>
+                                <a href="javascript:metDel();" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">删除</a>
+                                <a href="javascript:linkbutton_click('open_dialog',{dialog:'#logDialog'});" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查看日志</a>
+                            </div>
+                            </form>
+                        </div>
+                   </table>
+        </div>
+    </div>
+</div>
+
+
+<script>
+$(function(){
+	$("#Assess").datagrid({
+		url:'/Assess/showData/',
+		toolbar:'#metToolBar',
+		method:'post',
+        autoRowHeight:true,
+		columns:[[
+			{field:'checkbox',checkbox:true},
+			{field:'resourcechname',title:'资源中文名',align:'center',width:'10%',},
+			{field:'resourcename',title:'资源名',align:'center',width:'10%',},
+			{field: 'datasource', title: '数据源',align:'center', width: '10%'},
+			{field:'samplingnumber',title:'预定抽样数',align:'center',width:'10%',},
+            {field: 'evaluationstate', title: '评估状态',align:'center', width: '15%',formatter: function(value,row,index){
+				if (value==0){
+					return '评估失败';
+				}
+				if (value==1)
+				{
+					return '评估成功';
+				}}
+            },
+			{field:'assesstime',title:'评估时间',align:'center',width:'20%',},
+			{field:'oper',title:'操作',align:'center',width:'25%',formatter:stateFunc},
+		]],  onLoadSuccess:function(){
+             // 图标
+            $('.runNow3').linkbutton({
+					iconCls: 'icon-tip'
+				});
+				stateButton()
+    },
+	})
+    $("#combobox_type3").combobox({
+        width:130,
+        valueField:'id',
+        textField:"text",
+        data:[{
+            "id": 1,
+            "text": "正在评估"
+        }, {
+            "id": 2,
+            "text": "等待评估"
+        }, {
+            "id": 3,
+            "text": "评估成功"
+        }, {
+            "id": 4,
+            "text": "评估失败"
+        },{
+            "id":5,
+            "text":"评估取消"
+        },{
+            "id":6,
+            "text":"全部"
+        },
+        ],
+    })
+
+	 $('#metSearchBox').searchbox({
+        prompt:'请输入资源中文名查询',
+        height:24,
+        width:200,
+        searcher:function(v,n){
+           $('#Assess').datagrid('load', {condition:v,type:1});
+			// console.log(v);
+			// console.log('111');
+        }
+    })
+
+})
+
+
+function stateFunc(v,r,i){
+	str = ''
+    if(r.taskstate == '2'  ){
+		str = '<a class="runNow3" href="javascript:;" onclick="runNow3(\''+r.id+'\')" data-options="" style="margin:8px 5px;">立即执行</a>'
+	}
+    return str;
+}
+
+function stateButton(){
+    var dataAll = $('#Assess').datagrid('getSelected');
+}
+
+
+//立即执行
+function runNow3(dataid){
+	$.get('/assess/runNow3/',{data:dataid},function (ret) {
+		$('#Assess').datagrid('reload')
+		
+	
+	})
+}
+
+$(function () {
+	$("#combobox_type009").combobox({
+		width: 200,
+		valueField: 'id',
+		textField: "text",
+		data: [{
+			"id": "2",
+			"text": "启用"
+		}
+		],
+	})
+})
+
+
+$(function () {
+	$("#combobox_type008").combobox({
+		width: 200,
+		valueField: 'id',
+		textField: "text",
+		data: [{
+			"id": "1",
+			"text": "评估"
+		}
+		],
+	})
+})
+
+
+//前台增加方法
+function addMet() {
+	$("#assForm").form('submit', {
+		url: "/Assess/addData/",
+		onSubmit: function () {
+					console.log(12)
+			return true
+		},
+		success: function (data) {
+			$("#assDialog").dialog('close');
+			$("#Assess").datagrid('reload');
+		}
+	});
+}
+//前台删除方法
+function metDel() {
+	var data = $("#Assess").datagrid('getSelections');
+	if(data.length == 0){
+		$.messager.alert('警告','请至少选择一条数据','warning');
+		// return false;
+	}
+	else{
+	$.messager.confirm('确认删除框','是否确定删除选中记录?',function(ok){
+		if(ok){
+			var ids = '';
+			for (var i in data){
+				ids += data[i].id + ',';
+			}
+			ids = ids.substr(0, ids.length -1);
+			$.get('/Assess/delData/',{data:ids},function(msg){
+				$("#Assess").datagrid('reload');
+			})
+		}
+	})
+		}
+}
+//前台修改方法
+function changeMet() {
+	var row=$("#Assess").datagrid('getSelections');
+	if(row.length==0||row.length>1) {
+		$.messager.confirm('警告', '请选择一条数据', 'warning');
+	}
+		else{
+		linkbutton_click('open_dialog',{dialog:'#changeMet'});
+        $('.idchange').val(row[0].id);
+		$('.resourcechnamechange').val(row[0].resourcechname);
+		$('.resourcenamechange').val(row[0].resourcename);
+		console.log(row[0].resourcename)
+		$('.datasourcechange').val(row[0].datasource);
+		$('.samplingnumberchange').val(row[0].samplingnumber);
+        $('.cardchange').val(row[0].card);
+
+	}
+}
+//前台修改方法
+function table1Preserved() {
+	// console.log(222)
+	$('#change_list').form('submit', {
+		url: "/Assess/changeMet/",
+		onSubmit: function () {
+			return true
+		},
+		success: function (data) {
+			$('#changeMet').dialog('close');
+			$('#Assess').datagrid('reload');
+		}
+	});
+}
+
+//查看日志
+$(function() {
+    $("#Logassessment").datagrid({
+        url: '/Logassessment/loadList/',
+        toolbar:'#llToolBar',
+        autoRowHeight: true,
+        columns: [[
+            {field:'checkbox',checkbox:true},
+            {field: 'datasource', title: '数据源', align: 'center', width: '20%',},
+            {field: 'resourcename', title: '资源名', align: 'center', width: '15%',},
+            {field: 'resourcechname', title: '资源中文名', align: 'center', width: '15%',},
+            {field: 'truesampling', title: '实际抽样数', align: 'center', width: '15%'},
+            {field: 'assesstime', title: '评估时间', align: 'center', width: '20%',},
+            {field: 'taskstate', title: '评估结果', align: 'center', width: '20%',},
+        ]],
+    })
+    	 $('#logSearchBox').searchbox({
+        prompt:'请输入资源名搜索',
+        height:20,
+        width:150,
+        searcher:function(v,n){
+           $('#Logassessment').datagrid('load', {condition:v,type:1});
+			// console.log(v);
+			// console.log('111');
+        }
+    })
+
+})
+//前台检测方法
+function metCheck() {
+	var row=$("#Logassessment").datagrid('getSelections');
+    linkbutton_click('open_dialog',{dialog:'#cheDialog'});
+    $('.datasource').val(row[0].datasource);
+	$('.resourcename').val(row[0].resourcename);
+	$('.assesstime').val(row[0].assesstime);
+    $('.truesampling').val(row[0].truesampling);
+}
+
+function bc() {
+	$("#logDialog").dialog('close');
+	$("#Logassessment").datagrid('reload');
+}
+//检测对话框中的列表
+$(function() {
+	$("#Result").datagrid({
+		url: '/Result/loadList2/',
+		autoRowHeight: true,
+		columns: [[
+			{field: 'fieldname', title: '字段名', align: 'center', width: '10%',},
+			{field: 'type', title: '类型', align: 'center', width: '10%',},
+			{field: 'completeness', title: '完整性', align: 'center', width: '15%',},
+			{field: 'uniqueness', title: '唯一性', align: 'center', width: '15%', },
+			{field: 'valuerange', title: '值范围', align: 'center', width: '10%',},
+			{field: 'lengthrange', title: '长度范围', align: 'center', width: '15%',},
+			{field: 'zifucharacter', title: '字符特征', align: 'center', width: '15%',},
+		]],
+	})
+})
+
+    //日志删除方法
+function lasDel() {
+	var data = $("#Logassessment").datagrid('getSelections');
+	if(data.length == 0){
+		$.messager.alert('警告','请至少选择一条数据','warning');
+		// return false;
+	}
+	else{
+	$.messager.confirm('确认删除框','是否确定删除选中记录?',function(ok){
+		if(ok){
+			var ids = '';
+			for (var i in data){
+				ids += data[i].id + ',';
+			}
+			ids = ids.substr(0, ids.length -1);
+			$.get('/assess/delData02/',{data:ids},function(msg){
+				$("#Logassessment").datagrid('reload');
+			})
+		}
+	})
+		}
+}
+
+</script>
+

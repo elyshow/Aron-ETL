@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    资源目录
+{% endblock %}
+{% block js %}
+<script type="text/javascript" src="/static/js/app/dataProfile/dataprofile.js"></script>
+<script type="text/javascript" src="/static/js/app/date.js"></script>
+	
+{% endblock %}
+{% block css %}
+
+	<link rel="stylesheet" type="text/css" href="/static/css/dataProfile/dataprofile.css">
+{% endblock %}
+{% block content %}
+
+	{% include 'dataProfile/dataprofile_content.html' %}
+
+{% endblock %}
+{% block dialog %}
+ 
+   {#% include 'home/dialog.html' %#}
+{% endblock %}

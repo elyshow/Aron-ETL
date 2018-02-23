@@ -1,0 +1,72 @@
+<div class="easyui-dialog" id="recognizedialog" data-options="title:'机构信息',width:400,height:250,buttons:'#recdialogBtn'" style="display:none">
+    <div id="recdialogBtn">
+        <a href="javascript:recognSub();" class="easyui-linkbutton bule_btn">确定</a>
+        <a href="javascript:recognizeClose();" class="easyui-linkbutton white_btn">取消</a>
+    </div>
+
+    <form id="recognizeForm" method="post">
+        <input type="hidden" name="save_type" />
+        <table border="0" cellpadding="0" cellspacing="0" class="dialog_table">
+
+            <tr style="display:none">
+                <td>id：</td>
+                <td><input name="id" id="id"/></td>
+            </tr>
+            <tr>
+                <td>机构名称：</td>
+                <td><input class="easyui-validatebox textbox" data-options="required:true,validType:'username'" id="recognName" name="recognName"/></td>
+            </tr>
+            <tr>
+                <td>机构编号：</td>
+                <td><input class="easyui-validatebox textbox" data-options="" id="recognNumber" name="recognNumber" /></td>
+            </tr>
+            <tr>
+                <td>机构简称：</td>
+                <td><input class="easyui-validatebox textbox" data-options="" id="recognSimple" name="recognSimple"/></td>
+            </tr>
+            <tr>
+                <td>机构性质：</td>
+                <td><input class="combo_recognize" id="combo_recognize" data-options=" " name="nature"/></td>
+            </tr>
+
+        </table>
+    </form>
+</div>
+
+<div class="easyui-dialog" id="dataTypedialog" data-options="title:'信息类型管理',width:400,height:300,buttons:'#datadialogBtn'" style="display:none">
+    <div id="datadialogBtn">
+        <a href="javascript:dataTypeAdd();" class="easyui-linkbutton bule_btn">确定</a>
+        <a href="javascript:dataClose();" class="easyui-linkbutton white_btn">取消</a>
+    </div>
+    <form id="dataTypeForm" method="post">
+        <input type="hidden" name="save_type" />
+        <table border="0" cellpadding="0" cellspacing="0" class="dialog_table">
+            <tr style="display:none">
+                <td>dataid：</td>
+                <td><input id="dataid" name="dataid"/></td>
+            </tr>
+            <tr>
+                <td>信息名称：</td>
+                <td><input class="easyui-validatebox textbox" data-options="required:true," id="dataname" name="dataname"/></td>
+            </tr>
+            <tr>
+                <td>关键字：</td>
+                <td><input class="easyui-validatebox textbox" data-options="" id="mainWord" name="mainWord" /></td>
+            </tr>
+            <tr>
+                <td>标准代码：</td>
+                <td><input class="easyui-validatebox textbox" data-options="" id="standardCode" name="standardCode"/></td>
+            </tr>
+            <tr>
+                <td>所属分类：</td>
+                <td><input class="easyui-validatebox textbox" id="classify" data-options=" " name="classify"/></td>
+            </tr>
+            <tr>
+                <td>使用单位：</td>
+                <td><input class="easyui-validatebox textbox" id="useRcognize" data-options=" " name="useRcognize"/></td>
+            </tr>
+
+        </table>
+    </form>
+</div>
+

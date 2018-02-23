@@ -1,0 +1,42 @@
+.sub_tabs .tabs{
+	border:none;
+}
+.sub_tabs .tabs li{margin:0 -1px -1px 0;}
+.sub_tabs .tabs li a.tabs-inner{
+	border:1px solid #4d4d4d;
+	background:none;
+	padding: 0px 15px;
+    border-radius: 0;
+}
+.sub_tabs .tabs li a.tabs-inner:hover{
+	background:#4d4d4d;
+    color:#ffffff;
+    border:1px solid #4d4d4d;
+}
+.sub_tabs .tabs li.tabs-selected a.tabs-inner{
+	background:#4d4d4d;
+    color:#ffffff;
+    border:1px solid #4d4d4d;
+}
+.tabs li.tabs-first{
+	margin-left:10px;
+}
+
+
+.datagrid-header-rownumber, .datagrid-cell-rownumber{
+    height:32px;
+    width:60px;
+	text-align:center;
+	line-height:32px;
+}
+
+.icon-drag{
+    background:url('../../images/drag.png') center center no-repeat;
+    background-size:16px 16px;
+    margin-top:-6px;
+}
+.icon-drag2{
+    background:url('../../images/drag2.png') center center no-repeat;
+    background-size:16px 16px;
+    margin-top:-6px;
+}

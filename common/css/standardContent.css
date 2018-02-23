@@ -1,0 +1,7 @@
+.tabs-header{
+    border:none;
+}
+input#insideIdenti.easyui-validatebox.textbox.validatebox-text.validatebox-invalid{
+    width:545px;
+}
+input#samilarName,input#definedIntro,input#constraint,input#relation,input#valueRange,input#state

@@ -1,0 +1,156 @@
+<!--<div class="easyui-panel" data-options="fit:true,border:false">
+    <div class="easyui-layout" data-options="fit:true,border:false">
+         <div data-options="region:'north',border:false" style="height:50px;">
+            <div class="nav_title">
+                <span>数据资源管理</span> >>
+                <span>注册发布管理</span>
+            </div>
+         </div>
+         <div data-options="region:'center',border:false" >
+            <div class="easyui-tabs" data-options="border:false,fit:true,tabHeight:50,plain:true" id="regAndReleaseTab">
+                <div data-options="title:'注册'">
+                    <div class="easyui-layout" data-options="border:true,fit:true,">
+                        <div data-options="region:'west',border:true,width:162">
+                            <div class="easyui-panel" data-options="fit:true,border:true,title:'资源树',headerCls:'panel_header'">
+                                <div id="unRegisterResourceTreeList" data-options="url:'{% url 'getResourceTreeData' %}'">
+                                </div>
+                            </div>
+                        </div>
+                        <div data-options="region:'center',border:false">
+                            <table data-options="url:'{% url 'getUnRegisterDataList' %}'" id="unRegisterResourceDataList"  >
+                                <div id="unRegisterResourceToolBar" class="toolbar">
+                                    <div style="float:right;margin-right:20px;">
+                                        <input id="unRegisterResourceSearch" style="width: 200px;" />
+                                        <a data-hover="注册" title="注册" href="javascript:;" id="addUnRegisterResourceBtn" onclick="addUnRegisterResource()" class="easyui-linkbutton" data-options="iconCls:'icon-add'"></a>
+                                    </div>
+                                </div>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-options="title:'发布'">
+                    <table data-options="url:'{% url 'getRegisterDataList' %}'" id="registerResourceDataList">
+                        <div id="registerResourceToolBar" class="toolbar">
+                            <div style="float:right">
+                                <input id="registerResourceSearch" style="width: 200px;" >
+                                <a data-hover="发布" title="发布" href="javascript:;" id="addRegisterResourceBtn" onclick="addRegisterResource()" class="easyui-linkbutton" data-options="iconCls:'icon-add'"></a>
+                                <a data-hover="取消注册" title="取消注册" href="javascript:;" id="cancelRegisterResourceBtn" onclick="cancelRegisterResource()"  class="easyui-linkbutton" data-options="iconCls:'icon-edit'"></a>
+                            </div>
+                        </div>
+                     </table>
+                </div>
+
+                <div data-options="title:'已发布'">
+                    <div class="easyui-layout" data-options="border:false,fit:true,">
+                        <div data-options="region:'west',border:false,width:162">
+                            <div class="easyui-panel" data-options="fit:true,border:true,title:'编目树',headerCls:'panel_header'">
+                                <div id="publishResourceTreeList" data-options="url:'{% url 'getCatalogueManagementTree' %}'">
+                                </div>
+                            </div>
+                        </div>
+                        <div data-options="region:'center',border:false">
+                            <table class="easyui-datagrid" data-options="url:'{% url 'getPublishDataList' %}'" id="publishResourceDataList"  >
+                                <div id="publishResourceToolbar" class="toolbar">
+                                    <div style="float:right;margin-right:20px;">
+                                        <input id="publishResourceSearch" style="width: 200px;" />
+                                        <a data-hover="取消" title="取消" href="javascript:;" id="cancelPublishResourceBtn" onclick="cancelPublishResource()" class="easyui-linkbutton" data-options="iconCls:'icon-edit'"></a>
+                                    </div>
+                                </div>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+
+<div class="easyui-panel" title="<img src='/static/images/littlehouse.png' style='vertical-align:middle;margin:0 8px 0 35px;'/><span>您当前的位置：数据资源管理 > 注册发布管理</span><div class='datime' style='width:210px;height:16px;display:inline-block;float:right;margin-right:60px;'></div>" style="height:100%;height:100%;" style="background:#fff;">
+	<div class="easyui-layout" data-options = "fit:true">
+		<div class="bgQulity" data-options="region:'west',collapsible:false,width:'4%',border:false,bodyCls:'body_bg'">
+
+		</div>
+		<div class="bgQulity" data-options="region:'east',collapsible:false,width:'4%',border:false,bodyCls:'body_bg'">
+
+		</div>
+		<div class="bgQulity" data-options="region:'north',collapsible:false,width:'100%',height:'15px',border:false,bodyCls:'body_bg'">
+			
+		</div>
+		<div id="contentFluid" data-options="region:'center',collapsible:false,border:false,bodyCls:'body_bg',width:'92%'">
+			
+			<div class="easyui-panel" data-options="fit:true,border:false">
+				<div class="easyui-layout" data-options="fit:true,border:false">
+					 <div id="i_btn_fourth_southern" data-options="region:'north',border:false" style="height:40px;border-top:3px solid #00a6a6;">
+						<div class="nav_title" style="height:36px">
+							<span>数据资源管理</span> >>
+							<span>注册发布管理</span>
+						</div>
+					 </div>
+					 <div data-options="region:'center',border:false" >
+						<div class="easyui-tabs" data-options="border:false,fit:true,tabHeight:50,plain:true" id="regAndReleaseTab">
+							<div data-options="title:'注册'">
+								<div class="easyui-layout" data-options="border:true,fit:true,">
+									<div data-options="region:'west',border:true,width:162">
+										<div class="easyui-panel" data-options="fit:true,border:true,title:'资源树',headerCls:'panel_header'">
+											<div id="unRegisterResourceTreeList" data-options="url:'{% url 'getResourceTreeData' %}'">
+											</div>
+										</div>
+									</div>
+									<div data-options="region:'center',border:false">
+										<table data-options="url:'{% url 'getUnRegisterDataList' %}'" id="unRegisterResourceDataList"  >
+											<div id="unRegisterResourceToolBar" class="toolbar">
+												<div style="float:right;margin-right:20px;">
+													<input id="unRegisterResourceSearch" style="width: 200px;" />
+													<a data-hover="注册" title="注册" href="javascript:;" id="addUnRegisterResourceBtn" onclick="addUnRegisterResource()" class="easyui-linkbutton" data-options="iconCls:'icon-add'"></a>
+												</div>
+											</div>
+										</table>
+									</div>
+								</div>
+							</div>
+
+							<div data-options="title:'发布'">
+								<table data-options="url:'{% url 'getRegisterDataList' %}'" id="registerResourceDataList">
+									<div id="registerResourceToolBar" class="toolbar">
+										<div style="float:right">
+											<input id="registerResourceSearch" style="width: 200px;" >
+											<a data-hover="发布" title="发布" href="javascript:;" id="addRegisterResourceBtn" onclick="addRegisterResource()" class="easyui-linkbutton" data-options="iconCls:'icon-add'"></a>
+											<a data-hover="取消注册" title="取消注册" href="javascript:;" id="cancelRegisterResourceBtn" onclick="cancelRegisterResource()"  class="easyui-linkbutton" data-options="iconCls:'icon-edit'"></a>
+										</div>
+									</div>
+								 </table>
+							</div>
+
+							<div data-options="title:'已发布'">
+								<div class="easyui-layout" data-options="border:false,fit:true,">
+									<div data-options="region:'west',border:false,width:162">
+										<div class="easyui-panel" data-options="fit:true,border:true,title:'编目树',headerCls:'panel_header'">
+											<div id="publishResourceTreeList" data-options="url:'{% url 'getCatalogueManagementTree' %}'">
+											</div>
+										</div>
+									</div>
+									<div data-options="region:'center',border:false">
+										<table class="easyui-datagrid" data-options="url:'{% url 'getPublishDataList' %}'" id="publishResourceDataList"  >
+											<div id="publishResourceToolbar" class="toolbar">
+												<div style="float:right;margin-right:20px;">
+													<input id="publishResourceSearch" style="width: 200px;" />
+													<a data-hover="取消" title="取消" href="javascript:;" id="cancelPublishResourceBtn" onclick="cancelPublishResource()" class="easyui-linkbutton" data-options="iconCls:'icon-edit'"></a>
+												</div>
+											</div>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<div class="bgQulity" data-options="region:'south',collapsible:false,border:false,bodyCls:'body_bg'" style="height:70px;">
+			<p style="margin:40px auto 0 auto;width:450px;text-align:center">Copyright © All Rights Reserved 建议使用1280*800分辨率，IE8.0以上浏览</p>
+		</div>
+	</div>						
+</div>

@@ -1,0 +1,19 @@
+<div class="easyui-dialog" id="tableDetailDialog" data-options="width:800,height:680,buttons:'#tableDetailDialogBtn'" style="display:none">
+    <div id="tableDetailDialogBtn">
+        <!--<a href="javascript:;" id="next_save" class="easyui-linkbutton bule_btn">下一步</a> -->
+        <a href="javascript:;" onclick="$('#tableDetailDialog').dialog('close')" class="easyui-linkbutton white_btn">取消</a>
+    </div>
+    <div class="easyui-layout" data-options="fit:true,">
+        <div data-options="region:'west',collapsible:false,title:'资源基本信息',headerCls:'registerHeader'" style="width:29%">
+            <table id="ResourceAttr" data-options="fit:true,url:'{% url 'getResourceAttr' %}'">
+
+            </table>
+        </div>
+        <div data-options="region:'east',collapsible:false,title:'资源字段信息',headerCls:'registerHeader'" style="width:70%">
+            <table id="ResourceFieldList" data-options="url:'{% url 'getResourceField' %}'">
+
+            </table>
+        </div>
+        <div data-options="region:'center'"></div>
+    </div>
+</div>

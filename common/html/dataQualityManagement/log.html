@@ -1,0 +1,24 @@
+<div class="easyui-panel" data-options="fit:true,border:false">
+    <div class="easyui-layout" data-options="fit:true,border:false">
+         <div data-options="region:'north',border:false" style="height:50px;">
+            <div class="nav_title">
+                <span>数据质量监测管理</span> >>
+                <span>查看监测日志</span>
+            </div>
+         </div>
+        <div data-options="region:'center',border:false" >
+                   <table class="easyui-datagrid" data-options="toolbar:'#metToolBar'," id="log">
+                        <div id="logToolBar2" class="toolbar">
+                            <form id="logDelForm" method="post">
+                            <div style="float:right;margin-right:20px;">
+                                关键字：<input id="logSearchBox2" />
+                                <a href="javascript:logDel();" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">删除</a>
+                            </div>
+                            </form>
+                        </div>
+
+                   </table>
+
+         </div>
+     </div>
+</div>

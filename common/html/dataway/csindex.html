@@ -1,0 +1,82 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查询接口</title>
+    <script type="application/javascript" src="{% static 'js/libs/jquery.min.js' %}"></script>
+</head>
+<body>
+
+<!--  测试报错方法  -->
+<!--    <form action="/dataway/csdef/" method="post" >
+        <input type="submit" value="测试报错方法">
+        <input type="text" name="tablename">
+    </form>-->
+
+<!--  测试共享数据接口  -->
+    <form id="searchData">
+        {% for c in conditions %}
+            {{c.lebal}}:<input type='text' name="{{c.name}}" /><br />
+        {% endfor %}
+        开始位置:<input type="text" name="start" value="0" /><br />
+        结束位置:<input type="text" name="end"   value ="10" /><br />
+        <input type="hidden" name="idapi" value="{{idapi}}" />
+        <!--input type="submit" value="测试共享数据接口">
+        datawayapi
+        <input type="text" name="datawayapi">
+        username
+        <input type="text" name="username">
+        password
+        <input type="text" name="password">
+        condition1
+        <input type="text" name="condition1">
+        condition2
+        <input type="text" name="condition2">
+        condition3
+        <input type="text" name="condition3">
+        condition4
+        <input type="text" name="condition4">
+        condition5
+        <input type="text" name="condition5">-->
+        <input type="button" onclick="getData()" value="开始查询" />
+    </form>
+    <div id="aaaa"></div>
+</body>
+<script>
+function getData(){
+    var data = $('#searchData').serializeArray(),object = {}
+    for(var i in data){
+        object[data[i]['name']] = data[i]['value']
+    }
+    console.log(object)
+    object = JSON.stringify(object)
+    console.log(object)
+    $.post('/dataway/resourceSharing/',{data:object},function(msg){
+        var head = msg.head
+        var body = msg.body
+        var html ='<table>'
+        msg = body
+        jsonMsg = JSON.stringify(msg, null, '\t')
+        html +='<tr>'
+        for(var i in head)
+            html += '<th>'+ head[i] +'</th>'
+        html +='</tr>'
+        for(var i = 0; i< msg.length; i++){
+            html += "<tr>"
+            for(var j in head){
+                    if(msg[i][head[j]] == null)
+                        html +="<td></td>"  
+                    else
+                        html +="<td>" + msg[i][head[j]] + "</td>"  
+            }
+            html +="</tr>"
+        }
+        html += '</table>'
+        $("#aaaa").html('<pre>' + jsonMsg + '</pre>')
+        //$("#aaaa").append(jsonMsg)
+        //$("#aaaa").html(html)
+    },'json')
+}
+</script>
+</html>

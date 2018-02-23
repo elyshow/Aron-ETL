@@ -1,0 +1,167 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+a{
+	text-decoration:none;
+}
+ul{
+	list-style: none;
+}
+
+/*.nav22{*/
+	/*margin-top: 10px;*/
+	/*height: 30px;*/
+/*}*/
+/*.navcon{*/
+	/*width: 33%;*/
+	/*height: 25px;*/
+	/*line-height: 25px;*/
+	/*float: right;*/
+/*}*/
+
+.box2{
+	width: 100%;
+	height: 85%;
+	margin:0 auto;	
+	
+}
+.box2>ul>li{
+	width:30%;
+	height:100px;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 10px;
+	border: px solid #ccc;
+	float:left;
+}
+ul  a{ display:block; background:#FFEAF6; }
+ul  a:hover{background:#ccc; }
+
+
+.item span{
+	color: red;
+}
+.item img{
+	margin-top:20px;
+	margin-left:10px;
+    float: left;
+}
+.item .itemcon{
+	
+   width: 160px;
+   height: 70px;
+   float: left; 
+   margin-top:18px;
+   margin-left: 10px;
+}
+.itemcon span{
+	color:#f00;
+}
+#pagination{
+	position:relative;
+	left:150px;
+	top:80%;	
+	width:450px;
+}
+#pagination ul{
+	position:absolute;
+	top:80%;
+	left:0%;
+}
+#pagination li{
+    display: block;
+    float:left;
+    width: 60px;
+    height: 24px;
+    line-height: 25px;
+    
+}
+
+/*前一页后一页按钮*/
+#pagination  .page-btn a {
+    display: block;
+    /*margin: 20px auto;*/
+    text-align: center;
+    border: 1px solid #2582CC;
+    color: #256FB9;
+    position:absolute;
+	left:70px;
+	top:19px;
+    width:60px;
+    height:25px;    
+}
+/*前一页后一页按钮不可点击*/
+#pagination ul .page-off { 
+    display: block;
+    /*margin: 20px auto;*/
+    text-align: center;
+    border: 1px solid #9F9F9F;
+   	position:absolute;
+	left:70px;
+	top:19px;
+    width:60px;
+    height:25px;
+    
+}
+
+/*具体跳转页数*/
+#pagination .pageNum{
+	width:230px;
+	height:18px;
+	line-height:20px;
+	text-align:center;
+	margin-left:18px;
+	position:absolute;
+	left:100px;
+	top:17px;
+	
+}
+
+#pagination .pageNum  .goPage{
+	width:30px;
+	margin:0 0px;
+}
+#pagination .pageNum  .goPage input{
+	width:30px;
+	height:16px;
+	
+	margin:0 3px;
+
+}
+#pagination .pageNum  .go-btn {
+	width:35px;
+	height:24px;
+	background:#295BAB;
+	color:#ffffff;
+	border:1px solid #295BAB;
+	margin-top:5px;
+	cursor:pointer;
+	
+}
+
+#pagination  .page-btn1 a {
+    display: block;
+    /*margin: 20px auto;*/
+    text-align: center;
+    border: 1px solid #2582CC;
+    color: #256FB9;
+    position:absolute;
+	left:336px;
+	top:19px;
+	width:60px;
+	height:25px;
+}
+
+#pagination ul .page-off1 {
+    display: block;
+    /*margin: 20px auto;*/
+    text-align: center;
+    border: 1px solid #9F9F9F;
+    position:absolute;
+	left:336px;
+	top:19px;
+	width:60px;
+	height:25px;
+    
+}

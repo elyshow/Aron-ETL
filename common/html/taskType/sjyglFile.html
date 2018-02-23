@@ -1,0 +1,290 @@
+<script type="text/javascript" src="/static/js/app/taskType/file.js"></script>
+
+{#普通文件本地上传#}
+{% if type == 'file' %}
+     <form enctype="multipart/form-data" method="post" class="form_reset" id="infoFile" >
+<table cellpadding="0" cellspacing="0" border="0" class="dialog_table">
+    <tr>
+        <td>请选择文件类型:</td>
+        <td><input class="easyui-combobox" id="combo_type" data-options="" name="docType"/></td>
+    </tr>
+    <tr>
+        <td>请上传:</td>
+        <td><input class="easyui-filebox" id="file_type"  data-options="" name="infoFileName"/></td>
+    </tr>
+     <tr>
+         <td></td>
+         <td><a id="btn_sub" href="javascript:;" class="easyui-linkbutton" data-options=" ">确定上传</a></td>
+     </tr>
+</table>
+    </form>
+
+    {#普通文件远程下载#}
+{% elif type == 'fileDownload' %}
+     <form enctype="multipart/form-data"  class="form_reset" id="downloadFile" >
+<table cellpadding="0" cellspacing="0" border="0" class="dialog_table">
+    <tr>
+        <td>请输入IP:</td>
+        <td><input style="width: 250px;" class="easyui-validatebox textbox" name="ipInfo" data-options="required:true," /></td>
+    </tr>
+    <tr>
+        <td>请输入用户名:</td>
+        <td><input style="width: 250px;" class="easyui-validatebox textbox" name="username" data-options="required:true," /></td>
+    </tr>
+    <tr>
+        <td>请输入密码:</td>
+        <td><input style="width: 250px;" class="easyui-validatebox textbox" name="pwdInfo" type="password" data-options="required:true" /></td>
+    </tr>
+    <tr>
+        <td>请输入下载路径:</td>
+        <td><input style="width: 250px;" class="easyui-validatebox textbox" name="pathInfo" placeholder="/home/index/或者/home/index/load.txt" name="" data-options="required:true," /></td>
+    </tr>
+     <tr>
+         <td></td>
+         <td><a id="taskDownload"  href="javascript:;" class="easyui-linkbutton" data-options=" ">确定下载</a></td>
+     </tr>
+</table>
+    </form>
+
+{#数据库文件#}
+{% elif type == 'sqlfile' %}
+    <form enctype="multipart/form-data" method="post" class="form_reset" id="infoSql" >
+        <table cellpadding="0" cellspacing="0" border="0" class="dialog_table">
+            <tr>
+                <td>请选择文件类型:</td>
+                <td><input class="easyui-combobox sql_type" id="sqlType" name="sqlType" data-options="" /></td>
+            </tr>
+            <tr>
+                <td>请上传:</td>
+                <td><input class="easyui-filebox" id="subSqlType" data-options="" name="infoSqlName" /></td>
+            </tr>
+             <tr>
+                 <td></td>
+                 <td><a id="sqlSub"  href="javascript:;" class="easyui-linkbutton" data-options=" ">确定上传</a></td>
+             </tr>
+        </table>
+    </form>
+
+
+{#数据接口#}
+{% elif type == 'datainterface' %}
+    <form class="form_reset" id="dataInterFile">
+            <table class="dialog_table">
+              <tr>
+                  <td><strong>数据库配置</strong></td>
+                  <td></td>
+              </tr>
+              <tr>
+                   <td>数据库类型:</td>
+                   <td><input class="easyui-combobox" id="sjyglDb" data-options="required:true,url:'/taskTypeDialog/sjyglDb/',textField:'dbid',valueField:'dbname'," name="databaseType"/></td>
+               </tr>
+              <tr>
+                  <td>数据源名称：</td>
+                  <td><input class="easyui-validatebox textbox" name="sjyName" data-options="required:true," /></td>
+              </tr>
+
+              <tr>
+                  <td>数据库名称：</td>
+                  <td><input class="easyui-validatebox textbox" name="databaseName" data-options="required:true" /></td>
+              </tr>
+               <tr>
+                   <td>设置增量采集方式:</td>
+                   <td><input class="easyui-combobox" id="increment" data-options="required:true,url:'/taskTypeDialog/dataIncrement/',textField:'incrementWay',valueField:'incrementid'" name="incrementWay"/></td>
+               </tr>
+
+              <tr>
+                  <td>服务器地址：</td>
+                  <td><input class="easyui-validatebox textbox" name="fwqAdress" data-options="required:true," /></td>
+              </tr>
+              <tr>
+                  <td>端口：</td>
+                  <td><input class="easyui-validatebox textbox" name="dkName" data-options="required:true," /></td>
+              </tr>
+              <tr>
+                  <td>用户名：</td>
+                  <td><input class="easyui-validatebox textbox" name="userName" data-options="required:true," /></td>
+              </tr>
+              <tr>
+                  <td>密码：</td>
+                  <td><input class="easyui-validatebox textbox" type="password" name="pwd" data-options="required:true" /></td>
+              </tr>
+         <tr>
+             <td></td>
+             <td>
+                 <a id="" href="javascript:dataTest();" class="easyui-linkbutton close" data-options=" ">测试</a>
+                 <a id="data_nextStep" href="javascript:;" class="easyui-linkbutton" data-options=" ">下一步</a>
+                 <a id=" " href="#" class="easyui-linkbutton reset" data-options=" ">重置</a>
+             </td>
+         </tr>
+            </table>
+    </form>
+
+{#添加表#}
+ {% elif type == 'addTable' %}
+     <form class="form_reset" id="tableNameForm">
+        <table class="dialog_table">
+          <tr>
+              <td><strong>添加表</strong></td>
+          </tr>
+            {% for allname in allTableName %}
+            <tr>
+              <td><input type="radio" class="checkbox_position" name="tableName" value="{{ allname }}"/>{{ allname }}</td>
+
+          </tr>
+            {% endfor %}
+          <tr>
+              <td><a id="addTable_nextStep" href="javascript:;" class="easyui-linkbutton" data-options=" ">下一步</a></td>
+          </tr>
+        </table>
+     </form>
+
+{#添加字段#}
+ {% elif type == 'addField' %}
+    <script language="javascript">
+        function cli() {
+            //获取控制其它复选框的对象obj
+             var checklist = document.getElementsByName ("fieldName");
+            if (document.getElementById("controlAll").checked) {
+                for (var i = 0; i < checklist.length; i++) {
+                    checklist[i].checked = 1;
+                }
+            } else {
+                for (var j = 0; j < checklist.length; j++) {
+                    checklist[j].checked = 0;
+                }
+            }
+        }
+    </script>
+
+    <form class="form_reset"  id="fieldToForm">
+        <table class="dialog_table">
+            <tr>
+                <td><strong>添加字段</strong></td>
+            </tr>
+            <tr>
+                <td><input name='fieldNameAll' checked="checked" type='checkbox' value='' id="controlAll"  onclick="cli();"><strong>快速全选</strong></td>
+            </tr>
+            <tr>
+            {% for PRI in allField %}
+                {% if forloop.last %}
+                    {% if PRI != '' %}
+                        <td><input type="checkbox" class="checkbox_position" checked="checked"  disabled="disabled" name="pri" value="{{ PRI }}" />{{ PRI }}<span style="color:red;">(主键默认勾选)</span></td>
+                        <td><input type="hidden" name="priName" value="{{ PRI }}" /></td>
+                        <td><input class="easyui-validatebox textbox" name="{{ PRI }}" /></td>
+                    {% else %}
+                        <td><input type="hidden" name="priName" value="{{ PRI }}" /></td>
+                        <td><input class="easyui-validatebox textbox" name="{{ PRI }}" /></td>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+            </tr>
+            {% for af in allField %}
+                {% if  not forloop.last %}
+                <tr>
+                    <td><input type="checkbox" class="checkbox_position" checked="checked" name="fieldName" value="{{ af }}" />{{ af }}</td>
+                    <td><input class="easyui-validatebox textbox" name="{{ af }}" /></td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+
+            <tr>
+                <td>
+                    <a id="addField_nextStep" href="javascript:;" class="easyui-linkbutton" data-options=" ">下一步</a>
+                </td>
+            </tr>
+        </table>
+    </form>
+{#任务刷新#}
+{% elif type == 'taskRefresh' %}
+   <form id="taskRefresh" class="form_reset" method="post" >
+        <table class="dialog_table" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>调度计划：</td>
+                <td>
+                    <input type="radio" class="checkbox_position"  name="FreSetting" value="1" checked="checked"/>固定时间
+                    <input type="radio" class="checkbox_position"  name="FreSetting"  value="2" />一次性
+                    <input type="radio" class="checkbox_position"  name="FreSetting"  value="3" />手动
+                    <input type="radio" class="checkbox_position"  name="FreSetting"  value="4" />间隔
+                </td>
+            </tr>
+            <tr class="month_day">
+                <td>执行周期：</td>
+                <td>
+                    <input class="easyui-combobox" id="cycle" name="cycle" style="width:80px" data-options="onSelect:selectCycle,required:true,required:true,valueField:'value',textField:'text',data:[{value:1,text:'每月'},{value:2,text:'每周'},{value:3,text:'每天'}]" />
+                    <input class="easyui-combobox" id="days" name="days" style="width:80px" data-options="required:true,valueField:'value',textField:'text', data:initComboBox(1, 31),"  /> <span class="words">日</span>
+                    <input class="easyui-combobox" id="interval_day" name="interval_day"  style="width:80px" data-options="required:true,valueField:'value',textField:'text', data:initComboBox(0, 8),"  /> <span class="words">天</span>
+                    <input class="easyui-datetimebox" id="once_time"  name="once_time"  data-options="showSeconds:false,required:true" />
+                </td>
+            </tr>
+            <tr class="week_day">
+                <td></td>
+                <td>
+                    <input type="checkbox" class="checkbox_position"  name="week_day"  value="1"/>周一
+                    <input type="checkbox" class="checkbox_position"  name="week_day"  value="2"/>周二
+                    <input type="checkbox" class="checkbox_position"  name="week_day"  value="3"/>周三
+                    <input type="checkbox" class="checkbox_position"  name="week_day"  value="4"/>周四
+                    <input type="checkbox" class="checkbox_position"  name="week_day"  value="5"/>周五
+                    <input type="checkbox" class="checkbox_position"  name="week_day"  value="6"/>周六
+                    <input type="checkbox" class="checkbox_position"  name="week_day"  value="7"/>周日
+                </td>
+            </tr>
+            <tr class="play_time">
+                <td>执行时间：</td>
+                <td>
+                    <input class="easyui-combobox" id="hours" name="hours" style="width:80px;" data-options="required:true,valueField:'value',textField:'text', data:initComboBox(0, 24)," /> 时
+                    <input class="easyui-combobox" id="minutes" name="minutes" style="width:80px;"  data-options="required:true,valueField:'value',textField:'text', data:initComboBox(0, 60),"  /> 分
+                </td>
+            </tr>
+        </table>
+    </div>
+       <div style="margin-left: 40px;">
+             <a id="taskRefresh_nextStep"  href="javascript:;" class="easyui-linkbutton" data-options=" ">完成</a>
+             <a id=" "  href="javascript:;" class="easyui-linkbutton reset" data-options=" ">重置</a>
+       </div>
+     </form>
+{#API 接口#}
+{% elif type == 'apiinterface' %}
+    <form class="form_reset" id="infoApi">
+        <table cellpadding="0" cellspacing="0" border="0" class="dialog_table">
+    <tr>
+        <td>URL地址:</td>
+        <td>
+           <input class="easyui-validatebox textbox" name="urlAd" data-options="required:true," />
+        </td>
+    </tr>
+    <tr>
+        <td>调用方法:</td>
+        <td>
+            <input class="easyui-combobox get_type textbox" id="methodApi" name="methodApi" data-options="" />
+        </td>
+    </tr>
+    <tr>
+        <td>填写参数:</td>
+        <td>
+            <input class="easyui-validatebox textbox" name="paramApi" data-options="required:true," />
+        </td>
+    </tr>
+    <tr>
+        <td>读取字段数:</td>
+        <td>
+            <input class="easyui-validatebox textbox" name="fieldApi" data-options="required:true," />
+        </td>
+    </tr>
+    <tr>
+        <td>文件类型:</td>
+        <td>
+            <input class="easyui-combobox textbox post_type " id="apiType" name='apiType' data-options="" />
+        </td>
+    </tr>
+     <tr>
+         <td></td>
+         <td>
+             <a id="apida_sub" href="javascript:" class="easyui-linkbutton" data-options=" ">确定</a>
+             <a id=" " href="#" class="easyui-linkbutton reset" data-options=" ">重置</a>
+         </td>
+     </tr>
+</table>
+    </form>
+{% endif %}
+
+

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    问题数据查询
+{% endblock %}
+{% block js %}
+<script type="text/javascript" src="/static/js/app/problemData/question.js"></script>
+<script type="text/javascript" src="/static/js/app/date.js"></script>
+
+{% endblock %}
+{% block css %}
+
+	
+{% endblock %}
+{% block content %}
+
+{% include 'problemData/question_content.html' %}
+
+{% endblock %}
+{% block dialog %}
+ 
+   {#% include 'home/dialog.html' %#}
+{% endblock %}

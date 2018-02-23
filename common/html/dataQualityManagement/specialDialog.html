@@ -1,0 +1,103 @@
+{% comment %}
+<div class="easyui-dialog" id="speDialog" data-options="title:'新增',width:500,height:400,buttons:'#dialogBtn4'" style="display:none">
+   <form id="speForm" method="post">
+    <div id="dialogBtn4">
+        <a href="javascript:addSpe();" class="easyui-linkbutton bule_btn">确定</a>
+        <a href="javascript:;" class="easyui-linkbutton white_btn">取消</a>
+    </div>
+
+        <table border="0" cellpadding="0" cellspacing="0" class="dialog_table">
+            <tr>
+                <td>方案名称：</td>
+                <td><input class="easyui-validatebox textbox" data-options="required:true,validType:'username'" name="schemename"/></td>
+            </tr>
+            <tr>
+                <td>方案类型：</td>
+                <td><input class="easyui-validatebox textbox" name="schemetype" data-options="required:true" /></td>
+            </tr>
+             <tr>
+                <td>校验对象：</td>
+                <td><input class="easyui-validatebox textbox" name="checkobject" data-options="required:true" /></td>
+            </tr>
+             <tr>
+                <td>业务警种：</td>
+                <td><input class="easyui-validatebox textbox" name="businesspolice" data-options="required:true" /></td>
+            </tr>
+             <tr>
+                <td>调度时间：</td>
+                <td><input class="easyui-validatebox textbox" name="scheduletime" data-options="required:true" /></td>
+            </tr>
+        </table>
+    </form>
+
+</div>
+
+<div class="easyui-dialog" id="changeSpe" data-options="title:'修改',width:400,height:200,buttons:'#dialogBtn4'"
+     style="left:500px;top:300px;display:none">
+    <form id="change_list4" method="post">
+        <div id="dialogBtn4">
+            <a href="javascript:table4preserved();" class="easyui-linkbutton bule_btn">保存</a>
+        </div>
+        <table border="0" cellpadding="0" cellspacing="0" class="dialog_table">
+            <tr style="display: none">
+                <td>id：</td>
+                <td><input class="easyui-validatebox textbox idchange" data-options="required:true,"
+                           name="idchange"/></td>
+            </tr>
+            <tr>
+                <td>方案名称：</td>
+                <td><input class="easyui-validatebox textbox schemenamechange" data-options="required:true," name="scheme_name"/></td>
+            </tr>
+            <tr>
+                <td>方案类型：</td>
+                <td><input class="easyui-validatebox textbox schemetypechange" name="schemetype" data-options="required:true" /></td>
+            </tr>
+             <tr>
+                <td>校验对象：</td>
+                <td><input class="easyui-validatebox textbox checkobjectchange" name="checkobject" data-options="required:true" /></td>
+            </tr>
+             <tr>
+                <td>业务警种：</td>
+                <td><input class="easyui-validatebox textbox businesspolicechange" name="businesspolice" data-options="required:true" /></td>
+            </tr>
+             <tr>
+                <td>调度时间：</td>
+                <td><input class="easyui-validatebox textbox scheduletimechange" name="scheduletime" data-options="required:true" /></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+
+
+<div class="easyui-dialog" id="detDialog4" data-options="title:'详情页面',width:500,height:400,buttons:'#dialogBtn44'" style="display:none">
+    <div id="dialogBtn44">
+        <a href="javascript:spe();"class="easyui-linkbutton bule_btn">确定</a>
+        <a href="javascript:;" class="easyui-linkbutton white_btn">取消</a>
+    </div>
+    <table border="0" cellpadding="0" cellspacing="0" class="dialog_table">
+        <tr>
+            <td>方案名称：</td>
+            <td>   <input  data-options="required:true," class="schemename" class="easyui-validatebox textbox"></td>
+        </tr>
+        <tr>
+            <td>方案类型：</td>
+            <td><input class="schemetype" data-options="required:true,"  class="easyui-validatebox textbox"></td>
+        </tr>
+        <tr>
+            <td>校验对象：</td>
+            <td><input class="checkobject" data-options="required:true,"  class="easyui-validatebox textbox"></td>
+
+        </tr>
+        <tr>
+            <td>业务警种：</td>
+           <td><input  class="businesspolice"data-options="required:true,"  class="easyui-validatebox textbox" ></td>
+
+        </tr>
+         <tr>
+            <td>调度时间：</td>
+             <td><input class="scheduletime" data-options="required:true,"  class="easyui-validatebox textbox"></td>
+
+        </tr>
+     </table>
+</div>{% endcomment %}

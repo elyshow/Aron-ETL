@@ -1,0 +1,193 @@
+<!--<div class="easyui-panel" data-options="fit:true,border:false">
+    <div class="easyui-layout" data-options="fit:true,border:false">
+         <div data-options="region:'north',border:false" style="height:50px;">
+            <div class="nav_title">
+                <span>数据整合</span> >>
+                <span>数据清洗规则</span>
+            </div>
+         </div>
+         <div data-options="region:'center',border:false" >
+            <div class="easyui-tabs" id="ruleType" data-options="border:false,fit:true,tabHeight:50,plain:true">
+
+                <div class="sub_tabs" data-options="title:'校验规则'">
+                    <div class="easyui-tabs" id="checkRuleType" data-options="border:false,fit:true,plain:true,tabHeight:50,pill:true" style="padding: 10px 0 0 0; ">
+                        <div data-options="title:'格式校验'" style="padding-top:10px">
+                            <table id="checkFormatList">
+
+                            </table>
+                        </div>
+                        <div data-options="title:'空值校验'">
+                            <table id="checkNullList">
+
+                            </table>
+                        </div>
+                        <div data-options="title:'长度及范围校验'">
+                            <table id="checkLengthList">
+
+                            </table>
+                        </div>
+                        <div data-options="title:'代码校验'">
+                            <table id="checkCodeList">
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="sub_tabs" data-options="title:'清洗规则',fit:true">
+                    <div class="easyui-tabs" id="cleanRuleType" data-options="border:false,fit:true,plain:true,tabHeight:50,pill:true" style="padding: 10px 0 0 0; ">
+                        <div data-options="title:'字典转换'" style="padding-top:10px">
+                            <table id="cleanRuleDictList">
+
+                            </table>
+                        </div>
+                        <div data-options="title:'代码转换'" style="padding-top:10px">
+                            <table id="cleanRuleCodeList">
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+
+        <div id="checkRuleToolBar" class="toolbar">
+            <div style="float:left;margin-left: 10px;">
+                    <input id="checkRuleSearch" />
+            </div>
+            <div style="float:right;margin-right:20px;">
+                <a data-hover="增加" title="增加" href="javascript:;" id="addCheckRuleBtn" onclick="addCheckRule()" class="easyui-linkbutton" data-options="iconCls:'icon-add'"></a>
+                <a data-hover="修改" title="修改" href="javascript:;" id="editCheckRulesBtn" onclick="editCheckRules()" class="easyui-linkbutton" data-options="iconCls:'icon-edit'"></a>
+                <a data-hover="删除" title="删除" href="javascript:;" id="delCheckRulesBtn" onclick="delCheckRules()" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'"></a>
+            </div>
+        </div>
+
+        <div id="cleanRuleToolBar" class="toolbar">
+            <div style="float:left;margin-left: 10px;">
+                    <input id="cleanRuleSearch" />
+            </div>
+            <div style="float:right;margin-right:20px;">
+                <a data-hover="增加" title="增加" href="javascript:;" id="addCleanRuleBtn" onclick="addCleanRule()" class="easyui-linkbutton" data-options="iconCls:'icon-add'"></a>
+                <a data-hover="修改" title="修改" href="javascript:;" id="editCleanRulesBtn" onclick="editCleanRule()" class="easyui-linkbutton" data-options="iconCls:'icon-edit'"></a>
+                <a data-hover="删除" title="删除" href="javascript:;" id="delCleanRulesBtn" onclick="delCleanRule()" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'"></a>
+            </div>
+        </div>
+        <div id="cleanRuleCodeToolBar" class="toolbar">
+            <div style="float:left;margin-left: 10px;">
+                    <input id="cleanRuleCodeSearch" />
+            </div>
+            <div style="float:right;margin-right:20px;">
+                <a data-hover="增加" title="增加" href="javascript:;" id="addCleanRuleCodeBtn" onclick="addCleanRuleCode()" class="easyui-linkbutton" data-options="iconCls:'icon-add'"></a>
+                <a data-hover="修改" title="修改" href="javascript:;" id="editCleanRulesCodeBtn" onclick="editCleanRuleCode()" class="easyui-linkbutton" data-options="iconCls:'icon-edit'"></a>
+                <a data-hover="删除" title="删除" href="javascript:;" id="delCleanRulesCodeBtn" onclick="delCleanRuleCode()" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'"></a>
+            </div>
+        </div>
+
+    </div>
+</div>-->
+
+<div class="easyui-panel" title="<img src='/static/images/littlehouse.png' style='vertical-align:middle;margin:0 8px 0 35px;'/><span>您当前的位置：数据整合 > 数据清洗规则</span><div class='datime' style='width:210px;height:16px;display:inline-block;float:right;margin-right:60px;'></div>" style="height:100%;height:100%;" style="background:#fff;">
+	<div class="easyui-layout" data-options = "fit:true">
+		<div class="bgQulity" data-options="region:'west',collapsible:false,width:'4%',border:false,bodyCls:'body_bg'">
+
+		</div>
+		<div class="bgQulity" data-options="region:'east',collapsible:false,width:'4%',border:false,bodyCls:'body_bg'">
+
+		</div>
+		<div class="bgQulity" data-options="region:'north',collapsible:false,width:'100%',height:'15px',border:false,bodyCls:'body_bg'">
+			
+		</div>
+		<div id="contentFluid" data-options="region:'center',collapsible:false,border:false,bodyCls:'body_bg',width:'92%'">
+			
+			<div class="easyui-panel" data-options="fit:true,border:false">
+				<div class="easyui-layout" data-options="fit:true,border:false">
+					 <div id="i_btn_southern" data-options="region:'north',border:false" style="height:50px;">
+						<div class="nav_title" style="line-height: 40px">
+							<span>数据整合</span> >>
+							<span>数据清洗规则</span>
+						</div>
+					 </div>
+					 <div data-options="region:'center',border:false" >
+						<div class="easyui-tabs" id="ruleType" data-options="border:false,fit:true,tabHeight:50,plain:true">
+
+							<div class="sub_tabs" data-options="title:'校验规则'">
+								<div class="easyui-tabs" id="checkRuleType" data-options="border:false,fit:true,plain:true,tabHeight:50,pill:true" style="padding: 10px 0 0 0; ">
+									<div data-options="title:'格式校验'" style="padding-top:10px">
+										<table id="checkFormatList" class="changeColorRow">
+
+										</table>
+									</div>
+									<div data-options="title:'空值校验'">
+										<table id="checkNullList" class="changeColorRow">
+
+										</table>
+									</div>
+									<div data-options="title:'长度及范围校验'">
+										<table id="checkLengthList" class="changeColorRow">
+
+										</table>
+									</div>
+									<div data-options="title:'代码校验'">
+										<table id="checkCodeList" class="changeColorRow">
+
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="sub_tabs" data-options="title:'清洗规则',fit:true">
+								<div class="easyui-tabs" id="cleanRuleType" data-options="border:false,fit:true,plain:true,tabHeight:50,pill:true" style="padding: 10px 0 0 0; ">
+									<div data-options="title:'字典转换'" style="padding-top:10px">
+										<table id="cleanRuleDictList" class="changeColorRow">
+
+										</table>
+									</div>
+									<div data-options="title:'代码转换'" style="padding-top:10px">
+										<table id="cleanRuleCodeList" class="changeColorRow">
+
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					 </div>
+
+					<div id="checkRuleToolBar" class="toolbar">
+						<div style="float:left;margin-left: 10px;">
+								<input id="checkRuleSearch" />
+						</div>
+						<div style="float:right;margin-right:20px;">
+							<a data-hover="增加" title="增加" href="javascript:;" id="addCheckRuleBtn" onclick="addCheckRule()" class="easyui-linkbutton" data-options="iconCls:'icon-add'"></a>
+							<a data-hover="修改" title="修改" href="javascript:;" id="editCheckRulesBtn" onclick="editCheckRules()" class="easyui-linkbutton" data-options="iconCls:'icon-edit'"></a>
+							<a data-hover="删除" title="删除" href="javascript:;" id="delCheckRulesBtn" onclick="delCheckRules()" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'"></a>
+						</div>
+					</div>
+
+					<div id="cleanRuleToolBar" class="toolbar">
+						<div style="float:left;margin-left: 10px;">
+								<input id="cleanRuleSearch" />
+						</div>
+						<div style="float:right;margin-right:20px;">
+							<a data-hover="增加" title="增加" href="javascript:;" id="addCleanRuleBtn" onclick="addCleanRule()" class="easyui-linkbutton" data-options="iconCls:'icon-add'"></a>
+							<a data-hover="修改" title="修改" href="javascript:;" id="editCleanRulesBtn" onclick="editCleanRule()" class="easyui-linkbutton" data-options="iconCls:'icon-edit'"></a>
+							<a data-hover="删除" title="删除" href="javascript:;" id="delCleanRulesBtn" onclick="delCleanRule()" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'"></a>
+						</div>
+					</div>
+					<div id="cleanRuleCodeToolBar" class="toolbar">
+						<div style="float:left;margin-left: 10px;">
+								<input id="cleanRuleCodeSearch" />
+						</div>
+						<div style="float:right;margin-right:20px;">
+							<a data-hover="增加" title="增加" href="javascript:;" id="addCleanRuleCodeBtn" onclick="addCleanRuleCode()" class="easyui-linkbutton" data-options="iconCls:'icon-add'"></a>
+							<a data-hover="修改" title="修改" href="javascript:;" id="editCleanRulesCodeBtn" onclick="editCleanRuleCode()" class="easyui-linkbutton" data-options="iconCls:'icon-edit'"></a>
+							<a data-hover="删除" title="删除" href="javascript:;" id="delCleanRulesCodeBtn" onclick="delCleanRuleCode()" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'"></a>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			
+		</div>
+		<div class="bgQulity" data-options="region:'south',collapsible:false,border:false,bodyCls:'body_bg'" style="height:70px;">
+			<p style="margin:40px auto 0 auto;width:450px;text-align:center">Copyright © All Rights Reserved 建议使用1280*800分辨率，IE8.0以上浏览</p>
+		</div>
+	</div>						
+</div>

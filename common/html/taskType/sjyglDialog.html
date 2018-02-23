@@ -1,0 +1,39 @@
+<div class="easyui-dialog" id="taskTypeDialog" data-options="title:'新增采集任务',width:500,height:400" style="display:none">
+		<!-- 新增采集任务 -->
+    <div id="tb" class="easyui-tabs"  style="height:364px;">
+        <div data-options="title:'基本信息'"><br>
+        <form class="form_reset" id="basic_information">
+         <table class="dialog_table">
+             <tr>
+                 <td>请选择文件类型:</td>
+                 <td> <input class="easyui-combobox" name="fileType" id="combo_list" data-options="" /></td>
+             </tr>
+             <tr>
+                 <td><strong>基本配置</strong></td>
+                 <td></td>
+             </tr>
+             <tr>
+                 <td>任务名称：</td>
+
+                 <td><input class="easyui-validatebox textbox" name="taskName" data-options="required:true,validType:'username'" /></td>
+             </tr>
+             <tr>
+                 <td>所属机构：</td>
+                 <td><input class="easyui-combobox" id="comboBelongto" data-options="required:true" name="belongto"/></td>
+             </tr>
+             <tr>
+                 <td>所属类型：</td>
+                 <td><input class="easyui-combobox" id="comboBelongType" data-options="required:true" name="belongtype"/></td>
+             </tr>
+             <tr>
+                 <td></td>
+                 <td>
+                    <a id=" "  href="javascript:;" class="easyui-linkbutton basic_next" data-options=" ">下一步</a>
+                    <a id=" " href="#" class="easyui-linkbutton reset" data-options=" ">重置</a>
+                 </td>
+             </tr>
+         </table>
+        </form>
+        </div>
+    </div>
+</div>

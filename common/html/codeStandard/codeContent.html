@@ -1,0 +1,31 @@
+<div class="easyui-panel" data-options="fit:true,border:false">
+    <div class="easyui-layout" data-options="fit:true,border:false">
+         <div data-options="region:'north',border:false" style="height:50px;">
+            <div class="nav_title">
+                <span>数据标准管理</span> >>
+                <span>标准代码管理</span>
+            </div>
+         </div>
+         <div data-options="region:'center',border:false" >
+            <div class="easyui-tabs" data-options="border:false,fit:true,tabHeight:50,plain:true">
+                <div data-options="title:'全部'">
+                    <table class="easyui-datagrid" data-options="toolbar:'#toolbar'," id="codeList">
+                        <div id="toolbar" class="toolbar">
+                            <div style="float:right;margin-right:20px;">
+                                <input id="codeSearchBox" />
+                                <a href="javascript:linkbutton_click('open_dialog',{dialog:'#mydialog'});" class="easyui-linkbutton" data-options="iconCls:'icon-add'">增加</a>
+                                <a href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">删除</a>
+                            </div>
+                        </div>
+
+                    </table>
+                </div>
+                <div data-options="title:'国标'">2222</div>
+                <div data-options="title:'部标'">3333</div>
+                <div data-options="title:'省标'">4444</div>
+                <div data-options="title:'扩展标准'">5555</div>
+                <div data-options="title:'未分类'">6666</div>
+            </div>
+         </div>
+    </div>
+</div>

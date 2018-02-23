@@ -1,0 +1,71 @@
+<div class="easyui-panel" data-options="fit:true,border:false">
+	<div class="easyui-layout" data-options="fit:true,border:false">
+		 <div data-options="region:'north',border:false" style="height:50px;">
+			<div class="nav_title">
+				<span>采集任务监控</span>
+			</div>
+		 </div>
+		 <div data-options="region:'center',border:false" >
+
+                       <table class="easyui-datagrid" data-options="toolbar:'#toolbar'," id="dg5">
+                            <div id="hjkToolBar2" class="toolbar">
+                                <div style="position:relative;left:65%; " >
+                                   <input id="search" />
+                                    <a href="javascript:" onclick="returnHuijiku()" class="easyui-linkbutton" data-options="iconCls:'icon-edit'">返回</a>
+                                </div>
+                            </div>
+                       </table>
+
+		 </div>
+	    </div>
+</div>
+<script>
+function returnHuijiku(){
+	//$('#tt').panel('open').panel('refresh', '/huafeng/returnBack/0');
+    window.open('/huafeng/shujujiankong/','_self','refresh')
+}
+
+$(function(){
+	$("#dg5").datagrid({
+		url:'/huafeng/getData5/',
+        toolbar:'#hjkToolBar2',
+		singleSelect:true,
+		method:'post',
+		columns:[[
+		    {field:'taskname',title:'采集任务名称',width:'25%'},
+            {field:'type',title:'采集任务类型',width:'20%',formatter:function (v, r, i) {
+                if(v == '1'){
+                    return '普通文件本地上传'
+                } else if(v == '2'){
+                    return '数据库文件'
+                }else if(v == '3'){
+                    return '数据库接口'
+                }else if(v=='4'){
+                    return 'API接口'
+                }else{
+                    return '普通文件远程下载'
+                }
+           }},
+			{field:'starttime',title:'开始时间',width:'20%',},
+			{field:'endtime',title:'结束时间',width:'20%',},
+			{field:'state',title:'最新状态',width:'17%',align:'center',formatter:function (v, r, i){
+															     if(r.state == 0){
+											                    	 return '失败'
+															     }else{
+									                                 return '成功'
+									                             }
+															   }
+			},
+		]],
+	})
+	    
+	$('#search').searchbox({
+        prompt:'请输入采集任务编号',
+        height:24,
+        width:200,
+        searcher:function(v,n){
+           $('#dg5').datagrid('load', {condition:v})
+        }
+    })
+})
+</script>

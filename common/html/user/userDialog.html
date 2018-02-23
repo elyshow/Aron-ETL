@@ -1,0 +1,172 @@
+<div class="easyui-dialog" id="userDialog" data-options="title:'新增用户',width:600,height:500,buttons:'#userdialogBtn'" style="display:none">
+    <div class="easyui-tabs" id="userTbas" data-options="border:false,fit:true">
+      <div data-options="title:'基本信息'"><br>
+    <form id="userForm" method="post" class="form_reset">
+        <table border="0" cellpadding="0" cellspacing="0" class="dialog_table">
+            <tr>
+                <td>用户名：</td>
+                <td><input class="easyui-validatebox textbox" name="username" data-options="required:true,validType:'name'" /></td>
+            </tr>
+            <tr>
+                <td>密码：</td>
+                <td><input class="easyui-validatebox textbox" type="password" name="userpwd"  data-options="required:true,validType:'pwd'" /></td>
+            </tr>
+            <tr>
+                <td>联系电话：</td>
+                <td><input class="easyui-validatebox textbox" data-options="required:true,validType:'phone'"  name="usertel" /></td>
+            </tr>
+             <tr>
+                <td>邮箱：</td>
+                <td><input class="easyui-validatebox textbox" name="usermail" /></td>
+            </tr>
+            <tr>
+                <td>所属机构：</td>
+                <td><input class="easyui-combobox" id="comboBelong" data-options="required:true" name="comboBelong"/></td>
+            </tr>
+            <tr>
+                <td>用户类型：</td>
+                <td>
+                    <input type="radio" class="checkbox_position"  name="userType" checked="checked" value="1" />普通用户
+                    <input type="radio" class="checkbox_position"  name="userType" value="2" />接口用户
+                </td>
+            </tr>
+            <tr>
+                <td>备注：</td>
+                <td>
+                    <input class="easyui-textbox"  data-options="multiline:'4',height:72" name="userother"/>
+                </td>
+            </tr>
+              <tr>
+                 <td></td>
+                 <td>
+                    <a id="user_basic_next"  href="javascript:;" class="easyui-linkbutton bule_btn" data-options=" ">下一步</a>
+                    <a id="" href="javascript:formRet();" class="easyui-linkbutton reset white_btn" data-options=" ">重置</a>
+                 </td>
+             </tr>
+        </table>
+
+    </form>
+</div>
+      <div data-options="title:'目录权限'"><br>
+
+                <form class="form_reset" id="userper">
+                      <div>
+                    <ul id="userTree" class="easyui-tree"></ul>
+                      </div>
+                    <a id="userper_sub" href="javascript:;" class="easyui-linkbutton bule_btn" data-options="" style="margin-left:190px">下一步</a>
+                </form>
+
+        </div>
+      <div data-options="title:'接口权限'" style="height: 100% ;width: 100%">
+                <table class="easyui-datagrid" data-options="fit:true" id="interList"></table>
+              <div  style="text-align: center">
+               <a id="savePer" href="javascript:savePer();" class="easyui-linkbutton bule_btn">确定</a>
+              </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="easyui-dialog" id="userDetailDialog" data-options="title:'查看详情',width:500,height:400" style="display:none">
+
+      <div data-options="title:'查看详情'"><br>
+    <form id="userDetailForm" method="post">
+        <table border="0" cellpadding="0" cellspacing="0" class="dialog_table">
+            <tr>
+                <td>用户名：</td>
+                <td><input class="easyui-validatebox textbox username" name="username"  data-options="" /></td>
+            </tr>
+
+            <tr>
+                <td>联系电话：</td>
+                <td><input class="easyui-validatebox textbox usertel" data-options=""  name="usertel" /></td>
+            </tr>
+             <tr>
+                <td>邮箱：</td>
+                <td><input class="easyui-validatebox textbox usermail" data-options="" name="usermail" /></td>
+            </tr>
+            <tr>
+                <td>所属机构：</td>
+                <td><input class="easyui-combobox comboBelong" id="comboBelong" data-options="" name="comboBelong"/></td>
+            </tr>
+            <tr>
+                <td>用户类型：</td>
+                <td>
+                    <input type="radio" class="checkbox_position userType"  name="userType" checked="checked" value="1"/>普通用户
+                    <input type="radio" class="checkbox_position userType"  name="userType"  value="2"/>接口用户
+                </td>
+            </tr>
+
+            <tr>
+                <td>备注：</td>
+                <td>
+                    <input class="easyui-textbox userother"  data-options="multiline:'4',height:72" name="userother"/>
+                </td>
+            </tr>
+            <tr>
+                <td>目录权限</td>
+                <td>
+            <ul id="userDetailTree" class="easyui-tree"></ul>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+        </div>
+    </div>
+
+<div class="easyui-dialog" id="userModifyDialog" data-options="title:'查看详情',width:500,height:400" style="display:none">
+
+      <div data-options="title:'修改设置'"><br>
+    <form id="userModifyForm" method="post">
+        <table border="0" cellpadding="0" cellspacing="0" class="dialog_table">
+            <tr>
+                 <td><input class='userid' name="userid" type="hidden"/></td>
+            </tr>
+
+            <tr>
+                <td>用户名：</td>
+                <td><input class="easyui-validatebox textbox username" name="username"  data-options="" /></td>
+            </tr>
+
+            <tr>
+                <td>联系电话：</td>
+                <td><input class="easyui-validatebox textbox usertel" data-options=""  name="usertel" /></td>
+            </tr>
+             <tr>
+                <td>邮箱：</td>
+                <td><input class="easyui-validatebox textbox usermail" data-options="" name="usermail" /></td>
+            </tr>
+            <tr>
+                <td>所属机构：</td>
+                <td><input class="easyui-combobox comboBelong" id="comboBelongModify" data-options="" name="comboBelong"/></td>
+            </tr>
+            <tr>
+            <tr>
+                <td>用户类型：</td>
+                <td>
+                    <input type="radio" class="checkbox_position userType"  name="userType" checked="checked" value="1"/>普通用户
+                    <input type="radio" class="checkbox_position userType"  name="userType"  value="2"/>接口用户
+                </td>
+            </tr>
+                <td>备注：</td>
+                <td>
+                    <input class="easyui-textbox userother"  data-options="multiline:'4',height:72" name="userother"/>
+                </td>
+            </tr>
+            <tr>
+                <td>鉴权设置</td>
+                <td>
+            <ul id="userTreeModify" class="easyui-tree"></ul>
+                </td>
+            </tr>
+             <tr>
+              <td>
+                  <a id="userInfoSave" href="javascript:userInfoSave();" class="easyui-linkbutton" data-options="">保存</a>
+              </td>
+          </tr>
+        </table>
+    </form>
+
+        </div>
+    </div>

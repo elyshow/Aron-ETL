@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+<!-- 该页面不允许出现js以及css代码,content代码和dialog代码可直接写在本文件中，下面只是content的实例代码 -->
+{% block title %}
+    业务代码管理
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript" src="/static/js/app/codeStandard/busCodeIndex.js"></script>
+    <script src="/static/js/app/index.js"></script>
+	<script type="text/javascript" src="/static/js/app/date.js"></script>
+{% endblock %}
+
+{% block css %}
+    <!-- 此处填充css链接 -->
+{% endblock %}
+
+{% block content %}
+    <!-- 此处填充右侧主体内容 -->
+    {% include 'codeStandard/busCodeContent.html' %}
+{% endblock %}
+
+{% block dialog %}
+     <!-- 此处填充右dialog内容 -->
+    {% include 'codeStandard/busCodeDialog.html' %}
+{% endblock %}

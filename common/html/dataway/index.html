@@ -1,0 +1,30 @@
+{% extends 'base2.html' %}
+{% load staticfiles %}
+<!-- 该页面不允许出现js以及css代码,content代码和dialog代码可直接写在本文件中，下面只是content的实例代码 -->
+{% block title %}
+    新增接口
+{% endblock %}
+{% block js %}
+    <!-- 此处填充js链接 -->
+    <script type="text/javascript" src="{% static 'js/app/dataway/index.js' %}"></script>
+    <script src="/static/js/app/index.js"></script>
+	<script type="text/javascript" src="/static/js/app/date.js"></script>
+    <script>
+        var urls = {
+            'getUnRegisterDataList': "{% url 'getUnRegisterDataList' %}",
+            'getResourceTreeData': "{% url 'getResourceTreeData' %}",
+        }
+    </script>
+{% endblock %}
+{% block css %}
+    <!-- 此处填充css链接-->
+    <link type="text/css" rel="stylesheet" href="{% static 'css/dataway/dataway.css' %}" />
+{% endblock %}
+{% block content %}
+    <!-- 此处填充右侧主体内容 -->
+    {% include 'dataway/content.html' %}
+{% endblock %}
+{% block dialog %}
+     <!-- 此处填充右dialog内容 -->
+    {% include 'dataway/dialog.html' %}
+{% endblock %}

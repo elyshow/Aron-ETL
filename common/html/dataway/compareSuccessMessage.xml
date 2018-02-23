@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<result type="1">
+    {% for item in data %}
+    <record>
+        {% for kv in item %}
+            <{{kv.name}}>{{kv.value}}</{{kv.name}}>
+        {% endfor %}
+    </record>
+    {% endfor %}
+</result>

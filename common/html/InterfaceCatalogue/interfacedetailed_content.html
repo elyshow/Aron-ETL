@@ -1,0 +1,26 @@
+<div class="easyui-panel" data-options="fit:true,border:false">
+    <div class="easyui-layout" data-options="fit:true,border:false">
+         <div data-options="region:'north',border:false" style="height:50px;">
+            <div class="nav_title">
+                <span>数据总线</span> >>
+                <span>接口展示</span>
+            </div>
+         </div>
+         <div data-options="region:'center',border:false" >
+			 <table class="easyui-datagrid" data-options="toolbar:'#toolbar'," id="mylist">
+			     <div id="toolbar" class="toolbar">
+			         <div style="float:left;margin-left: 10px;">
+            		</div>
+			         <div style="float:right;margin-right:20px;">
+			             <a href="javascript:" onclick="returnBiaozhunku()" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">返回</a>
+			         </div>
+			     </div>
+			 </table>
+         </div>
+    </div>
+</div>
+<script>
+function returnBiaozhunku() {
+		window.open('/huafeng/interfacetable/','_self','refresh')
+}
+</script>

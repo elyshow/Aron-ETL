@@ -1,0 +1,117 @@
+<script type="text/javascript" src="/static/js/app/dataQualityManagement/base.js"></script>
+<script  type="text/javascript"  src="/static/js/app/dataQualityManagement/datatransfer.js"></script>
+
+
+{#填写基本信息#}
+{% if type == 'writeInfo' %}
+     <form enctype="multipart/form-data" method="get" class="form_reset" id="infoFile" >
+<table cellpadding="0" cellspacing="0" border="0" class="dialog_table">
+    <tr>
+        <td>方案名称:</td>
+        <td><input class="easyui-textbox" id="" data-options="" name="schemename"/></td>
+    </tr>
+    <tr>
+        <td>校验字段:</td>
+        <td><input class="easyui-combobox" id="combo_type"  data-options="" name="fieldname"/></td>
+    </tr>
+
+    <tr>
+        <td>录入人:</td>
+        <td><input class="easyui-textbox"   data-options="" name="inputperson"/></td>
+    </tr>
+    <tr>
+        <td>过滤条件:</td>
+        <td><input class="easyui-textbox" id=""  data-options="" name="checkfun"/></td>
+    </tr>
+    <tr>
+        <td>方案描述:</td>
+        <td><input class="easyui-textbox" id=""  data-options="" name="detail"/></td>
+    </tr>
+      <tr>
+          <td><a id="next1" href="javascript:;" class="easyui-linkbutton next_save" data-options=" ">下一步</a></td>
+         <td><a id=" " href="#" class="easyui-linkbutton reset" data-options=" ">重置</a></td>
+      </tr>
+</table>
+    </form>
+
+{#添加校验规则#}
+{% elif type == 'addrule' %}
+     <form enctype="multipart/form-data" method="get" class="form_reset" id="rulef" >
+<table cellpadding="0" cellspacing="0" border="0" class="dialog_table" id="rules">
+
+    <a href="javascript:linkbutton_click('open_dialog',{dialog:'#bbDialog'});" class="easyui-linkbutton" data-options="iconCls:'icon-add'">增加校验规则</a>
+
+
+    <tr>
+        <td></td>
+    </tr>
+      <tr>
+    <tr>
+    <div style="margin-top: 90px;">
+          <a id="next2" href="javascript:;" class="easyui-linkbutton next_save" data-options=" ">下一步</a></td>
+         <a id=" " href="#" class="easyui-linkbutton reset" data-options=" ">重置</a></td>
+    </div>
+    </tr>
+</table>
+    </form>
+
+
+    {#选择展现字段#}
+{% elif type == 'shofie' %}
+     <form enctype="multipart/form-data" method="get" class="form_reset" id="fields" >
+  <table  border="0" cellpadding="0" cellspacing="0" class="dialog_table"data-options="toolbar:'#toolbar'," id="problems2">
+             <tr>
+                 <td></td>
+                 <td></td>
+             </tr>
+        <div style="margin-top: 80px;">
+                    <a id="next3"  href="javascript:;" class="easyui-linkbutton basic_next" data-options=" ">下一步</a>
+                    <a id=" " href="#" class="easyui-linkbutton reset" data-options=" ">重置</a>
+        </div>
+  </table>
+    </form>
+
+    {#配置调度方案#}
+{% elif type == 'way' %}
+     <form enctype="multipart/form-data" method="get" class="form_reset" id="schedum" >
+
+        <table  border="0" cellpadding="0" cellspacing="0" class="dialog_table"data-options="toolbar:'#toolbar'," >
+            <tr>
+                <td>调度计划：</td>
+                <td>
+                    <input type="radio" class="checkbox_position"  name="FreSetting" value="1" checked="checked"/>固定时间
+                    <input type="radio" class="checkbox_position"  name="FreSetting"  value="3" />手动
+                </td>
+            </tr>
+            <tr>
+                <td>执行时间：</td>
+                <td>  <input class="easyui-combobox" id="hours" name="hours" style="width:80px;" data-options="required:true,valueField:'value',textField:'text', data:initComboBox(0, 24)," /> 时
+                    <input class="easyui-combobox" id="minutes" name="minutes" style="width:80px;"  data-options="required:true,valueField:'value',textField:'text', data:initComboBox(0, 60),"  /> 分
+                </td>
+
+            </tr>
+            <tr>
+                <td>开始时间：</td>
+                <td>
+               <input class="easyui-datetimebox time" data-options="" type="date" name="starttime"/>
+                </td>
+            </tr>
+            <tr>
+                <td>结束时间：</td>
+                 <td>
+               <input class="easyui-datetimebox time" data-options="" type="date" name="endtime"/>
+                </td>
+            </tr>
+
+             <tr>
+                 <td></td>
+                 <td>
+                    <a id=" "  href="javascript:;" class="easyui-linkbutton basic_last" data-options=" ">上一步</a>
+                    <a id="save4" href="#" class="easyui-linkbutton preservation" data-options=" ">保存</a>
+                 </td>
+             </tr>
+         </table>
+    </form>
+
+{% endif %}
+

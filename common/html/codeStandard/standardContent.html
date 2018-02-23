@@ -1,0 +1,196 @@
+<!--<div class="easyui-panel" data-options="fit:true,border:false">
+    <div class="easyui-layout" data-options="fit:true,border:false">
+         <div data-options="region:'north',border:false" style="height:50px;">
+            <div class="nav_title">
+                <span>数据标准管理</span> >>
+                <span>标准数据元管理</span>
+            </div>
+         </div>
+         <div data-options="region:'center',border:false" >
+             <div class="easyui-tabs" data-options="border:false,fit:true,tabHeight:50,plain:true" id="standardRule">
+                 <div data-options="title:'ABCD'">
+                    <table class="easyui-datagrid" data-options="toolbar:'#adToolbar'," id="a_dStandardList">
+                        <div id="adToolbar" class="toolbar">
+                            <div style="float:right;margin-right:20px;">
+                                <input id="tab1SearchBox" />
+                                <a data-hover="增加" title="增加" href="javascript:standardAdd();"  class="easyui-linkbutton" data-options="iconCls:'icon-add'"></a>
+                                <a data-hover="导表" title="导表" href="javascript:insetstandrd();"  class="easyui-linkbutton" data-options="iconCls:'icon-add'"></a>
+                                <a data-hover="删除" title="删除" href="javascript:delData();"  class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" id="del" value="0"></a>
+                            </div>
+                        </div>
+
+                    </table>
+                 </div>
+                 <div data-options="title:'EFGH'">
+                     <table class="easyui-datagrid" data-options="toolbar:'#ehToolbar'," id="e_gStandardList">
+                         <div id="ehToolbar" class="toolbar">
+                            <div style="float:right;margin-right:20px;">
+                                <input id="tab2SearchBox" />
+                                <a data-hover="增加" title="增加" href="javascript:standardAdd();"  class="easyui-linkbutton" data-options="iconCls:'icon-add'"></a>
+                                <a data-hover="导表" title="导表" href="javascript:insetstandrd();"  class="easyui-linkbutton" data-options="iconCls:'icon-add'"></a>
+                                <a data-hover="删除" title="删除" href="javascript:delData1();" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" id="del1" value="1"></a>
+                            </div>
+                        </div>
+                        </table>>
+                 </div>
+                 <div data-options="title:'IJKL'">
+                     <table class="easyui-datagrid" data-options="toolbar:'#imToolbar'," id="i_mStandardList">
+                         <div id="imToolbar" class="toolbar">
+                            <div style="float:right;margin-right:20px;">
+                                <input id="tab3SearchBox" />
+                                <a data-hover="增加" title="增加" href="javascript:standardAdd();"  class="easyui-linkbutton" data-options="iconCls:'icon-add'"></a>
+                                <a data-hover="导表" title="导表" href="javascript:insetstandrd();"  class="easyui-linkbutton" data-options="iconCls:'icon-add'"></a>
+                                <a data-hover="删除" title="删除" href="javascript:delData2();" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" id="del2" value="2"></a>
+                            </div>
+                        </div>
+                        </table>>
+                 </div>
+                 <div data-options="title:'MNOP'">
+                     <table class="easyui-datagrid" data-options="toolbar:'#lpToolbar'," id="l_pStandardList">
+                         <div id="lpToolbar" class="toolbar">
+                            <div style="float:right;margin-right:20px;">
+                                <input id="tab4SearchBox" />
+                                <a data-hover="增加" title="增加" href="javascript:standardAdd();"  class="easyui-linkbutton" data-options="iconCls:'icon-add'"></a>
+                                <a data-hover="导表" title="导表" href="javascript:insetstandrd();"  class="easyui-linkbutton" data-options="iconCls:'icon-add'"></a>
+                                <a data-hover="删除" title="删除" href="javascript:delData3();" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" id="del3" value="3"></a>
+                            </div>
+                        </div>
+                        </table>>
+                 </div>
+                 <div data-options="title:'QRST'">
+                     <table class="easyui-datagrid" data-options="toolbar:'#qtToolbar'," id="q_tStandardList">
+                         <div id="qtToolbar" class="toolbar">
+                            <div style="float:right;margin-right:20px;">
+                                <input id="tab5SearchBox" />
+                                <a data-hover="增加" title="增加" href="javascript:standardAdd();"  class="easyui-linkbutton" data-options="iconCls:'icon-add'"></a>
+                                <a data-hover="导表" title="导表" href="javascript:insetstandrd();"  class="easyui-linkbutton" data-options="iconCls:'icon-add'"></a>
+                                <a data-hover="删除" title="删除" href="javascript:delData4();" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" id="del4" value="4"></a>
+                            </div>
+                        </div>
+                        </table>>
+                 </div>
+                 <div data-options="title:'UVWXYZ'">
+                     <table class="easyui-datagrid" data-options="toolbar:'#uzToolbar'," id="u_zStandardList">
+                          <div id="uzToolbar" class="toolbar">
+                            <div style="float:right;margin-right:20px;">
+                                <input id="standardSearchBox" />
+                                <a data-hover="增加" title="增加" href="javascript:standardAdd();"  class="easyui-linkbutton" data-options="iconCls:'icon-add'"></a>
+                                <a data-hover="导表" title="导表" href="javascript:insetstandrd();"  class="easyui-linkbutton" data-options="iconCls:'icon-add'"></a>
+                                <a data-hover="删除" title="删除" href="javascript:delData5();" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" id="del5" value="5"></a>
+                            </div>
+                        </div>
+                        </table>>
+                 </div>
+             </div>
+         </div>
+    </div>
+</div>-->
+
+
+<div class="easyui-panel" title="<img src='/static/images/littlehouse.png' style='vertical-align:middle;margin:0 8px 0 35px;'/><span>您当前的位置：数据标准管理 > 标准数据元管理</span><div class='datime' style='width:210px;height:16px;display:inline-block;float:right;margin-right:60px;'></div>" style="height:100%;height:100%;" style="background:#fff;">
+	<div class="easyui-layout" data-options = "fit:true">
+		<div class="bgQulity" data-options="region:'west',collapsible:false,width:'4%',border:false,bodyCls:'body_bg'">
+
+		</div>
+		<div class="bgQulity" data-options="region:'east',collapsible:false,width:'4%',border:false,bodyCls:'body_bg'">
+
+		</div>
+		<div class="bgQulity" data-options="region:'north',collapsible:false,width:'100%',height:'15px',border:false,bodyCls:'body_bg'">
+			
+		</div>
+		<div id="contentFluid" data-options="region:'center',collapsible:false,border:false,bodyCls:'body_bg',width:'92%'">
+			
+			<div class="easyui-panel" data-options="fit:true,border:false">
+				<div class="easyui-layout" data-options="fit:true,border:false">
+					 <div id="i_btn_sixth_southern" data-options="region:'north',border:false" style="height:40px;border-top:3px solid #00a6a6">
+						<div class="nav_title" style="height:36px;line-height: 40px">
+							<span>数据标准管理</span> >>
+							<span>标准数据元管理</span>
+						</div>
+					 </div>
+					 <div data-options="region:'center',border:false" >
+						 <div class="easyui-tabs" data-options="border:false,fit:true,tabHeight:50,plain:true" id="standardRule">
+							 <div data-options="title:'ABCD'">
+								<table class="easyui-datagrid" data-options="toolbar:'#adToolbar'," id="a_dStandardList">
+									<div id="adToolbar" class="toolbar">
+										<div style="float:right;margin-right:20px;">
+											<input id="tab1SearchBox" />
+											<a data-hover="增加" title="增加" href="javascript:standardAdd();"  class="easyui-linkbutton" data-options="iconCls:'icon-add'"></a>
+											<a data-hover="导表" title="导表" href="javascript:insetstandrd();"  class="easyui-linkbutton" data-options="iconCls:'icon-add'"></a>
+											<a data-hover="删除" title="删除" href="javascript:delData();"  class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" id="del" value="0"></a>
+										</div>
+									</div>
+
+								</table>
+							 </div>
+							 <div data-options="title:'EFGH'">
+								 <table class="easyui-datagrid" data-options="toolbar:'#ehToolbar'," id="e_gStandardList">
+									 <div id="ehToolbar" class="toolbar">
+										<div style="float:right;margin-right:20px;">
+											<input id="tab2SearchBox" />
+											<a data-hover="增加" title="增加" href="javascript:standardAdd();"  class="easyui-linkbutton" data-options="iconCls:'icon-add'"></a>
+											<a data-hover="导表" title="导表" href="javascript:insetstandrd();"  class="easyui-linkbutton" data-options="iconCls:'icon-add'"></a>
+											<a data-hover="删除" title="删除" href="javascript:delData1();" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" id="del1" value="1"></a>
+										</div>
+									</div>
+									</table>>
+							 </div>
+							 <div data-options="title:'IJKL'">
+								 <table class="easyui-datagrid" data-options="toolbar:'#imToolbar'," id="i_mStandardList">
+									 <div id="imToolbar" class="toolbar">
+										<div style="float:right;margin-right:20px;">
+											<input id="tab3SearchBox" />
+											<a data-hover="增加" title="增加" href="javascript:standardAdd();"  class="easyui-linkbutton" data-options="iconCls:'icon-add'"></a>
+											<a data-hover="导表" title="导表" href="javascript:insetstandrd();"  class="easyui-linkbutton" data-options="iconCls:'icon-add'"></a>
+											<a data-hover="删除" title="删除" href="javascript:delData2();" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" id="del2" value="2"></a>
+										</div>
+									</div>
+									</table>>
+							 </div>
+							 <div data-options="title:'MNOP'">
+								 <table class="easyui-datagrid" data-options="toolbar:'#lpToolbar'," id="l_pStandardList">
+									 <div id="lpToolbar" class="toolbar">
+										<div style="float:right;margin-right:20px;">
+											<input id="tab4SearchBox" />
+											<a data-hover="增加" title="增加" href="javascript:standardAdd();"  class="easyui-linkbutton" data-options="iconCls:'icon-add'"></a>
+											<a data-hover="导表" title="导表" href="javascript:insetstandrd();"  class="easyui-linkbutton" data-options="iconCls:'icon-add'"></a>
+											<a data-hover="删除" title="删除" href="javascript:delData3();" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" id="del3" value="3"></a>
+										</div>
+									</div>
+									</table>>
+							 </div>
+							 <div data-options="title:'QRST'">
+								 <table class="easyui-datagrid" data-options="toolbar:'#qtToolbar'," id="q_tStandardList">
+									 <div id="qtToolbar" class="toolbar">
+										<div style="float:right;margin-right:20px;">
+											<input id="tab5SearchBox" />
+											<a data-hover="增加" title="增加" href="javascript:standardAdd();"  class="easyui-linkbutton" data-options="iconCls:'icon-add'"></a>
+											<a data-hover="导表" title="导表" href="javascript:insetstandrd();"  class="easyui-linkbutton" data-options="iconCls:'icon-add'"></a>
+											<a data-hover="删除" title="删除" href="javascript:delData4();" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" id="del4" value="4"></a>
+										</div>
+									</div>
+									</table>>
+							 </div>
+							 <div data-options="title:'UVWXYZ'">
+								 <table class="easyui-datagrid" data-options="toolbar:'#uzToolbar'," id="u_zStandardList">
+									  <div id="uzToolbar" class="toolbar">
+										<div style="float:right;margin-right:20px;">
+											<input id="standardSearchBox" />
+											<a data-hover="增加" title="增加" href="javascript:standardAdd();"  class="easyui-linkbutton" data-options="iconCls:'icon-add'"></a>
+											<a data-hover="导表" title="导表" href="javascript:insetstandrd();"  class="easyui-linkbutton" data-options="iconCls:'icon-add'"></a>
+											<a data-hover="删除" title="删除" href="javascript:delData5();" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" id="del5" value="5"></a>
+										</div>
+									</div>
+									</table>>
+							 </div>
+						 </div>
+					 </div>
+				</div>
+			</div>
+			
+		</div>
+		<div class="bgQulity" data-options="region:'south',collapsible:false,border:false,bodyCls:'body_bg'" style="height:70px;">
+			<p style="margin:40px auto 0 auto;width:450px;text-align:center">Copyright © All Rights Reserved 建议使用1280*800分辨率，IE8.0以上浏览</p>
+		</div>
+	</div>						
+</div>

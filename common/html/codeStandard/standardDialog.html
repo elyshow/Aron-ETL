@@ -1,0 +1,216 @@
+<div class="easyui-dialog" id="standardDialog" data-options="title:'标准数据元管理',width:820,height:400,buttons:'#dialogBtn'" style="display:none">
+
+    <form id="standardDataForm"  method="post">
+         <input type="hidden" name="save_type" />
+          <table border="0" cellpadding="10" style="margin: 10px auto; border-spacing: 0;">
+               <tr style="display: none">
+                  <td>id:</td>
+                  <td><input class="easyui-validatebox textbox" name="id" id="id" data-options="" /></td>
+              </tr>
+              <tr>
+                  <td style="text-align: right">标准来源</td>
+                  <td>
+                      <input type="radio" name="Rule" checked="checked" value="1"/>外部标准
+                      <input type="radio" name="Rule" value="2"/>内部标准
+                  </td>
+                  <td></td>
+                  <td></td>
+              </tr>
+              <tr>
+                  <td style="text-align: right">内部标识符（首字母大写）</td>
+                  <td><input class="easyui-validatebox textbox" name="insideIdentifier" id="insideIdenti" data-options="required:true,validType:'username',"/></td>
+                  <td style="text-align: right">中文名称</td>
+                  <td><input class="easyui-validatebox textbox" name="chineseName" id="chineseName" data-options="" /></td>
+              </tr>
+              <tr>
+                  <td style="text-align: right">英文名称</td>
+                  <td><input class="easyui-validatebox textbox" name="enname" id="enname" data-options="" /></td>
+                  <td style="text-align: right">中文全拼</td>
+                  <td><input class="easyui-validatebox textbox" name="cn_spell" id="cn_spell" data-options="" /></td>
+              </tr>
+              <tr>
+                  <td style="text-align: right">标识符(大写英文字母)</td>
+                  <td><input class="easyui-validatebox textbox" name="identifier" id="identifier" data-options='required:true'/></td>
+                  <td style="text-align: right">同义名称</td>
+                  <td><input class="easyui-validatebox textbox" name="samilarName" id="samilarName" data-options="" /></td>
+              </tr>
+              <tr>
+                  <td style="text-align: right">语境</td>
+                  <td><input class="easyui-validatebox textbox" name="language" id="language" data-options="" /></td>
+                  <td style="text-align: right">版本</td>
+                  <td><input class="easyui-validatebox textbox" name="version" id="version" data-options="" /></td>
+              </tr>
+              <tr>
+                  <td style="text-align: right">定义说明</td>
+                  <td><input class="easyui-validatebox textbox" name="definedIntro" id="definedIntro" data-options="" /></td>
+                  <td style="text-align: right">应用约束</td>
+                  <td><input class="easyui-validatebox textbox" name="constraint" id="constraint" data-options="" /></td>
+
+              </tr>
+              <tr>
+                  <td style="text-align: right">对象类词</td>
+                  <td><input class="easyui-validatebox textbox" name="object" id="object" data-options="" /></td>
+                  <td style="text-align: right">特征词</td>
+                  <td><input class="easyui-validatebox textbox" name="featureWord" id="featureWord" data-options="" /></td>
+              </tr>
+              <tr>
+                  <td style="text-align: right">分类方案</td>
+                  <td><input class="easyui-validatebox textbox" name="scheme" id="scheme" data-options="" /></td>
+                  <td style="text-align: right">分类方案值</td>
+                  <td><input class="easyui-validatebox textbox" name="schemeword" id="schemeword" data-options="" /></td>
+              </tr>
+              <tr>
+                  <td style="text-align: right">关系</td>
+                  <td><input class="easyui-validatebox textbox" name="relation" id="relation" data-options="" /></td>
+                  <td style="text-align: right">值域</td>
+                  <td><input class="easyui-validatebox textbox" name="valueRange" id="valueRange" data-options="" /></td>
+              </tr>
+              <tr>
+                  <td style="text-align: right">表示词</td>
+                  <td><input class="meanWordCombobox" class="easyui-combobox" name="showWord" data-options="" />
+                  <td style="text-align: right" >数据类型</td>
+                  <td><input class="dataTypeCombobox" class="easyui-combobox" name="datatype" data-options="" />
+                  </td>
+
+              </tr>
+              <tr>
+                  <td style="text-align: right">数据格式</td>
+                  <td><input class="easyui-validatebox textbox" name="dataFormat" id="dataFormat" data-options="" /></td>
+                  <td style="text-align: right">计量单位</td>
+                  <td><input class="measurementUnitCombobox" class="easyui-combobox" name="measurementUnit" data-options="" /></td>
+              </tr>
+              <tr>
+
+              </tr>
+              <tr>
+                  <td style="text-align: right" >提交机构</td>
+                  <td><input class="recognizeCombobox" class="easyui-combobox" name="subOrganization" data-options="" />
+                  <td style="text-align: right">注册机构</td>
+                  <td><input class="easyui-validatebox textbox" name="regorg" id="regorg" data-options="" /></td>
+
+              </tr>
+              <tr>
+                  <td style="text-align: right">主要起草人</td>
+                  <td><input class="easyui-validatebox textbox" name="draftsman" id="draftsman" data-options="" /></td>
+                  <td style="text-align: right">批准日期</td>
+                  <td><input class="easyui-validatebox textbox" name="approvedDate" id="approvedDate" data-options="" /></td>
+              </tr>
+              <tr>
+                  <td style="text-align: right">状态</td>
+                  <td><input class="easyui-validatebox textbox" name="state" id="state" data-options="" /></td>
+                  <td style="text-align: right">引用标准代码</td>
+                  <td>
+                      <input class="easyui-validatebox textbox" name="quotdStandard" id="quotdStandard" data-options="" />
+                      <a href="javascript:recognData();" class="easyui-linkbutton" id="dataFrom"  style="width: 40px;">...</a>
+                  </td>
+              </tr>
+              <tr>
+                  <td style="text-align: right">备注</td>
+                  <td colspan="3">
+                      <textarea cols="68" name="remark" rows="6" id="remark" placeholder="请输入备注" ></textarea>
+                  </td>
+              </tr>
+          </table>
+        <div id="dialogBtn">
+        <a href="javascript:sub_data();"class="easyui-linkbutton bule_btn">确定</a>
+        <a href="javascript:cancel();" class="easyui-linkbutton white_btn">取消</a>
+       </div>
+    </form>
+</div>
+
+
+
+<div class="easyui-dialog" id="detailStandardDialog" data-options="title:'标准数据元详情',width:800,height:400,buttons:'#detailDialogBtn'" style="display:none">
+
+          <table border="0" cellpadding="10" style="margin: 10px auto; border-spacing: 0;">
+              <tr>
+                  <td style="text-align: right">标准来源</td>
+                  <td>
+                      <span>
+                      <input type="radio" name="Rule" class="Rule"  checked="checked" value="1"/>外部标准
+                      <input type="radio" name="Rule"  class="Rule"  value="2"/>内部标准
+                          </span>
+                  </td>
+                  <td></td>
+                  <td></td>
+              </tr>
+              <tr>
+                  <td style="text-align: right">内部标识符</td>
+                  <td><input class="easyui-validatebox textbox" name="insideIdentifierDetail" id="insideIdentiDetail" readonly="true" style="border:0px;" data-options="required:true,"/></td>
+                  <td style="text-align: right">中文名称</td>
+                  <td><input class="easyui-validatebox textbox" name="chineseNameDetail" id="chineseNameDetail" readonly="true" style="border:0px;" data-options="" /></td>
+              </tr>
+              <tr>
+                  <td style="text-align: right">中文全拼</td>
+                  <td><input class="easyui-validatebox textbox" name="cn_spellDetail" id="cn_spellDetail" readonly="true" style="border:0px;" data-options="" /></td>
+                  <td style="text-align: right">标识符</td>
+                  <td><input class="easyui-validatebox textbox" name="identifierDetail" id="identifierDetail" readonly="true" style="border:0px;" data-options="" /></td>
+              </tr>
+              <tr>
+                  <td style="text-align: right">版本</td>
+                  <td><input class="easyui-validatebox textbox" name="versionDetail" id="versionDetail" readonly="true" style="border:0px;" data-options="" /></td>
+                  <td style="text-align: right">同义名称</td>
+                  <td><input class="easyui-validatebox textbox" name="samilarNameDetail" id="samilarNameDetail" readonly="true" style="border:0px;" data-options="" /></td>
+              </tr>
+              <tr>
+                  <td style="text-align: right">定义说明</td>
+                  <td colspan="3"><input class="easyui-validatebox textbox" name="definedIntroDetail" id="definedIntroDetail" readonly="true" style="border:0px;" data-options="" /></td>
+              </tr>
+              <tr>
+                  <td style="text-align: right">对象类词</td>
+                  <td><input class="easyui-validatebox textbox" name="objectDetail" id="objectDetail" readonly="true" style="border:0px;" data-options="" /></td>
+                  <td style="text-align: right">特征词</td>
+                  <td><input class="easyui-validatebox textbox" name="featureWordDetail" id="featureWordDetail" readonly="true" style="border:0px;" data-options="" /></td>
+              </tr>
+              <tr>
+                  <td style="text-align: right">关系</td>
+                  <td><input class="easyui-validatebox textbox" name="relationDetail" id="relationDetail" readonly="true" style="border:0px;" data-options="" /></td>
+                  </td>
+                  <td style="text-align: right">数据格式</td>
+                  <td><input class="easyui-validatebox textbox" name="dataFormatDetail" id="dataFormatDetail" readonly="true" style="border:0px;" data-options="" /></td>
+              </tr>
+
+              <tr>
+                  <td style="text-align: right">值域</td>
+                  <td><input class="easyui-validatebox textbox" name="valueRangeDetail" id="valueRangeDetail" readonly="true" style="border:0px;" data-options="" /></td>
+                  <td style="text-align: right">主要起草人</td>
+                  <td><input class="easyui-validatebox textbox" name="draftsmanDetail" id="draftsmanDetail" readonly="true" style="border:0px;" data-options="" /></td>
+              </tr>
+
+              <tr>
+                  <td style="text-align: right">批准日期</td>
+                  <td><input class="easyui-validatebox textbox" name="approvedDateDetail" id="approvedDateDetail" readonly="true" style="border:0px;" data-options="" /></td>
+                  <td style="text-align: right">引用标准代码</td>
+                  <td>
+                      <input class="easyui-validatebox textbox" name="quotdStandardDetail" id="quotdStandardDetail" readonly="true" style="border:0px;" data-options="" />
+                  </td>
+              </tr>
+              <tr>
+                  <td style="text-align: right" >数据类型</td>
+                  <td><input class="dataTypeCombobox" class="easyui-combobox" name="measurementUnitDetail" readonly="true" style="border:0px;"  data-options="" />
+                   <td style="text-align: right">表示词</td>
+                  <td><input class="meanWordCombobox" class="easyui-combobox" name="showWordDetail" readonly="true" style="border:0px;" data-options="" />
+
+                  </td>
+
+              </tr>
+               <tr>
+                  <td style="text-align: right" >提交机构</td>
+                  <td><input class="recognizeCombobox" class="easyui-combobox" name="subOrganization" readonly="true" style="display:none;border:0px;" data-options="" />
+                  <td style="text-align: right">计量单位</td>
+                  <td><input class="measurementUnitCombobox" class="easyui-combobox" name="measurementUnitDetail" id="recogn"　readonly="true" style="border:0px;" data-options="" />
+
+                  </td>
+
+              </tr>
+              <tr>
+                  <td style="text-align: right">备注</td>
+                  <td colspan="3">
+                      <textarea cols="68" name="remarkDetail" rows="6" readonly="true" style="border-style:solid" id="remarkDetail" placeholder="" ></textarea>
+                  </td>
+              </tr>
+          </table>
+            <div id="detailDialogBtn">
+        <a href="javascript:closeDetail();" class="easyui-linkbutton blue_btn"  style="margin-right:50%;background:#95B8E7;">关闭</a>
+       </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="easyui-panel" data-options="fit:true,border:false">
+    <div class="easyui-layout" data-options="fit:true,border:false">
+         <div data-options="region:'north',border:false" style="height:50px;">
+            <div class="nav_title">
+                <span>数据采集</span> >>
+                <span>采集任务</span>
+            </div>
+         </div>
+         <div data-options="region:'center',border:false" >
+                    <table class="easyui-datagrid" data-options="toolbar:'#toolbar'," id="sjyglList">
+
+                        <div id="toolbar" class="toolbar">
+                            <span style="">当前所在节点：{{ domname }}</span>
+                            <div style="float:right;margin-right:20px;">
+                                <input id="taskSearchBox"/>
+                                <a href="javascript:linkbutton_click('open_dialog',{dialog:'#taskTypeDialog'});" class="easyui-linkbutton" data-options="iconCls:'icon-add'">增加</a>
+                                <a href="javascript:sjyglDel();" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">删除</a>
+                                 <a href="javascript:detailInfo();" class="easyui-linkbutton" data-options="iconCls:'icon-edit'">详情或修改</a>
+                                <a href="javascript:collectLogIndex();" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查看采集日志</a>
+                            </div>
+                        </div>
+                    </table>
+         </div>
+    </div>
+</div>

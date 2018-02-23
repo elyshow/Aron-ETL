@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>登录</title>
+<link rel="stylesheet" href="/static/css/user/loginStyle.css">
+</head>
+<body>
+    <style type="text/css">
+        .register-box {height: 335px;}
+        .register-box .input-filed{height: 150px; margin-top: 10px;}
+    </style>
+    <div class="wrapper">
+    <!-- 主要内容-->
+    <div class="main">
+        <form id="registerForm"  action="/startlogin/"  method="post">
+            <div class="register-box">
+                <h1>用户登录</h1>
+                <ul class="input-filed">
+                    <li class="email">
+                        <label>用户名</label>
+                        <input type="text" name="uname">
+                    </li>
+                    <li class="password">
+                        <label>密码</label>
+                        <input type="password" name="pwd">
+                    </li>
+                    <li>
+                        {{ errors }}
+                    </li>
+                </ul>
+
+
+                <button type="submit" class="register-btn">登录</button>
+            </div>
+        </form>
+       </div>
+    </div>
+</body>
+</html>
